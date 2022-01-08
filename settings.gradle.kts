@@ -1,3 +1,3 @@
 
-rootProject.name = "kotest-examples"
+rootProject.name = "kotest-html-reporter"
 

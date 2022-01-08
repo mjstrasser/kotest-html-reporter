@@ -1,6 +1,7 @@
 package mjs.kotest
 
 import io.klogging.Klogging
+import io.kotest.core.descriptors.TestPath
 import io.kotest.core.listeners.AfterContainerListener
 import io.kotest.core.listeners.AfterEachListener
 import io.kotest.core.listeners.AfterSpecListener
@@ -10,59 +11,64 @@ import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import io.kotest.core.test.isRootTest
+import kotlinx.coroutines.delay
 
 class JsonReporter(
     private val outputDir: String = "reports/kotest",
-) : BeforeContainerListener, BeforeEachListener, AfterContainerListener, AfterEachListener, AfterSpecListener,
+) : BeforeContainerListener, BeforeEachListener,
+    AfterContainerListener, AfterEachListener, AfterSpecListener,
     Klogging {
 
-    private val reports: MutableMap<TestCase, TestReport> = mutableMapOf()
+    private val reports: MutableMap<TestPath, TestReport> = mutableMapOf()
 
     override suspend fun beforeContainer(testCase: TestCase) {
-        logger.info("beforeContainer(): {name}", testCase.name.testName)
+        logger.info("beforeContainer(): {path}", testCase.descriptor.path().value)
+        addTestCase(testCase)
+    }
+
+    override suspend fun beforeEach(testCase: TestCase) {
+        logger.info("beforeEach(): {path}", testCase.descriptor.path().value)
         addTestCase(testCase)
     }
 
     private suspend fun addTestCase(testCase: TestCase) {
-        val report = TestReport(testCase.name.testName)
-        reports[testCase] = report
+        val path = testCase.descriptor.path()
+        val report = TestReport(path.value, testCase.name.testName)
+        reports[path] = report
         if (testCase.isRootTest()) return
-        reports[testCase.parent]?.let { parent ->
-            reports[testCase.parent!!] = parent.addChild(report)
+        reports[testCase.parent?.descriptor?.path()]?.let { parent ->
+            reports[testCase.parent!!.descriptor.path()] = parent.addChild(report)
         } ?: logger.warn("Non-root case parent not found")
     }
 
-    override suspend fun beforeEach(testCase: TestCase) {
-        logger.info("beforeEach(): {name}", testCase.name.testName)
-        addTestCase(testCase)
-    }
-
     override suspend fun afterContainer(testCase: TestCase, result: TestResult) {
+        val path = testCase.descriptor.path()
         logger.info(
-            "afterContainer(): {name}: parent={parent} {result} ({duration})",
-            testCase.name.testName,
-            testCase.parent?.name?.testName,
+            "afterContainer(): {path}: {result} ({duration})",
+            path.value,
             result.name,
             result.duration
         )
-        reports[testCase]?.let { report ->
-            reports[testCase] = report.addResult("", result.duration.toString())
-        } ?: logger.warn("afterContainer(): no report found for ${testCase.descriptor.id}")
+        reports[path]?.let { report ->
+            reports[path] = report.addResult(result.name, result.duration.toString())
+        } ?: logger.warn("afterContainer(): no report found for {path}", path)
     }
 
     override suspend fun afterEach(testCase: TestCase, result: TestResult) {
+        val path = testCase.descriptor.path()
         logger.info(
-            "afterEach(): {name}: parent={parent} ({duration})",
-            testCase.name.testName,
-            testCase.parent?.name?.testName,
+            "afterEach(): {path}: {result} ({duration})",
+            path.value,
+            result.name,
             result.duration
         )
-        reports[testCase]?.let { report ->
-            reports[testCase] = report.addResult(result.name, result.duration.toString())
-        } ?: logger.warn("afterEach(): no report found for ${testCase.descriptor.id}")
+        reports[path]?.let { report ->
+            reports[path] = report.addResult(result.name, result.duration.toString())
+        } ?: logger.warn("afterEach(): no report found for {path}", path)
     }
 
     override suspend fun afterSpec(spec: Spec) {
-        reports.forEach { println("afterSpec(): $it") }
+        reports.forEach { logger.info("afterSpec(): {report}", it.value) }
+        delay(500)
     }
 }
