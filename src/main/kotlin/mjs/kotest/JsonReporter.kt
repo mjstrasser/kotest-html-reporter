@@ -1,82 +1,31 @@
 package mjs.kotest
 
 import io.klogging.Klogging
-import io.kotest.core.descriptors.TestPath
-import io.kotest.core.listeners.AfterContainerListener
-import io.kotest.core.listeners.AfterEachListener
-import io.kotest.core.listeners.AfterSpecListener
-import io.kotest.core.listeners.BeforeContainerListener
-import io.kotest.core.listeners.BeforeEachListener
+import io.kotest.core.listeners.FinalizeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
-import io.kotest.core.test.isRootTest
 import kotlinx.coroutines.delay
+import kotlin.reflect.KClass
 
 class JsonReporter(
 //    private val outputDir: String = "reports/kotest",
-) : BeforeContainerListener, BeforeEachListener,
-    AfterContainerListener, AfterEachListener, AfterSpecListener,
-    Klogging {
+) : FinalizeSpecListener, Klogging {
 
-    private val reports: MutableMap<TestPath, TestReport> = mutableMapOf()
-
-    override suspend fun beforeContainer(testCase: TestCase) {
-        logger.info("beforeContainer(): {path}", testCase.descriptor.path().value)
-        addTestCase(testCase)
-    }
-
-    override suspend fun beforeEach(testCase: TestCase) {
-        logger.info("beforeEach(): {path}", testCase.descriptor.path().value)
-        addTestCase(testCase)
-    }
-
-    private suspend fun addTestCase(testCase: TestCase) {
-        val path = testCase.descriptor.path()
-        val report = TestReport(path.value, testCase.name.testName)
-        reports[path] = report
-        if (testCase.isRootTest()) return
-        reports[testCase.parent?.descriptor?.path()]?.let { parent ->
-            reports[testCase.parent!!.descriptor.path()] = parent.addChild(report)
-        } ?: logger.warn("Non-root case parent not found")
-    }
-
-    override suspend fun afterContainer(testCase: TestCase, result: TestResult) {
-        val path = testCase.descriptor.path()
+    override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
         logger.info(
-            "afterContainer(): {path}: {result} ({duration})",
-            path.value,
-            result.name,
-            result.duration
+            "finalizeSpec(): {class} {numResults}",
+            kclass.simpleName, results.size
         )
-        reports[path]?.let { report ->
-            reports[path] = report.addResult(result.name, result.duration.toString())
-        } ?: logger.warn("afterContainer(): no report found for {path}", path)
-    }
-
-    override suspend fun afterEach(testCase: TestCase, result: TestResult) {
-        val path = testCase.descriptor.path()
-        result.errorOrNull?.let {
-            logger.warn(
-                it,
-                "afterEach(): {path}: {result} ({duration})",
-                path.value,
+        results.forEach { (case, result) ->
+            logger.info(
+                "{path}: {result} ({duration})",
+                case.descriptor.path(),
                 result.name,
                 result.duration
             )
-        } ?: logger.info(
-            "afterEach(): {path}: {result} ({duration})",
-            path.value,
-            result.name,
-            result.duration
-        )
-        reports[path]?.let { report ->
-            reports[path] = report.addResult(result.name, result.duration.toString())
-        } ?: logger.warn("afterEach(): no report found for {path}", path)
+        }
+        delay(1000)
     }
 
-    override suspend fun afterSpec(spec: Spec) {
-        reports.forEach { logger.info("afterSpec(): {report}", it.value) }
-        delay(500)
-    }
 }

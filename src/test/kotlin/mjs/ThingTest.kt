@@ -2,7 +2,6 @@ package mjs
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.delay
 
 class ThingTest : DescribeSpec({
     describe("Describe the thing") {
@@ -17,6 +16,5 @@ class ThingTest : DescribeSpec({
         xit("don’t care") {
             "ignored" shouldBe "ignored"
         }
-        delay(1000)
     }
 })
