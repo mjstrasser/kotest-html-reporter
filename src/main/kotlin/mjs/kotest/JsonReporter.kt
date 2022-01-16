@@ -14,7 +14,7 @@ import io.kotest.core.test.isRootTest
 import kotlinx.coroutines.delay
 
 class JsonReporter(
-    private val outputDir: String = "reports/kotest",
+//    private val outputDir: String = "reports/kotest",
 ) : BeforeContainerListener, BeforeEachListener,
     AfterContainerListener, AfterEachListener, AfterSpecListener,
     Klogging {
@@ -56,7 +56,15 @@ class JsonReporter(
 
     override suspend fun afterEach(testCase: TestCase, result: TestResult) {
         val path = testCase.descriptor.path()
-        logger.info(
+        result.errorOrNull?.let {
+            logger.warn(
+                it,
+                "afterEach(): {path}: {result} ({duration})",
+                path.value,
+                result.name,
+                result.duration
+            )
+        } ?: logger.info(
             "afterEach(): {path}: {result} ({duration})",
             path.value,
             result.name,

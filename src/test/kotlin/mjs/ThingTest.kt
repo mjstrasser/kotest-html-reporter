@@ -14,6 +14,9 @@ class ThingTest : DescribeSpec({
                 "thing" shouldBe "thang"
             }
         }
+        xit("don’t care") {
+            "ignored" shouldBe "ignored"
+        }
         delay(1000)
     }
 })
