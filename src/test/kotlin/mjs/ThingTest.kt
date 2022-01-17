@@ -5,16 +5,16 @@ import io.kotest.matchers.shouldBe
 
 class ThingTest : DescribeSpec({
     describe("Describe the thing") {
-        describe("the inner thing") {
-            it("is thing") {
+        xit("1. don’t care") {
+            "ignored" shouldBe "ignored"
+        }
+        describe("2. the inner thing") {
+            it("2a. is thing") {
                 "thing" shouldBe "thing"
             }
-            it("is not thang") {
+            it("2b. is not thang") {
                 "thing" shouldBe "thang"
             }
-        }
-        xit("don’t care") {
-            "ignored" shouldBe "ignored"
         }
     }
 })
