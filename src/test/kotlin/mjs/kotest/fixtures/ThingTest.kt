@@ -1,10 +1,11 @@
-package mjs
+package mjs.kotest.fixtures
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 
 class ThingTest : DescribeSpec({
-    describe("Describe the thing") {
+    describe("0. Describe the thing") {
         xit("1. don’t care") {
             "ignored" shouldBe "ignored"
         }
@@ -14,6 +15,11 @@ class ThingTest : DescribeSpec({
             }
             it("2b. is not thang") {
                 "thing" shouldBe "thang"
+            }
+        }
+        xdescribe("3. also ignored") {
+            it("3a. is not relevant") {
+                "ignored" shouldNotBe "ignored"
             }
         }
     }

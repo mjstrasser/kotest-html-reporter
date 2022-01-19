@@ -20,24 +20,33 @@ class JsonReporter(
 
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
         withContext(logContext("run" to run)) {
+            logger.info("----------")
             logger.info(
                 "finalizeSpec(): {class} {numResults} {mapClass}",
                 kclass.qualifiedName, results.size, results::class.qualifiedName
             )
             results.forEach { (case, result) ->
-                val source = case.source as SourceRef.FileSource
+                println("-- ${case.name.testName} --")
+                println(case)
+                println(result)
+                val source = nameAndNumber(case.source)
                 logger.info(
-                    "{path}: {result} ({duration}) – {fileName}:{lineNumber}",
+                    "{path}: {result} ({duration}) – {name}:{lineNumber}",
                     case.descriptor.path().value,
                     result.name,
                     result.duration,
-                    source.fileName,
-                    source.lineNumber,
+                    source.first,
+                    source.second,
                 )
             }
-            logger.info("----------")
         }
         delay(1000)
+    }
+
+    private fun nameAndNumber(sourceRef: SourceRef): Pair<String, Int?> = when (sourceRef) {
+        is SourceRef.FileSource -> Pair(sourceRef.fileName, sourceRef.lineNumber)
+        is SourceRef.ClassSource -> Pair(sourceRef.fqn, sourceRef.lineNumber)
+        else -> Pair("?", null)
     }
 
 }
