@@ -1,17 +1,12 @@
 package mjs.kotest
 
-data class TestReport(
-    val path: String,
-    val testName: String,
-    val result: String = "",
-    val duration: String = "",
-    val children: List<String> = listOf(),
-) {
-    fun addChild(child: TestReport): TestReport = TestReport(
-        path, testName, result, duration, children + child.path
-    )
+import kotlinx.serialization.Serializable
 
-    fun addResult(result: String, duration: String): TestReport = TestReport(
-        path, testName, result, duration, children
-    )
-}
+@Serializable
+data class TestReport(
+    val name: String,
+    val result: String? = null,
+    val duration: String? = null,
+    val message: String? = null,
+    val reports: List<TestReport> = listOf(),
+)
