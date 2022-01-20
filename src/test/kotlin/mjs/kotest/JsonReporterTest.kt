@@ -16,7 +16,7 @@ class JsonReporterTest : DescribeSpec({
 
             reporter.finalizeSpec(ThingTest::class, resultsMap)
 
-            val outputFile = File(tempDir.toFile(), "output.json")
+            val outputFile = File(tempDir.toFile(), "test-report.json")
             val json = outputFile.readText()
             json shouldBe "{}"
 
@@ -25,7 +25,7 @@ class JsonReporterTest : DescribeSpec({
                 "mjs.ThingTest",
                 reports = listOf(
                     TestReport(
-                        "Describe the thing",
+                        "0. Describe the thing",
                         "Failure",
                         "81.112632ms",
                         reports = listOf(

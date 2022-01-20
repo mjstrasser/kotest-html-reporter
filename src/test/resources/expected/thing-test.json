@@ -2,7 +2,7 @@
   "name": "mjs.ThingTest",
   "reports": [
     {
-      "name": "Describe the thing",
+      "name": "0. Describe the thing",
       "result": "Failure",
       "duration": "81.112632ms",
       "reports": [
