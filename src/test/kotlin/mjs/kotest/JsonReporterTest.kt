@@ -3,6 +3,12 @@ package mjs.kotest
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import mjs.kotest.fixtures.ThingTest
+import mjs.kotest.fixtures.case0
+import mjs.kotest.fixtures.case1
+import mjs.kotest.fixtures.case2
+import mjs.kotest.fixtures.case2a
+import mjs.kotest.fixtures.case2b
+import mjs.kotest.fixtures.case3
 import mjs.kotest.fixtures.readTestReport
 import mjs.kotest.fixtures.resultsMap
 import java.io.File
@@ -60,6 +66,14 @@ class JsonReporterTest : DescribeSpec({
                 )
             )
             testReport shouldBe expectedReport
+        }
+    }
+    describe("sorting test cases") {
+        it("should work") {
+            setOf(case0, case1, case2, case3, case2a, case2b)
+                .shuffled()
+                .sortedBy { it.sorter() } shouldBe
+                    listOf(case0, case1, case2, case2a, case2b, case3)
         }
     }
 })
