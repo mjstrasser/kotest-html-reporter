@@ -33,7 +33,7 @@ const val name2 = "2. the inner thing"
 val descriptor2 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name2))
 val case2 = TestCase(
     descriptor2, TestName(name2), thingTest, {}, SourceRef.FileSource("ThingTest.kt", 12),
-    TestType.Test, parent = case1
+    TestType.Container, parent = case1
 )
 val result2 = TestResult.Success(Duration.parse("34.051853ms"))
 
@@ -60,7 +60,7 @@ const val name3 = "3. also ignored"
 val descriptor3 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name3))
 val case3 = TestCase(
     descriptor3, TestName(name3), thingTest, {}, SourceRef.FileSource("ThingTest.kt", 20),
-    TestType.Test, parent = case0
+    TestType.Container, parent = case0
 )
 val result3 = TestResult.Ignored("Disabled by xmethod")
 
