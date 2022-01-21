@@ -6,8 +6,10 @@ import io.kotest.core.source.SourceRef
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
-import java.io.File
+import io.kotest.core.test.isRootTest
+import kotlinx.coroutines.delay
 import kotlin.reflect.KClass
+import kotlin.time.Duration
 
 const val FORMAT = "%s:%04d"
 internal fun TestCase.sorter(): String = source.let {
@@ -23,13 +25,39 @@ class JsonReporter(
 ) : FinalizeSpecListener, Klogging {
 
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
-        val jsonFile = File(File(outputDir), "test-report.json")
-        jsonFile.appendText("{}")
+        val report = reportFromResults(results)
+//        val jsonFile = File(File(outputDir), "test-report.json")
+//        jsonFile.appendText("{}")
+        delay(1000)
     }
 
-    fun reportFromResults(results: Map<TestCase, TestResult>): TestReport? {
-        val orderedCases = results.keys.sortedBy { it.sorter() }
+    private fun durationIfPositive(result: TestResult): String? =
+        if (result.duration > Duration.ZERO) result.duration.toString()
+        else null
 
-        return null
+    fun reportFromResults(results: Map<TestCase, TestResult>): TestReport? {
+
+        val reports = results.mapValues { (case, result) ->
+            TestReport(
+                case.name.testName,
+                if (case.isRootTest()) null else result.name,
+                durationIfPositive(result),
+                result.errorOrNull?.message,
+            )
+        }.toMutableMap()
+
+        val orderedCases = reports.keys.sortedByDescending { it.sorter() }
+        orderedCases.forEach { case ->
+            val parentCase = case.parent
+            if (parentCase != null) {
+                reports[case]?.let { thisReport ->
+                    reports[case.parent]?.let { parentReport ->
+                        reports[parentCase] = parentReport.prependChild(thisReport)
+                    }
+                }
+            }
+        }
+
+        return reports[reports.keys.first { it.isRootTest() }]
     }
 }

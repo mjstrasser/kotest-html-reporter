@@ -7,7 +7,6 @@ import mjs.kotest.JsonReporter
 
 class KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(
-        JunitXmlReporter(useTestPathAsName = true, includeContainers = false),
         JsonReporter(),
     )
 }

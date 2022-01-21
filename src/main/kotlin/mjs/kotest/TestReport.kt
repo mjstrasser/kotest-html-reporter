@@ -10,3 +10,6 @@ data class TestReport(
     val message: String? = null,
     val reports: List<TestReport> = listOf(),
 )
+
+fun TestReport.prependChild(child: TestReport): TestReport =
+    TestReport(name, result, duration, message, listOf(child) + reports)

@@ -67,6 +67,10 @@ class JsonReporterTest : DescribeSpec({
             )
             testReport shouldBe expectedReport
         }
+        it("creates expected rerpot") {
+            val report = JsonReporter().reportFromResults(resultsMap)
+            report shouldBe TestReport("nope")
+        }
     }
     describe("sorting test cases") {
         it("should work") {
