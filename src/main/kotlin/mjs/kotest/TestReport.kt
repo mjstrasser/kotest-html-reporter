@@ -1,6 +1,8 @@
 package mjs.kotest
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class TestReport(
@@ -8,8 +10,8 @@ data class TestReport(
     val result: String? = null,
     val duration: String? = null,
     val message: String? = null,
-    val reports: List<TestReport> = listOf(),
+    val reports: MutableList<TestReport> = mutableListOf(),
 )
 
-fun TestReport.prependChild(child: TestReport): TestReport =
-    TestReport(name, result, duration, message, listOf(child) + reports)
+fun TestReport.toJson(): String =
+    Json.encodeToString(this)

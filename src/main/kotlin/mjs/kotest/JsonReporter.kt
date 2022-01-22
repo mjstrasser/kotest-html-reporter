@@ -25,7 +25,7 @@ class JsonReporter(
 ) : FinalizeSpecListener, Klogging {
 
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
-        val report = reportFromResults(results)
+        val report = reportFromResults(kclass.qualifiedName!!, results)
 //        val jsonFile = File(File(outputDir), "test-report.json")
 //        jsonFile.appendText("{}")
         delay(1000)
@@ -35,29 +35,26 @@ class JsonReporter(
         if (result.duration > Duration.ZERO) result.duration.toString()
         else null
 
-    fun reportFromResults(results: Map<TestCase, TestResult>): TestReport? {
+    internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): TestReport {
 
         val reports = results.mapValues { (case, result) ->
             TestReport(
-                case.name.testName,
-                if (case.isRootTest()) null else result.name,
-                durationIfPositive(result),
-                result.errorOrNull?.message,
+                name = case.name.testName,
+                result = result.name,
+                duration = durationIfPositive(result),
+                message = result.errorOrNull?.stackTraceToString(),
             )
-        }.toMutableMap()
-
-        val orderedCases = reports.keys.sortedByDescending { it.sorter() }
+        }
+        val orderedCases = results.keys.sortedBy { it.sorter() }
+        val firstReport = reports[orderedCases.first()]!!
         orderedCases.forEach { case ->
-            val parentCase = case.parent
-            if (parentCase != null) {
-                reports[case]?.let { thisReport ->
-                    reports[case.parent]?.let { parentReport ->
-                        reports[parentCase] = parentReport.prependChild(thisReport)
-                    }
-                }
+            val report = reports[case]!!
+            case.parent?.let {
+                val parentReport = reports[it]!!
+                parentReport.reports.add(report)
             }
         }
 
-        return reports[reports.keys.first { it.isRootTest() }]
+        return TestReport(name = className, reports = mutableListOf(firstReport))
     }
 }

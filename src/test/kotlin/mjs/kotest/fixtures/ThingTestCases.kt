@@ -21,7 +21,7 @@ val case0 = TestCase(
 )
 val result0 = TestResult.Success(Duration.parse("81.112632ms"))
 
-const val name1 = "1. don’t care"
+const val name1 = "1. I don’t care"
 val descriptor1 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name1))
 val case1 = TestCase(
     descriptor1, TestName(name1), thingTest, {}, SourceRef.FileSource("ThingTest.kt", 9),
@@ -33,7 +33,7 @@ const val name2 = "2. the inner thing"
 val descriptor2 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name2))
 val case2 = TestCase(
     descriptor2, TestName(name2), thingTest, {}, SourceRef.FileSource("ThingTest.kt", 12),
-    TestType.Container, parent = case1
+    TestType.Container, parent = case0
 )
 val result2 = TestResult.Success(Duration.parse("34.051853ms"))
 
