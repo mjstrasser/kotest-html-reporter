@@ -4,6 +4,10 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+internal interface Report {
+    fun addChildReport(childReport: TestReport)
+}
+
 /**
  * Simple, recursive representation of a test report.
  *
@@ -16,11 +20,23 @@ internal data class TestReport(
     val duration: String? = null,
     val message: String? = null,
     val reports: MutableList<TestReport> = mutableListOf(),
-)
+) : Report {
 
-internal fun TestReport.addChildReport(childReport: TestReport) {
-    this.reports.add(childReport)
+    override fun addChildReport(childReport: TestReport) {
+        reports.add(childReport)
+    }
 }
 
-internal fun TestReport.toJson(): String =
-    Json.encodeToString(this)
+@Serializable
+internal data class SpecReport(
+    val name: String,
+    var preamble: String? = null,
+    val reports: MutableList<TestReport> = mutableListOf(),
+) : Report {
+    override fun addChildReport(childReport: TestReport) {
+        reports.add(childReport)
+    }
+
+    internal fun toJson(): String =
+        Json.encodeToString(this)
+}

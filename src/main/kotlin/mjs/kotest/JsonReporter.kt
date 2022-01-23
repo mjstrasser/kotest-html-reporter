@@ -32,7 +32,7 @@ internal class JsonReporter(
         writeReportJson(report, className)
     }
 
-    internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): TestReport {
+    internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): SpecReport {
 
         val reports = results.mapValues { (case, result) ->
             TestReport(
@@ -43,15 +43,17 @@ internal class JsonReporter(
             )
         }
         val orderedCases = results.keys.sortedBy { it.sorter() }
-        val specReport = TestReport(className)
+        val specReport = SpecReport(className)
         orderedCases.forEach { case ->
             val report = reports[case]!!
             val parent = case.parent
             if (parent != null) {
                 val parentReport = reports[parent]!!
                 parentReport.addChildReport(report)
-            } else
+            } else {
+                specReport.preamble = case.spec.preamble
                 specReport.addChildReport(report)
+            }
         }
 
         setChildFailuresOnContainers(specReport)
@@ -68,6 +70,10 @@ internal class JsonReporter(
         if (result.duration > Duration.ZERO) result.duration.toString()
         else null
 
+    private fun setChildFailuresOnContainers(report: SpecReport) {
+        report.reports.forEach { setChildFailuresOnContainers(it) }
+    }
+
     private fun setChildFailuresOnContainers(report: TestReport) {
         report.reports.forEach {
             setChildFailuresOnContainers(it)
@@ -76,7 +82,7 @@ internal class JsonReporter(
         }
     }
 
-    private fun writeReportJson(report: TestReport, className: String) {
+    private fun writeReportJson(report: SpecReport, className: String) {
         val reportJson = Json.encodeToString(report)
         val path = outputDir().resolve("$className.json")
         path.parent.toFile().mkdirs()
