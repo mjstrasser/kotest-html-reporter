@@ -23,4 +23,9 @@ class ThingTest : DescribeSpec({
             }
         }
     }
+    describe("4. Another root") {
+        it("is really fun") {
+            "fun" shouldBe "fun"
+        }
+    }
 })

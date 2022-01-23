@@ -16,7 +16,7 @@ import kotlin.io.path.createTempDirectory
 
 class JsonReporterTest : DescribeSpec({
     describe("for ThingTest.kt") {
-        val testReport = TestReport(
+        val expectedReport = TestReport(
             "mjs.ThingTest",
             reports = mutableListOf(
                 TestReport(
@@ -64,13 +64,13 @@ class JsonReporterTest : DescribeSpec({
             val json = outputFile.readText()
             json shouldBe "{}"
 
-            val expectedReport = readTestReport("expected/thing-test.json")
-            testReport shouldBe expectedReport
+            val reportFromJson = readTestReport("expected/thing-test.json")
+            reportFromJson shouldBe expectedReport
         }
         it("creates expected report") {
             val report = JsonReporter().reportFromResults("mjs.ThingTest", resultsMap)
             val json = report.toJson()
-            json shouldBe testReport.toJson()
+            json shouldBe expectedReport.toJson()
         }
     }
     describe("sorting test cases") {

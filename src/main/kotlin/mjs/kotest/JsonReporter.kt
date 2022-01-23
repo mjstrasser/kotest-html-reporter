@@ -4,6 +4,7 @@ import io.klogging.Klogging
 import io.kotest.core.listeners.FinalizeSpecListener
 import io.kotest.core.source.SourceRef
 import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import kotlinx.serialization.encodeToString
@@ -25,36 +26,17 @@ internal class JsonReporter(
         const val GradleBuildDirKey = "gradle.build.dir"
     }
 
-    private fun outputDir(): Path {
-        val buildDir = System.getProperty(GradleBuildDirKey)
-        return if (buildDir != null)
-            Paths.get(buildDir).resolve(outputDir)
-        else
-            Paths.get(DefaultBuildDir).resolve(outputDir)
-    }
-
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
         val className = kclass.qualifiedName!!
         val report = reportFromResults(className, results)
         writeReportJson(report, className)
     }
 
-    private fun writeReportJson(report: TestReport, className: String) {
-        val reportJson = Json.encodeToString(report)
-        val path = outputDir().resolve("$className.json")
-        path.parent.toFile().mkdirs()
-        path.toFile().writeText(reportJson)
-    }
-
-    private fun durationIfPositive(result: TestResult): String? =
-        if (result.duration > Duration.ZERO) result.duration.toString()
-        else null
-
     internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): TestReport {
 
         val reports = results.mapValues { (case, result) ->
             TestReport(
-                name = case.name.testName,
+                name = case.displayName(),
                 result = result.name,
                 duration = durationIfPositive(result),
                 message = result.errorOrNull?.stackTraceToString(),
@@ -77,12 +59,36 @@ internal class JsonReporter(
         return specReport
     }
 
+    private fun TestCase.displayName(): String = when (spec) {
+        is BehaviorSpec -> with(name) { (prefix ?: "") + testName + (suffix ?: "") }
+        else -> name.testName
+    }
+
+    private fun durationIfPositive(result: TestResult): String? =
+        if (result.duration > Duration.ZERO) result.duration.toString()
+        else null
+
     private fun setChildFailuresOnContainers(report: TestReport) {
         report.reports.forEach {
             setChildFailuresOnContainers(it)
             if (it.result == FAILURE || it.result == CHILD_FAILURE)
                 report.result = CHILD_FAILURE
         }
+    }
+
+    private fun writeReportJson(report: TestReport, className: String) {
+        val reportJson = Json.encodeToString(report)
+        val path = outputDir().resolve("$className.json")
+        path.parent.toFile().mkdirs()
+        path.toFile().writeText(reportJson)
+    }
+
+    private fun outputDir(): Path {
+        val buildDir = System.getProperty(GradleBuildDirKey)
+        return if (buildDir != null)
+            Paths.get(buildDir).resolve(outputDir)
+        else
+            Paths.get(DefaultBuildDir).resolve(outputDir)
     }
 }
 
