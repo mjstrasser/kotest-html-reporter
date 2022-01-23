@@ -5,38 +5,27 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 internal interface Report {
-    fun addChildReport(childReport: TestReport)
+    val reports: MutableList<TestReport>
+    fun addChildReport(childReport: TestReport) {
+        reports.add(childReport)
+    }
 }
 
-/**
- * Simple, recursive representation of a test report.
- *
- * Two properties are mutable in some way for speed of processing.
- */
 @Serializable
 internal data class TestReport(
     val name: String,
     var result: String? = null,
     val duration: String? = null,
     val message: String? = null,
-    val reports: MutableList<TestReport> = mutableListOf(),
-) : Report {
-
-    override fun addChildReport(childReport: TestReport) {
-        reports.add(childReport)
-    }
-}
+    override val reports: MutableList<TestReport> = mutableListOf(),
+) : Report
 
 @Serializable
 internal data class SpecReport(
     val name: String,
     var preamble: String? = null,
-    val reports: MutableList<TestReport> = mutableListOf(),
+    override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report {
-    override fun addChildReport(childReport: TestReport) {
-        reports.add(childReport)
-    }
-
     internal fun toJson(): String =
         Json.encodeToString(this)
 }
