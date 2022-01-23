@@ -71,15 +71,14 @@ internal class JsonReporter(
         else null
 
     private fun setChildFailuresOnContainers(report: SpecReport) {
-        report.reports.forEach { setChildFailuresOnContainers(it) }
-    }
-
-    private fun setChildFailuresOnContainers(report: TestReport) {
-        report.reports.forEach {
-            setChildFailuresOnContainers(it)
-            if (it.result == FAILURE || it.result == CHILD_FAILURE)
-                report.result = CHILD_FAILURE
+        fun setChildFailures(report: TestReport) {
+            report.reports.forEach {
+                setChildFailures(it)
+                if (it.result == FAILURE || it.result == CHILD_FAILURE)
+                    report.result = CHILD_FAILURE
+            }
         }
+        report.reports.forEach { setChildFailures(it) }
     }
 
     private fun writeReportJson(report: SpecReport, className: String) {
