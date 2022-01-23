@@ -14,15 +14,6 @@ import java.nio.file.Paths
 import kotlin.reflect.KClass
 import kotlin.time.Duration
 
-const val FORMAT = "%s:%04d"
-internal fun TestCase.sorter(): String = source.let {
-    when (it) {
-        is SourceRef.FileSource -> FORMAT.format(it.fileName, it.lineNumber)
-        is SourceRef.ClassSource -> FORMAT.format(it.fqn, it.lineNumber)
-        else -> "zzzzzz:0000"
-    }
-}
-
 class JsonReporter(
     private val outputDir: String = "reports/kotest",
 ) : FinalizeSpecListener, Klogging {
@@ -47,7 +38,6 @@ class JsonReporter(
         val path = outputDir().resolve("$className.json")
         path.parent.toFile().mkdirs()
         path.toFile().writeText(reportJson)
-        delay(1000)
     }
 
     private fun durationIfPositive(result: TestResult): String? =
@@ -65,15 +55,24 @@ class JsonReporter(
             )
         }
         val orderedCases = results.keys.sortedBy { it.sorter() }
-        val firstReport = reports[orderedCases.first()]!!
+        val specRootReports = mutableListOf<TestReport>()
         orderedCases.forEach { case ->
             val report = reports[case]!!
             case.parent?.let {
                 val parentReport = reports[it]!!
                 parentReport.reports.add(report)
-            }
+            } ?: specRootReports.add(report)
         }
 
-        return TestReport(name = className, reports = mutableListOf(firstReport))
+        return TestReport(name = className, reports = specRootReports)
+    }
+}
+
+const val SourceFormatter = "%s:%04d"
+internal fun TestCase.sorter(): String = source.let {
+    when (it) {
+        is SourceRef.FileSource -> SourceFormatter.format(it.fileName, it.lineNumber)
+        is SourceRef.ClassSource -> SourceFormatter.format(it.fqn, it.lineNumber)
+        else -> "zzzzzz:0000"
     }
 }
