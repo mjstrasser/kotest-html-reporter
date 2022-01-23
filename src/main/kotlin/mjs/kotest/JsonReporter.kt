@@ -6,8 +6,11 @@ import io.kotest.core.source.SourceRef
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
-import io.kotest.core.test.isRootTest
 import kotlinx.coroutines.delay
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import java.nio.file.Path
+import java.nio.file.Paths
 import kotlin.reflect.KClass
 import kotlin.time.Duration
 
@@ -24,10 +27,26 @@ class JsonReporter(
     private val outputDir: String = "reports/kotest",
 ) : FinalizeSpecListener, Klogging {
 
+    companion object {
+        const val defaultBuildDir = "./build"
+        const val gradleBuildDirKey = "gradle.build.dir"
+    }
+
+    private fun outputDir(): Path {
+        val buildDir = System.getProperty(gradleBuildDirKey)
+        return if (buildDir != null)
+            Paths.get(buildDir).resolve(outputDir)
+        else
+            Paths.get(defaultBuildDir).resolve(outputDir)
+    }
+
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
-        val report = reportFromResults(kclass.qualifiedName!!, results)
-//        val jsonFile = File(File(outputDir), "test-report.json")
-//        jsonFile.appendText("{}")
+        val className = kclass.qualifiedName!!
+        val report = reportFromResults(className, results)
+        val reportJson = Json.encodeToString(report)
+        val path = outputDir().resolve("$className.json")
+        path.parent.toFile().mkdirs()
+        path.toFile().writeText(reportJson)
         delay(1000)
     }
 
