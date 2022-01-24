@@ -1,4 +1,4 @@
-package mjs
+package mjs.kotest
 
 import io.kotest.core.config.AbstractProjectConfig
 import io.kotest.core.extensions.Extension
