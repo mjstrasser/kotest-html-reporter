@@ -2,6 +2,7 @@ package mjs.kotest
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
+import mjs.kotest.ReportBuilder.reportFromResults
 import mjs.kotest.fixtures.ThingTest
 import mjs.kotest.fixtures.case0
 import mjs.kotest.fixtures.case1
@@ -68,7 +69,7 @@ class JsonReporterTest : DescribeSpec({
             reportFromJson shouldBe expectedReport
         }
         it("creates expected report") {
-            val report = JsonReporter().reportFromResults("mjs.ThingTest", resultsMap)
+            val report = reportFromResults("mjs.ThingTest", resultsMap)
             val json = report.toJson()
             json shouldBe expectedReport.toJson()
         }
@@ -77,7 +78,7 @@ class JsonReporterTest : DescribeSpec({
         it("should work") {
             setOf(case0, case1, case2, case3, case2a, case2b)
                 .shuffled()
-                .sortedBy { it.sorter() } shouldBe
+                .sortedBy { it.sourceAndLine } shouldBe
                     listOf(case0, case1, case2, case2a, case2b, case3)
         }
     }
