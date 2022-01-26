@@ -72,12 +72,16 @@ class HtmlReporter(
         }
         val result = if (testReport.result == "Success") "✓" else "x"
         builder.append("\n<div class='result-col'><span class='result'>$result</span></div>")
-        builder.append("\n<div class='name-col'><span class='name'>${testReport.name}</span></div>")
+        val name = convertMarkdown(testReport.name)
+        builder.append("\n<div class='name-col'><span class='name'>$name</span></div>")
         val duration = testReport.duration ?: ""
         builder.append("\n<div class='duration-col'><span class='duration'>$duration</span></div>")
         builder.append("\n</div>")
         testReport.reports.forEach { buildTestHtml(builder, it, indent + 1) }
     }
+
+    private val codeRegex = Regex("`([^`]+)`")
+    private fun convertMarkdown(str: String): String = codeRegex.replace(str, "<span class='code'>$1</span>")
 
     private val htmlHead = """
         <!DOCTYPE html>
@@ -87,6 +91,7 @@ class HtmlReporter(
             <title>Test Results</title>
             <style>
                 * { font-family: sans-serif; }
+                .code { font-family: monospace; background-color: #DDDDDD; }
                 .timestamp { font-size: 1.2em; }
                 .duration { color: gray; }
                 .test-result { display: flex; }
