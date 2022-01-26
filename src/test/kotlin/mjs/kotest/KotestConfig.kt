@@ -5,6 +5,6 @@ import io.kotest.core.extensions.Extension
 
 class KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(
-        HtmlReporter(),
+        HtmlReporter(writeJsonReports = true),
     )
 }

@@ -12,7 +12,7 @@ import kotlin.reflect.KClass
 
 class HtmlReporter(
     private val outputDir: String = "reports/kotest",
-    private val writeJsonReports: Boolean = true,
+    private val writeJsonReports: Boolean = false,
 ) : FinalizeSpecListener, AfterProjectListener, Klogging {
 
     private val specReports: MutableList<SpecReport> = mutableListOf()
