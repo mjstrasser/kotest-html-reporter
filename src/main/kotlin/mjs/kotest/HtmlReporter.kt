@@ -1,25 +1,31 @@
 package mjs.kotest
 
-import io.klogging.Klogging
 import io.kotest.core.listeners.AfterProjectListener
 import io.kotest.core.listeners.FinalizeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
-import mjs.kotest.SpecReportBuilder.reportFromResults
 import mjs.kotest.BuildReportWriter.writeReportFile
+import mjs.kotest.SpecReportBuilder.reportFromResults
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import kotlin.reflect.KClass
 
+/**
+ * Kotest extension that creates an HTML report from a test run (project).
+ *
+ * @param outputDir the directory, relative to the build directory, where reports are written.
+ * @param writeJsonReports write the reports for individual specs as JSON (for checking).
+ */
 class HtmlReporter(
     private val outputDir: String = "reports/kotest",
     private val writeJsonReports: Boolean = false,
-) : FinalizeSpecListener, AfterProjectListener, Klogging {
+) : FinalizeSpecListener, AfterProjectListener {
 
     private val specReports: MutableList<SpecReport> = mutableListOf()
 
+    /** After each spec, write a [SpecReport] for it. */
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
         val className = kclass.qualifiedName!!
         val specReport = reportFromResults(className, results)
@@ -28,6 +34,7 @@ class HtmlReporter(
             writeReportFile(outputDir, "$className.json", specReport.toJson())
     }
 
+    /** After all specs have been run, write the [SpecReport]s into an HTML report. */
     override suspend fun afterProject() {
         if (specReports.isEmpty()) return
         val htmlReport = buildHtmlReport(specReports)
