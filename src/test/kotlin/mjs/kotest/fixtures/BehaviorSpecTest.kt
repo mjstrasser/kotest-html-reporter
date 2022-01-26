@@ -3,6 +3,7 @@ package mjs.kotest.fixtures
 import io.kotest.core.spec.style.BehaviorSpec
 import mjs.kotest.SpecReport
 import mjs.kotest.TestReport
+import mjs.kotest.failingTest
 import mjs.kotest.fixtures.BehaviorSpecFixture.givenName
 import mjs.kotest.fixtures.BehaviorSpecFixture.thenName1
 import mjs.kotest.fixtures.BehaviorSpecFixture.thenName2
@@ -20,7 +21,7 @@ class BehaviorSpecTest : BehaviorSpec({
         }
         When(whenName2) {
             Then(thenName2) {
-                passingTest()
+                failingTest()
             }
         }
     }
