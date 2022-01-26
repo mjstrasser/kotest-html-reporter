@@ -6,10 +6,8 @@ import io.kotest.core.listeners.FinalizeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
-import mjs.kotest.ReportBuilder.reportFromResults
-import mjs.kotest.ReportWriter.writeReportFile
-import java.time.Instant
-import java.time.LocalDateTime
+import mjs.kotest.SpecReportBuilder.reportFromResults
+import mjs.kotest.BuildReportWriter.writeReportFile
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

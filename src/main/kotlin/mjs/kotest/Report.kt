@@ -4,6 +4,11 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+/**
+ * A report that can have child reports.
+ *
+ * Reports use mutable fields for speed and convenience.
+ */
 internal interface Report {
     val reports: MutableList<TestReport>
     fun addChildReport(childReport: TestReport) {
@@ -11,6 +16,7 @@ internal interface Report {
     }
 }
 
+/** Report for a test case. */
 @Serializable
 internal data class TestReport(
     val name: String,
@@ -20,6 +26,7 @@ internal data class TestReport(
     override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report
 
+/** Report for a spec. */
 @Serializable
 internal data class SpecReport(
     val name: String,

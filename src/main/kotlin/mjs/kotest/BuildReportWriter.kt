@@ -3,7 +3,10 @@ package mjs.kotest
 import java.nio.file.Path
 import java.nio.file.Paths
 
-internal object ReportWriter {
+/**
+ * Write build reports to a directory relative to the build directory.
+ */
+internal object BuildReportWriter {
 
     private const val DefaultBuildDir = "./build"
     private const val GradleBuildDirKey = "gradle.build.dir"
