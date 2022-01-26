@@ -8,6 +8,11 @@ import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import mjs.kotest.ReportBuilder.reportFromResults
 import mjs.kotest.ReportWriter.writeReportFile
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import kotlin.reflect.KClass
 
 class HtmlReporter(
@@ -34,6 +39,10 @@ class HtmlReporter(
     private fun buildHtmlReport(specReports: List<SpecReport>): String {
         val builder = StringBuilder()
         builder.append(htmlHead)
+        builder.append("\n<h1>Test Report</h1>")
+        val now = ZonedDateTime.now()
+            .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
+        builder.append("\n<p class='timestamp'>At $now</p>")
 
         specReports.forEach { buildSpecHtml(builder, it) }
 
@@ -73,6 +82,7 @@ class HtmlReporter(
             <title>Test Results</title>
             <style>
                 * { font-family: sans-serif; }
+                .timestamp { font-size: 1.2em; }
                 .duration { color: gray; }
                 .test-result { display: flex; }
                 .block-col { flex: 0 0 1em; margin: 2px; }
@@ -82,7 +92,6 @@ class HtmlReporter(
             </style>
         </head>
         <body>
-        <h1>Test Report</h1>
     """.trimIndent()
     private val htmlFoot = """
         </body>
