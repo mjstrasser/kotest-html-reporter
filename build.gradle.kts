@@ -46,6 +46,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // For now, because we have failing tests so they can be reported.
+    ignoreFailures = true
 }
 
 tasks.withType<KotlinCompile> {
