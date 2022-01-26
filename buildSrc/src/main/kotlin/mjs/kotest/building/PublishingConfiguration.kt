@@ -80,15 +80,15 @@ private fun Project.createPublishingTasks(
             val publicationName = this.name
             val javadocTask = tasks.register<Jar>(this.name + "JavadocJar") {
                 archiveClassifier.set("javadoc")
-                archiveBaseName.set("klogging-$publicationName")
+                archiveBaseName.set("kotest-html-reporter-$publicationName")
             }
 
             artifact(javadocTask)
 
             pom {
-                name.set("klogging")
-                description.set("Kotlin logging library with structured logging and coroutines support")
-                url.set("https://github.com/klogging/klogging")
+                name.set("kotes-html-reporter")
+                description.set("Kotest plugin to create HTML reports of test runs")
+                url.set("https://github.com/mjstrasser/kotest-html-reporter")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -98,12 +98,12 @@ private fun Project.createPublishingTasks(
                         developer {
                             id.set("mjstrasser")
                             name.set("Michael Strasser")
-                            email.set("mjstrasser@klogging.io")
+                            email.set("kotest-html-reporter@michaelstrasser.com")
                         }
                     }
                     scm {
-                        connection.set("scm:git:git://github.com/klogging/klogging.git")
-                        url.set("https://github.com/klogging/klogging")
+                        connection.set("scm:git:git://github.com/mjstrasser/kotest-html-reporter.git")
+                        url.set("https://github.com/mjstrasser/kotest-html-reporter")
                     }
                 }
             }
@@ -127,7 +127,7 @@ private fun Project.createPublishingTasks(
 
     afterEvaluate {
         publishing.publications.names.forEach { publication ->
-            tasks.named("publish${publication.capitalize()}PublicationToSonatypeRepository").configure {
+            tasks.named("publishToSonatype").configure {
                 dependsOn(validateCredentialsTask)
             }
         }
@@ -145,7 +145,7 @@ private fun Project.createSigningTasks() {
             val keyRing = getEnvironmentVariableOrThrow("SIGNING_KEY")
             val keyPassphrase = getEnvironmentVariableOrThrow("SIGNING_PASSWORD")
 
-            val keyRingFilePath = Files.createTempFile("klogger-signing", ".gpg")
+            val keyRingFilePath = Files.createTempFile("kotest-html-reporter-signing", ".gpg")
             keyRingFilePath.toFile().deleteOnExit()
 
             Files.write(keyRingFilePath, Base64.getDecoder().decode(keyRing))
@@ -175,16 +175,16 @@ private fun Project.createReleaseTasks(
     }
 
     tasks.register("publishSnapshot") {
-        dependsOn("publishPublicationToSonatypeRepository")
+        dependsOn("publishToSonatype")
     }
 
     tasks.named("closeSonatypeStagingRepository") {
-        mustRunAfter("publishPublicationToSonatypeRepository")
+        mustRunAfter("publishToSonatype")
     }
 
     tasks.register("publishRelease") {
         dependsOn(validateReleaseTask)
-        dependsOn("publishPublicationToSonatypeRepository")
+        dependsOn("publishToSonatype")
         dependsOn("closeAndReleaseSonatypeStagingRepository")
     }
 }
