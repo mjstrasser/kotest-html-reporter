@@ -16,6 +16,7 @@
 
 */
 
+import mjs.kotest.building.configureAssemble
 import mjs.kotest.building.configurePublishing
 import mjs.kotest.building.configureSpotless
 import mjs.kotest.building.configureTesting
@@ -56,6 +57,7 @@ tasks.withType<KotlinCompile> {
 
 val ktlintVersion: String by project
 
+configureAssemble()
 configurePublishing()
 configureSpotless(ktlintVersion)
 configureTesting()
