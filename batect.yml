@@ -1,4 +1,4 @@
-project_name: Kotest HTML Reporter
+project_name: kotest-html-reporter
 
 containers:
   build-env:
