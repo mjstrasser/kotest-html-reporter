@@ -74,10 +74,10 @@ class HtmlReporter(
             <style>
                 * { font-family: sans-serif; }
                 .test-result { display: flex; }
-                .block-col { flex: 0 0 2em; }
-                .result-col { flex: 0 0 2em; }
+                .block-col { flex: 0 0 1em; }
+                .result-col { flex: 0 0 1em; }
                 .name-col { flex: 1; background-color: ivory; }
-                .duration-col { flex: 0 0 8em; text-align: right; font-colour: gray; }
+                .duration-col { flex: 0 0 6em; text-align: right; font-colour: gray; }
             </style>
         </head>
         <body>

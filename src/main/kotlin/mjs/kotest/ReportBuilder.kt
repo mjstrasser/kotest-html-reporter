@@ -3,6 +3,7 @@ package mjs.kotest
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import kotlin.time.Duration
+import kotlin.time.DurationUnit
 
 object ReportBuilder {
 
@@ -39,7 +40,8 @@ object ReportBuilder {
     }
 
     private fun durationIfPositive(result: TestResult): String? =
-        if (result.duration > Duration.ZERO) result.duration.toString()
+        if (result.duration > Duration.ZERO)
+            result.duration.toString(DurationUnit.MILLISECONDS, 3)
         else null
 
     private fun setChildFailuresOnContainers(report: SpecReport) {
