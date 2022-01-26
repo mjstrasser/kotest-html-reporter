@@ -73,11 +73,12 @@ class HtmlReporter(
             <title>Test Results</title>
             <style>
                 * { font-family: sans-serif; }
+                .duration { color: gray; }
                 .test-result { display: flex; }
-                .block-col { flex: 0 0 1em; }
-                .result-col { flex: 0 0 1em; }
-                .name-col { flex: 1; background-color: ivory; }
-                .duration-col { flex: 0 0 6em; text-align: right; font-colour: gray; }
+                .block-col { flex: 0 0 1em; margin: 2px; }
+                .result-col { flex: 0 0 1em; margin: 2px; }
+                .name-col { flex: 1; background-color: ivory; margin: 2px; }
+                .duration-col { flex: 0 0 6em; text-align: right; margin: 2px; }
             </style>
         </head>
         <body>
