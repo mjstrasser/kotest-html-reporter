@@ -50,6 +50,12 @@ jobs:
       - name: Check
         run: ./batect check
 
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: kotest-report
+          path: ./build/reports/kotest/kotest-report.html
+
       - name: Assemble release
         run: ./batect assembleRelease
         env:
