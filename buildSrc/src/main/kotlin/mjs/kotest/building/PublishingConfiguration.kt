@@ -175,16 +175,16 @@ private fun Project.createReleaseTasks(
     }
 
     tasks.register("publishSnapshot") {
-        dependsOn("publishJvmPublicationToSonatypeRepository")
+        dependsOn("publishPublicationToSonatypeRepository")
     }
 
     tasks.named("closeSonatypeStagingRepository") {
-        mustRunAfter("publishJvmPublicationToSonatypeRepository")
+        mustRunAfter("publishPublicationToSonatypeRepository")
     }
 
     tasks.register("publishRelease") {
         dependsOn(validateReleaseTask)
-        dependsOn("publishJvmPublicationToSonatypeRepository")
+        dependsOn("publishPublicationToSonatypeRepository")
         dependsOn("closeAndReleaseSonatypeStagingRepository")
     }
 }
