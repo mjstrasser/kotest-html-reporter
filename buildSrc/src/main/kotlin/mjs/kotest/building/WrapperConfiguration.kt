@@ -16,15 +16,14 @@
 
 */
 
-package mjs.kotest
+package mjs.kotest.building
 
-import io.kotest.core.spec.Spec
+import org.gradle.api.Project
+import org.gradle.api.tasks.wrapper.Wrapper
+import org.gradle.kotlin.dsl.named
 
-private val SpecPreambles: MutableMap<Spec, String> = mutableMapOf()
-
-internal fun Spec.preamble(specPreamble: String) {
-    SpecPreambles[this] = specPreamble
+fun Project.configureWrapper() {
+    tasks.named<Wrapper>("wrapper") {
+        distributionType = Wrapper.DistributionType.ALL
+    }
 }
-
-internal val Spec.preamble: String?
-    get() = SpecPreambles[this]

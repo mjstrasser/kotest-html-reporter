@@ -1,3 +1,21 @@
+/*
+
+   Copyright 2022 Michael Strasser.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+*/
+
 package mjs.kotest
 
 import io.kotest.matchers.shouldBe
@@ -7,7 +25,7 @@ import kotlin.random.Random
 fun randomWord(): String = words.random()
 
 fun randomName(maxWords: Int = 10): String = randomWord().replaceFirstChar { it.uppercase() } + " " +
-        Array(Random.nextInt(maxWords)) { randomWord() }.toList().joinToString(" ")
+    Array(Random.nextInt(maxWords)) { randomWord() }.toList().joinToString(" ")
 
 fun passingTest() {
     val word = randomWord()

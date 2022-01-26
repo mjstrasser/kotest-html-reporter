@@ -16,15 +16,21 @@
 
 */
 
-package mjs.kotest
-
-import io.kotest.core.spec.Spec
-
-private val SpecPreambles: MutableMap<Spec, String> = mutableMapOf()
-
-internal fun Spec.preamble(specPreamble: String) {
-    SpecPreambles[this] = specPreamble
+plugins {
+    `kotlin-dsl`
+    id("com.github.ben-manes.versions") version "0.39.0"
 }
 
-internal val Spec.preamble: String?
-    get() = SpecPreambles[this]
+repositories {
+    maven("https://plugins.gradle.org/m2/")
+}
+
+val spotlessVersion: String by project
+val reckonVersion: String by project
+val nexusPublishingVersion: String by project
+
+dependencies {
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:$spotlessVersion")
+    implementation("org.ajoberstar.reckon:reckon-gradle:$reckonVersion")
+    implementation("io.github.gradle-nexus:publish-plugin:$nexusPublishingVersion")
+}

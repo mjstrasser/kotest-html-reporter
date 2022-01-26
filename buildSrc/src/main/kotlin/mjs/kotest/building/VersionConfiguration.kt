@@ -16,15 +16,19 @@
 
 */
 
-package mjs.kotest
+package mjs.kotest.building
 
-import io.kotest.core.spec.Spec
+import org.ajoberstar.reckon.gradle.ReckonExtension
+import org.ajoberstar.reckon.gradle.ReckonPlugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.configure
 
-private val SpecPreambles: MutableMap<Spec, String> = mutableMapOf()
+fun Project.configureVersioning() {
+    apply<ReckonPlugin>()
 
-internal fun Spec.preamble(specPreamble: String) {
-    SpecPreambles[this] = specPreamble
+    configure<ReckonExtension> {
+        scopeFromProp()
+        snapshotFromProp()
+    }
 }
-
-internal val Spec.preamble: String?
-    get() = SpecPreambles[this]
