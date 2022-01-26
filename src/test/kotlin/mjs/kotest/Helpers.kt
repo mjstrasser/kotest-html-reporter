@@ -6,7 +6,7 @@ import kotlin.random.Random
 
 fun randomWord(): String = words.random()
 
-fun randomName(maxWords: Int = 10): String = randomWord().capitalize() + " " +
+fun randomName(maxWords: Int = 10): String = randomWord().replaceFirstChar { it.uppercase() } + " " +
         Array(Random.nextInt(maxWords)) { randomWord() }.toList().joinToString(" ")
 
 fun passingTest() {
