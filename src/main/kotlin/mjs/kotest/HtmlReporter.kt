@@ -62,10 +62,15 @@ class HtmlReporter(
     private fun buildHtmlReport(specReports: List<SpecReport>): String {
         val builder = StringBuilder()
         builder.append(htmlHead)
-        builder.append("\n<h1>Test Report</h1>")
+        builder.append("\n<h1>Test Results</h1>")
         val now = ZonedDateTime.now()
             .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
         builder.append("\n<p class='timestamp'>At $now</p>")
+
+        builder.append("\n<h2 id='toc'>Specs</h2>")
+        builder.append("\n<ul class='toc'>")
+        specReports.forEach { buildTocEnty(builder, it) }
+        builder.append("\n</ul>")
 
         specReports.forEach { buildSpecHtml(builder, it) }
 
@@ -73,8 +78,15 @@ class HtmlReporter(
         return builder.toString()
     }
 
+    private val SpecReport.anchor: String
+        get() = this.name
+
+    private fun buildTocEnty(builder: StringBuilder, specReport: SpecReport) {
+        builder.append("\n<li class='toc-entry'><a href='#${specReport.anchor}'>${specReport.name}</a></li>")
+    }
+
     private fun buildSpecHtml(builder: StringBuilder, specReport: SpecReport) {
-        builder.append("\n<h2>${specReport.name}</h2>")
+        builder.append("\n<h2 id='${specReport.anchor}'>${specReport.name} <a href='#toc'>⇧</a></h2>")
 
         val preamble = specReport.preamble
         if (preamble != null) {
@@ -109,7 +121,7 @@ class HtmlReporter(
             <title>Test Results</title>
             <style>
                 * { font-family: sans-serif; }
-                .code { font-family: monospace; background-color: #DDDDDD; }
+                .code { font-family: monospace; background-color: #EEEEEE; }
                 .timestamp { font-size: 1.2em; }
                 .duration { color: gray; }
                 .test-result { display: flex; }
