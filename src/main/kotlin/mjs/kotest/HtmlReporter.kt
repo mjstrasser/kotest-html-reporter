@@ -110,7 +110,11 @@ class HtmlReporter(
         val result = if (testReport.result == "Success") "✓" else "x"
         builder.append("\n<div class='result-col'><span class='result'>$result</span></div>")
         val name = convertMarkdown(testReport.name)
-        builder.append("\n<div class='name-col'><span class='name'>$name</span></div>")
+        builder.append("\n<div class='name-col'>")
+        builder.append("<span class='name'>$name</span>")
+        if (testReport.result == "Failure")
+            builder.append("<br>\n<pre>${testReport.message}</pre>")
+        builder.append("</div>")
         val duration = testReport.duration ?: ""
         builder.append("\n<div class='duration-col'><span class='duration'>$duration</span></div>")
         builder.append("\n</div>")
