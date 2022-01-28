@@ -67,10 +67,7 @@ class HtmlReporter(
             .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
         builder.append("\n<p class='timestamp'>At $now</p>")
 
-        builder.append("\n<h2 id='toc'>Specs</h2>")
-        builder.append("\n<ul class='toc'>")
-        specReports.forEach { buildTocEnty(builder, it) }
-        builder.append("\n</ul>")
+        buildToc(builder, specReports)
 
         specReports.forEach { buildSpecHtml(builder, it) }
 
@@ -78,15 +75,25 @@ class HtmlReporter(
         return builder.toString()
     }
 
+    private fun buildToc(builder: StringBuilder, specReports: List<SpecReport>) {
+        builder.append("\n<h2 id='toc'>Specs</h2>")
+        specReports.forEach { buildTocEnty(builder, it) }
+    }
+
     private val SpecReport.anchor: String
         get() = this.name
 
     private fun buildTocEnty(builder: StringBuilder, specReport: SpecReport) {
-        builder.append("\n<li class='toc-entry'><a href='#${specReport.anchor}'>${specReport.name}</a></li>")
+        val result = if (specReport.result == "Success") "✓" else "x"
+        builder.append("\n<div class='test-result'>")
+        builder.append("\n<div class='result-col'>$result</div>")
+        builder.append("\n<div class='name-col'><a href='#${specReport.anchor}'>${specReport.name}</a></div>")
+        builder.append("\n</div>")
     }
 
     private fun buildSpecHtml(builder: StringBuilder, specReport: SpecReport) {
-        builder.append("\n<h2 id='${specReport.anchor}'>${specReport.name} <a href='#toc'>⇧</a></h2>")
+        val result = if (specReport.result == "Success") "✓" else "x"
+        builder.append("\n<h2 id='${specReport.anchor}'>$result&nbsp;${specReport.name} <a href='#toc'>⇧</a></h2>")
 
         val preamble = specReport.preamble
         if (preamble != null) {

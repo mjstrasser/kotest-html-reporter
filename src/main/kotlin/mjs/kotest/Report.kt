@@ -51,6 +51,11 @@ internal data class SpecReport(
     var preamble: String? = null,
     override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report {
+    internal val result: String
+        get() = reports.fold("Success") { res, rep ->
+            if (rep.result != "Success") "ChildFailed" else res
+        }
+
     internal fun toJson(): String =
         Json.encodeToString(this)
 }
