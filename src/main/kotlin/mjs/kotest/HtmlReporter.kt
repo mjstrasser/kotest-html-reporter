@@ -97,7 +97,7 @@ class HtmlReporter(
 
         val preamble = specReport.preamble
         if (preamble != null) {
-            builder.append("\n<p class='preamble'>${preamble.replace("\n", "<br/>")}</p>")
+            builder.append("\n<p class='preamble'>${convertMarkdown(preamble.replace("\n", "<br/>"))}</p>")
         }
         specReport.reports.forEach { buildTestHtml(builder, it) }
     }
