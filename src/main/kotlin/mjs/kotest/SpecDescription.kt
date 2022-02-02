@@ -20,11 +20,11 @@ package mjs.kotest
 
 import io.kotest.core.spec.Spec
 
-private val SpecPreambles: MutableMap<Spec, String> = mutableMapOf()
+private val SpecDescriptions: MutableMap<Spec, String> = mutableMapOf()
 
-internal fun Spec.preamble(specPreamble: String) {
-    SpecPreambles[this] = specPreamble
+internal fun Spec.description(specDescription: String) {
+    SpecDescriptions[this] = specDescription
 }
 
-internal val Spec.preamble: String?
-    get() = SpecPreambles[this]
+internal val Spec.description: String?
+    get() = SpecDescriptions[this]

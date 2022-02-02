@@ -45,7 +45,7 @@ internal object SpecReportBuilder {
                 val parentReport = reports[parent]!!
                 parentReport.addChildReport(report)
             } else {
-                specReport.preamble = case.spec.preamble
+                specReport.preamble = case.spec.description
                 specReport.addChildReport(report)
             }
         }

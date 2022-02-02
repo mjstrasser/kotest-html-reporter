@@ -21,10 +21,10 @@ package mjs.kotest.fixtures
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import mjs.kotest.preamble
+import mjs.kotest.description
 
 class ThingTest : DescribeSpec({
-    preamble(
+    description(
         """
         Here is a slightly convoluted test class with some levels of containers.
 
