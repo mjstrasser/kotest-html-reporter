@@ -22,9 +22,9 @@ import io.kotest.core.spec.Spec
 
 private val SpecDescriptions: MutableMap<Spec, String> = mutableMapOf()
 
-internal fun Spec.description(specDescription: String) {
+public fun Spec.description(specDescription: String) {
     SpecDescriptions[this] = specDescription
 }
 
-internal val Spec.description: String?
+public val Spec.description: String?
     get() = SpecDescriptions[this]
