@@ -95,9 +95,9 @@ class HtmlReporter(
         val result = if (specReport.result == "Success") "✓" else "x"
         builder.append("\n<h2 id='${specReport.anchor}'>$result&nbsp;${specReport.name} <a href='#toc'>⇧</a></h2>")
 
-        val preamble = specReport.preamble
-        if (preamble != null) {
-            builder.append("\n<p class='preamble'>${convertMarkdown(preamble.replace("\n", "<br/>"))}</p>")
+        val description = specReport.description
+        if (description != null) {
+            builder.append("\n<p class='description'>${convertMarkdown(description.replace("\n", "<br/>"))}</p>")
         }
         specReport.reports.forEach { buildTestHtml(builder, it) }
     }

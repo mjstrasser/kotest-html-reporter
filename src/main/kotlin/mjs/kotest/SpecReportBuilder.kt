@@ -18,6 +18,8 @@
 
 package mjs.kotest
 
+import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.scopes.RootScope
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import kotlin.time.Duration
@@ -45,7 +47,7 @@ internal object SpecReportBuilder {
                 val parentReport = reports[parent]!!
                 parentReport.addChildReport(report)
             } else {
-                specReport.preamble = case.spec.description
+                specReport.description = rootScopeDescription(case.spec)
                 specReport.addChildReport(report)
             }
         }
@@ -53,6 +55,11 @@ internal object SpecReportBuilder {
         setChildFailuresOnContainers(specReport)
 
         return specReport
+    }
+
+    private fun rootScopeDescription(spec: Spec): String? = when(spec) {
+        is RootScope -> spec.description
+        else -> null
     }
 
     /** Map [TestResult]s to [TestReport]s, keyed by the same [TestCase]s. */

@@ -48,7 +48,7 @@ internal data class TestReport(
 @Serializable
 internal data class SpecReport(
     val name: String,
-    var preamble: String? = null,
+    var description: String? = null,
     override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report {
     internal val result: String

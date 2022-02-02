@@ -18,13 +18,13 @@
 
 package mjs.kotest
 
-import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.scopes.RootScope
 
-private val SpecDescriptions: MutableMap<Spec, String> = mutableMapOf()
+private val SpecDescriptions: MutableMap<RootScope, String> = mutableMapOf()
 
-public fun Spec.description(specDescription: String) {
+public fun RootScope.description(specDescription: String) {
     SpecDescriptions[this] = specDescription
 }
 
-public val Spec.description: String?
+public val RootScope.description: String?
     get() = SpecDescriptions[this]
