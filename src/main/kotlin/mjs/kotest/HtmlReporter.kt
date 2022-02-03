@@ -25,9 +25,6 @@ import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import mjs.kotest.BuildReportWriter.writeReportFile
 import mjs.kotest.SpecReportBuilder.reportFromResults
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import kotlin.reflect.KClass
 
 /**
@@ -55,97 +52,7 @@ class HtmlReporter(
     /** After all specs have been run, write the [SpecReport]s into an HTML report. */
     override suspend fun afterProject() {
         if (specReports.isEmpty()) return
-        val htmlReport = buildHtmlReport(specReports)
+        val htmlReport = HtmlReportBuilder(specReports).build()
         writeReportFile(outputDir, "kotest-report.html", htmlReport)
     }
-
-    private fun buildHtmlReport(specReports: List<SpecReport>): String {
-        val builder = StringBuilder()
-        builder.append(htmlHead)
-        builder.append("\n<h1>Test Results</h1>")
-        val now = ZonedDateTime.now()
-            .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
-        builder.append("\n<p class='timestamp'>At $now</p>")
-
-        buildToc(builder, specReports)
-
-        specReports.forEach { buildSpecHtml(builder, it) }
-
-        builder.append(htmlFoot)
-        return builder.toString()
-    }
-
-    private fun buildToc(builder: StringBuilder, specReports: List<SpecReport>) {
-        builder.append("\n<h2 id='toc'>Specs</h2>")
-        specReports.forEach { buildTocEnty(builder, it) }
-    }
-
-    private val SpecReport.anchor: String
-        get() = this.name
-
-    private fun buildTocEnty(builder: StringBuilder, specReport: SpecReport) {
-        val result = if (specReport.result == "Success") "✓" else "x"
-        builder.append("\n<div class='test-result'>")
-        builder.append("\n<div class='result-col'>$result</div>")
-        builder.append("\n<div class='name-col'><a href='#${specReport.anchor}'>${specReport.name}</a></div>")
-        builder.append("\n</div>")
-    }
-
-    private fun buildSpecHtml(builder: StringBuilder, specReport: SpecReport) {
-        val result = if (specReport.result == "Success") "✓" else "x"
-        builder.append("\n<h2 id='${specReport.anchor}'>$result&nbsp;${specReport.name} <a href='#toc'>⇧</a></h2>")
-
-        val description = specReport.description
-        if (description != null) {
-            builder.append("\n<p class='description'>${convertMarkdown(description.replace("\n", "<br/>"))}</p>")
-        }
-        specReport.reports.forEach { buildTestHtml(builder, it) }
-    }
-
-    private fun buildTestHtml(builder: StringBuilder, testReport: TestReport, indent: Int = 0) {
-        builder.append("\n<div class='test-result'>")
-        repeat(indent) {
-            builder.append("\n<div class='block-col'></div>")
-        }
-        val result = if (testReport.result == "Success") "✓" else "x"
-        builder.append("\n<div class='result-col'><span class='result'>$result</span></div>")
-        val name = convertMarkdown(testReport.name)
-        builder.append("\n<div class='name-col'>")
-        builder.append("<span class='name'>$name</span>")
-        if (testReport.result == "Failure")
-            builder.append("<br>\n<pre>${testReport.message}</pre>")
-        builder.append("</div>")
-        val duration = testReport.duration ?: ""
-        builder.append("\n<div class='duration-col'><span class='duration'>$duration</span></div>")
-        builder.append("\n</div>")
-        testReport.reports.forEach { buildTestHtml(builder, it, indent + 1) }
-    }
-
-    private val codeRegex = Regex("`([^`]+)`")
-    private fun convertMarkdown(str: String): String = codeRegex.replace(str, "<span class='code'>$1</span>")
-
-    private val htmlHead = """
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>Test Results</title>
-            <style>
-                * { font-family: sans-serif; }
-                .code { font-family: monospace; background-color: #EEEEEE; }
-                .timestamp { font-size: 1.2em; }
-                .duration { color: gray; }
-                .test-result { display: flex; }
-                .block-col { flex: 0 0 1em; margin: 2px; }
-                .result-col { flex: 0 0 1em; margin: 2px; }
-                .name-col { flex: 1; background-color: ivory; margin: 2px; }
-                .duration-col { flex: 0 0 6em; text-align: right; margin: 2px; }
-            </style>
-        </head>
-        <body>
-    """.trimIndent()
-    private val htmlFoot = """
-        </body>
-        </html>
-    """.trimIndent()
 }
