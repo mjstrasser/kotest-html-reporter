@@ -48,20 +48,7 @@ internal class HtmlReportBuilder(
         head {
             title { +"Test Results" }
             meta(charset = "UTF-8")
-            style {
-                +"""
-                            * { font-family: sans-serif; }
-                            .code { font-family: monospace; background-color: #EEEEEE; }
-                            .timestamp { font-size: 1.2em; }
-                            .duration { color: gray; }
-                            .line { display: flex; }
-                            .block-col { flex: 0 0 1em; margin: 2px; }
-                            .result-col { flex: 0 0 1em; margin: 2px; }
-                            .name-col { flex: 1; background-color: ivory; margin: 2px; }
-                            .duration-col { flex: 0 0 6em; text-align: right; margin: 2px; }
-                            .description { background-color: ivory; padding: 2px; }
-                        """.trimIndent()
-            }
+            style { +css }
         }
     }
 
@@ -153,4 +140,17 @@ internal class HtmlReportBuilder(
         get() = this.name
 
     private fun result(report: Report) = if (report.result == "Success") TICK else CROSS
+
+    private val css = """
+        * { font-family: sans-serif; }
+        .code { font-family: monospace; background-color: #EEEEEE; }
+        .timestamp { font-size: 1.2em; }
+        .duration { color: gray; }
+        .line { display: flex; }
+        .block-col { flex: 0 0 1em; margin: 2px; }
+        .result-col { flex: 0 0 1em; margin: 2px; }
+        .name-col { flex: 1; background-color: ivory; margin: 2px; }
+        .duration-col { flex: 0 0 6em; text-align: right; margin: 2px; }
+        .description { background-color: ivory; margin 2px; padding: 2px; box-shadow: 6px 6px 3px #EEEEEE; }
+    """.trimIndent()
 }
