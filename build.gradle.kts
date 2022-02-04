@@ -37,10 +37,12 @@ repositories {
 
 val kotlinSerialisationJsonVersion = "1.3.2"
 val kotestVersion = "5.1.0"
+val kotlinHtmlVersion = "0.7.3"
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialisationJsonVersion")
     implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinHtmlVersion")
 }
 
 tasks.test {
