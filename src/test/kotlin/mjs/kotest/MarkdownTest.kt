@@ -5,7 +5,7 @@ import io.kotest.matchers.shouldBe
 
 class MarkdownTest : FunSpec({
 
-    description("""Extension property that converts inline Markdown to HTML.
+    description("""Extension property that converts inline Markdown to `HTML`.
         |
         |This description contains _actual_ examples.
         |

@@ -28,6 +28,7 @@ import kotlinx.serialization.json.Json
  * Reports use mutable fields for speed and convenience.
  */
 internal interface Report {
+    val result: String?
     val reports: MutableList<TestReport>
     fun addChildReport(childReport: TestReport) {
         reports.add(childReport)
@@ -38,7 +39,7 @@ internal interface Report {
 @Serializable
 internal data class TestReport(
     val name: String,
-    var result: String? = null,
+    override var result: String? = null,
     val duration: String? = null,
     val message: String? = null,
     override val reports: MutableList<TestReport> = mutableListOf(),
@@ -51,7 +52,7 @@ internal data class SpecReport(
     var description: String? = null,
     override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report {
-    internal val result: String
+    override val result: String
         get() = reports.fold("Success") { res, rep ->
             if (rep.result != "Success") "ChildFailed" else res
         }
