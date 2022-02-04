@@ -21,6 +21,7 @@ import kotlinx.html.stream.appendHTML
 import kotlinx.html.style
 import kotlinx.html.title
 import kotlinx.html.unsafe
+import mjs.kotest.ReadResource.readResourceText
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -35,6 +36,8 @@ private const val TO_TOP = "⇧"
 internal class HtmlReportBuilder(
     private val specReports: List<SpecReport>,
 ) {
+
+    private val css = readResourceText("html-reporter.css") ?: ""
 
     internal fun build(): String = buildString {
         appendLine("<!DOCTYPE html>")
@@ -74,7 +77,7 @@ internal class HtmlReportBuilder(
     }
 
     private fun DIV.tocEntry(specReport: SpecReport) {
-        div("line") {
+        div("toc-line") {
             div("result-col") { span("result") { +result(specReport) } }
             div("name-col") {
                 a("#${specReport.anchor}") { +specReport.name }
@@ -140,17 +143,4 @@ internal class HtmlReportBuilder(
         get() = this.name
 
     private fun result(report: Report) = if (report.result == "Success") TICK else CROSS
-
-    private val css = """
-        * { font-family: sans-serif; }
-        .code { font-family: monospace; background-color: #EEEEEE; }
-        .timestamp { font-size: 1.2em; }
-        .duration { color: gray; }
-        .line { display: flex; }
-        .block-col { flex: 0 0 1em; margin: 2px; }
-        .result-col { flex: 0 0 1em; margin: 2px; }
-        .name-col { flex: 1; background-color: ivory; margin: 2px; }
-        .duration-col { flex: 0 0 6em; text-align: right; margin: 2px; }
-        .description { background-color: ivory; margin 2px; padding: 2px; box-shadow: 6px 6px 3px #EEEEEE; }
-    """.trimIndent()
 }

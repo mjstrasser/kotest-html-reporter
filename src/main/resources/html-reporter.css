@@ -1,0 +1,57 @@
+* {
+    font-family: sans-serif;
+}
+
+.code {
+    font-family: monospace;
+    background-color: #EEEEEE;
+}
+
+.timestamp {
+    font-size: 1.2em;
+}
+
+.duration {
+    color: gray;
+}
+
+.line {
+    display: flex;
+    margin: 2px;
+    box-shadow: 4px 4px 2px #EEEEEE;
+}
+
+.toc-line {
+    display: flex;
+    margin: 2px;
+}
+
+.block-col {
+    flex: 0 0 1em;
+    margin: 2px;
+}
+
+.result-col {
+    flex: 0 0 1em;
+    margin: 2px;
+}
+
+.name-col {
+    flex: 1;
+    background-color: ivory;
+    margin: 2px;
+}
+
+.duration-col {
+    flex: 0 0 6em;
+    text-align: right;
+    margin: 2px;
+}
+
+.description {
+    background-color: ivory;
+    margin: 6px;
+    padding: 6px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 6px 6px 3px #EEEEEE;
+}
