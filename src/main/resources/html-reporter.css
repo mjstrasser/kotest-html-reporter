@@ -51,24 +51,32 @@
 
 .name-col {
     flex: 1;
-    background-color: ivory;
     margin: 2px;
     border-top: 1px solid #EEEEEE;
     border-left: 1px solid #EEEEEE;
     box-shadow: 4px 4px 2px #EEEEEE;
 }
 
-.failure {
+.Failure {
     background: #fceef1;
 }
 
-.failure:hover {
+.ChildFailure {
+    background: #fceef1;
+}
+
+.Failure:hover {
     background: #ffd7e5;
     cursor: pointer;
 }
 
-.success {
+.Success {
     background: #eefae6;
+}
+
+.Ignored {
+    background: ivory;
+    color: gray;
 }
 
 .duration-col {

@@ -29,6 +29,7 @@ import java.time.format.FormatStyle
 
 private const val TICK = "✓"
 private const val CROSS = "x"
+private const val DASH = "–"
 private const val TO_TOP = "⇧"
 
 /**
@@ -129,8 +130,7 @@ internal class HtmlReportBuilder(
             repeat(indent) { div("block-col") }
             div("result-col") { span("result") { +result(testReport) } }
             val msgId = "msg-${testReport.hashCode()}"
-            val nameClasses = if (testReport.hasMessage) "name-col failure"
-            else "name-col success"
+            val nameClasses = "name-col ${testReport.result ?: ""}"
             div(nameClasses) {
                 if (testReport.hasMessage)
                     onClick = "toggleItem('$msgId')"
@@ -155,5 +155,9 @@ internal class HtmlReportBuilder(
     private val SpecReport.anchor: String
         get() = this.name
 
-    private fun result(report: Report) = if (report.result == "Success") TICK else CROSS
+    private fun result(report: Report) = when (report.result) {
+        "Ignored" -> DASH
+        "Success" -> TICK
+        else -> CROSS
+    }
 }
