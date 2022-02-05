@@ -53,8 +53,8 @@ internal class HtmlReportBuilder(
         head {
             title { +"Test Results" }
             meta(charset = "UTF-8")
-            style { +css }
-            script { unsafe { +javascript } }
+            style { unsafe { raw(css) } }
+            script { unsafe { raw(javascript) } }
         }
     }
 
@@ -128,13 +128,13 @@ internal class HtmlReportBuilder(
         div("line") {
             repeat(indent) { div("block-col") }
             div("result-col") { span("result") { +result(testReport) } }
-            div("name-col") {
-                val msgId = "msg-${testReport.hashCode()}"
-                val nameClasses = if (testReport.hasMessage) {
+            val msgId = "msg-${testReport.hashCode()}"
+            val nameClasses = if (testReport.hasMessage) "name-col failure"
+            else "name-col success"
+            div(nameClasses) {
+                if (testReport.hasMessage)
                     onClick = "toggleItem('$msgId')"
-                    "name has-message"
-                } else "name"
-                span(nameClasses) { fromMarkdown(testReport.name) }
+                span("name") { fromMarkdown(testReport.name) }
                 testReport.message?.let { msg ->
                     div("error-message") {
                         id = msgId

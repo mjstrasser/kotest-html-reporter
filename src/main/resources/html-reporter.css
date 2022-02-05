@@ -58,8 +58,17 @@
     box-shadow: 4px 4px 2px #EEEEEE;
 }
 
-.has-message:hover {
+.failure {
+    background: #fceef1;
+}
+
+.failure:hover {
+    background: #ffd7e5;
     cursor: pointer;
+}
+
+.success {
+    background: #eefae6;
 }
 
 .duration-col {
