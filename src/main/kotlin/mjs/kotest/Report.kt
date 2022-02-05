@@ -43,7 +43,10 @@ internal data class TestReport(
     val duration: String? = null,
     val message: String? = null,
     override val reports: MutableList<TestReport> = mutableListOf(),
-) : Report
+) : Report {
+    val hasMessage: Boolean
+        get() = message != null
+}
 
 /** Report for a spec. */
 @Serializable

@@ -58,6 +58,10 @@
     box-shadow: 4px 4px 2px #EEEEEE;
 }
 
+.has-message:hover {
+    cursor: pointer;
+}
+
 .duration-col {
     flex: 0 0 6em;
     text-align: right;

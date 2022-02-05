@@ -13,8 +13,10 @@ import kotlinx.html.head
 import kotlinx.html.html
 import kotlinx.html.id
 import kotlinx.html.meta
+import kotlinx.html.onClick
 import kotlinx.html.p
 import kotlinx.html.pre
+import kotlinx.html.script
 import kotlinx.html.span
 import kotlinx.html.stream.appendHTML
 import kotlinx.html.style
@@ -37,6 +39,7 @@ internal class HtmlReportBuilder(
 ) {
 
     private val css = readResourceText("html-reporter.css") ?: ""
+    private val javascript = readResourceText("html-reporter.js") ?: ""
 
     internal fun build(): String = buildString {
         appendLine("<!DOCTYPE html>")
@@ -51,6 +54,7 @@ internal class HtmlReportBuilder(
             title { +"Test Results" }
             meta(charset = "UTF-8")
             style { +css }
+            script { unsafe { +javascript } }
         }
     }
 
@@ -125,9 +129,16 @@ internal class HtmlReportBuilder(
             repeat(indent) { div("block-col") }
             div("result-col") { span("result") { +result(testReport) } }
             div("name-col") {
-                span("name") { fromMarkdown(testReport.name) }
+                val msgId = "msg-${testReport.hashCode()}"
+                val nameClasses = if (testReport.hasMessage) {
+                    onClick = "toggleItem('$msgId')"
+                    "name has-message"
+                } else "name"
+                span(nameClasses) { fromMarkdown(testReport.name) }
                 testReport.message?.let { msg ->
                     div("error-message") {
+                        id = msgId
+                        style = "display:none"
                         pre { +msg }
                     }
                 }
