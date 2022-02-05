@@ -6,7 +6,6 @@ import kotlinx.html.HTML
 import kotlinx.html.HTMLTag
 import kotlinx.html.a
 import kotlinx.html.body
-import kotlinx.html.br
 import kotlinx.html.div
 import kotlinx.html.h1
 import kotlinx.html.h2
@@ -70,8 +69,10 @@ internal class HtmlReportBuilder(
                 id = "toc"
                 +"Specs"
             }
-            specReports.forEach {
-                tocEntry(it)
+            div("toc-entries") {
+                specReports.forEach {
+                    tocEntry(it)
+                }
             }
         }
     }
@@ -79,7 +80,7 @@ internal class HtmlReportBuilder(
     private fun DIV.tocEntry(specReport: SpecReport) {
         div("toc-line") {
             div("result-col") { span("result") { +result(specReport) } }
-            div("name-col") {
+            div("toc-col") {
                 a("#${specReport.anchor}") { +specReport.name }
             }
         }
@@ -125,9 +126,10 @@ internal class HtmlReportBuilder(
             div("result-col") { span("result") { +result(testReport) } }
             div("name-col") {
                 span("name") { fromMarkdown(testReport.name) }
-                if (testReport.result == "Failure") testReport.message?.let { msg ->
-                    br
-                    pre { +msg }
+                testReport.message?.let { msg ->
+                    div("error-message") {
+                        pre { +msg }
+                    }
                 }
             }
             div("duration-col") { span("duration") { +(testReport.duration ?: "") } }
