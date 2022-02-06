@@ -52,3 +52,7 @@ HtmlReporter(
 - `reportFilename`: name of the HTML report file.
 - `writeJsonReports`: write JSON serialisations of the internal `SpecReport` and `TestReport` data classes. May be
   useful for understanding how HTML Reporter works.
+
+## Example report
+
+![Example of rendered HTML Report](example.png)
