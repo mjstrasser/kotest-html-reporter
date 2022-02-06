@@ -61,6 +61,9 @@ internal class HtmlReportBuilder(
 
     private val css = readResourceText("html-reporter.css") ?: ""
     private val javascript = readResourceText("html-reporter.js") ?: ""
+    private val now = ZonedDateTime.now()
+        .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
+    private val source: String? = System.getenv(GIT_COMMIT)
 
     internal fun build(): String = buildString {
         appendLine("<!DOCTYPE html>")
@@ -110,7 +113,7 @@ internal class HtmlReportBuilder(
 
     private fun DIV.tocEntry(specReport: SpecReport) {
         div("toc-line") {
-            div("result-col") { span("result") { +result(specReport) } }
+            div("result-col") { span("result") { +specReport.symbol } }
             div("toc-col") {
                 a("#${specReport.anchor}") { +specReport.name }
             }
@@ -128,7 +131,7 @@ internal class HtmlReportBuilder(
     private fun DIV.spec(specReport: SpecReport) {
         h2 {
             id = specReport.anchor
-            +result(specReport)
+            +specReport.symbol
             nbsp
             +specReport.name
             nbsp
@@ -154,7 +157,7 @@ internal class HtmlReportBuilder(
     private fun DIV.test(testReport: TestReport, indent: Int = 0) {
         div("line") {
             repeat(indent) { div("block-col") }
-            div("result-col") { span("result") { +result(testReport) } }
+            div("result-col") { span("result") { +testReport.symbol } }
             val msgId = "msg-${testReport.hashCode()}"
             val nameClasses = "name-col ${testReport.result ?: ""}"
             div(nameClasses) {
@@ -174,17 +177,13 @@ internal class HtmlReportBuilder(
         testReport.reports.forEach { test(it, indent + 1) }
     }
 
-    private val now = ZonedDateTime.now()
-        .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
-
-    private val source: String? = System.getenv(GIT_COMMIT)
-
     private val SpecReport.anchor: String
         get() = this.name
 
-    private fun result(report: Report) = when (report.result) {
-        "Ignored" -> DASH
-        "Success" -> TICK
-        else -> CROSS
-    }
+    private val Report.symbol
+        get() = when (this.result) {
+            "Ignored" -> DASH
+            "Success" -> TICK
+            else -> CROSS
+        }
 }
