@@ -27,7 +27,7 @@ jobs:
         run: ./gradlew test
 
       - name: Copy files
-        run: cp ./gh-pages/* ./build/reports/kotest
+        run: cp ./gh-pages/.nojekyll ./gh-pages/* ./build/reports/kotest
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
