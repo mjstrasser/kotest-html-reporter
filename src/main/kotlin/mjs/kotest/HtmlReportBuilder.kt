@@ -24,6 +24,7 @@ import kotlinx.html.HTML
 import kotlinx.html.HTMLTag
 import kotlinx.html.a
 import kotlinx.html.body
+import kotlinx.html.br
 import kotlinx.html.div
 import kotlinx.html.h1
 import kotlinx.html.h2
@@ -49,6 +50,7 @@ private const val TICK = "✓"
 private const val CROSS = "x"
 private const val DASH = "–"
 private const val TO_TOP = "⇧"
+private const val GIT_COMMIT = "GIT_COMMIT"
 
 /**
  * Build a test report in HTML from a list of [SpecReport]s.
@@ -80,7 +82,13 @@ internal class HtmlReportBuilder(
     private fun HTML.reportBody() {
         body {
             h1 { +"Test Results" }
-            p("timestamp") { +"At $now" }
+            p("timestamp") {
+                +"Time: $now"
+                if (source != null) {
+                    br
+                    +"Commit: $source"
+                }
+            }
             toc()
             results()
         }
@@ -166,9 +174,10 @@ internal class HtmlReportBuilder(
         testReport.reports.forEach { test(it, indent + 1) }
     }
 
-    private val now: String
-        get() = ZonedDateTime.now()
-            .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
+    private val now = ZonedDateTime.now()
+        .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
+
+    private val source: String? = System.getenv(GIT_COMMIT)
 
     private val SpecReport.anchor: String
         get() = this.name
