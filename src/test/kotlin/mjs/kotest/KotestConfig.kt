@@ -21,9 +21,9 @@ package mjs.kotest
 import io.kotest.core.config.AbstractProjectConfig
 import io.kotest.core.extensions.Extension
 
-class KotestConfig : AbstractProjectConfig() {
+/** Create an HTML report for every test run. */
+object KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(
-        // Report to index.html that will be copied to `gh-pages` branch.
-        HtmlReporter(reportFilename = "index.html"),
+        HtmlReporter(),
     )
 }
