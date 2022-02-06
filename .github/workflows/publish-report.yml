@@ -26,9 +26,12 @@ jobs:
       - name: Create test report
         run: ./gradlew test
 
+      - name: Copy files
+        run: cp ./gh-pages/* ./build/reports/kotest
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/reports/kotest/
+          publish_dir: ./build/reports/kotest
