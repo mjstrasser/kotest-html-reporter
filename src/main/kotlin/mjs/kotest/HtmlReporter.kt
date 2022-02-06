@@ -31,10 +31,12 @@ import kotlin.reflect.KClass
  * Kotest extension that creates an HTML report from a test run (project).
  *
  * @param outputDir the directory, relative to the build directory, where reports are written.
+ * @param reportFilename name of the HTML report file
  * @param writeJsonReports write the reports for individual specs as JSON (for checking).
  */
 class HtmlReporter(
     private val outputDir: String = "reports/kotest",
+    private val reportFilename: String = "kotest-report.html",
     private val writeJsonReports: Boolean = false,
 ) : FinalizeSpecListener, AfterProjectListener {
 
@@ -53,6 +55,6 @@ class HtmlReporter(
     override suspend fun afterProject() {
         if (specReports.isEmpty()) return
         val htmlReport = HtmlReportBuilder(specReports).build()
-        writeReportFile(outputDir, "kotest-report.html", htmlReport)
+        writeReportFile(outputDir, reportFilename, htmlReport)
     }
 }

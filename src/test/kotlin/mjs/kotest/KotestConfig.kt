@@ -23,6 +23,7 @@ import io.kotest.core.extensions.Extension
 
 class KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(
-        HtmlReporter(writeJsonReports = true),
+        // Report to index.html that will be copied to `gh-pages` branch.
+        HtmlReporter(reportFilename = "index.html"),
     )
 }
