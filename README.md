@@ -18,7 +18,7 @@ Add Kotest HTML Reporter to your Gradle project, for example:
 
 ```kotlin
     testImplementation("io.kotest:kotest-runner-junit5:5.1.0")
-testImplementation("com.michaelstrasser:kotest-html-reporter:0.3.0")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.3.0")
 ```
 
 Configure Kotest to use HTML Reporter:
