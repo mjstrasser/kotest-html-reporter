@@ -164,13 +164,18 @@ internal class HtmlReportBuilder(
             val nameClasses = "name-col ${testReport.result ?: ""}"
             div(nameClasses) {
                 if (testReport.hasMessage)
-                    onClick = "toggleItem('$msgId')"
+                    onClick = "toggleItem('$msgId'); toggleItem('$msgId-first')"
                 span("name") { fromMarkdown(testReport.name) }
                 testReport.message?.let { msg ->
-                    div("error-message") {
+                    div {
+                        id = "$msgId-first"
+                        style = "display:block"
+                        pre("error-message") { +msg.firstLine }
+                    }
+                    div {
                         id = msgId
                         style = "display:none"
-                        pre { +msg }
+                        pre("error-message") { +msg }
                     }
                 }
             }
@@ -188,4 +193,7 @@ internal class HtmlReportBuilder(
             "Success" -> TICK
             else -> CROSS
         }
+
+    private val String.firstLine
+        get() = this.lines().first()
 }

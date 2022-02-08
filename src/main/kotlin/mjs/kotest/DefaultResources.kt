@@ -70,6 +70,10 @@ h2 {
     box-shadow: 4px 4px 2px #F6F6F6;
 }
 
+.error-message {
+    font-family: monospace;
+}
+
 .Failure {
     background: #fcf3f3;
 }
