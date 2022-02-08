@@ -155,6 +155,8 @@ internal class HtmlReportBuilder(
     }
 
     private fun DIV.test(testReport: TestReport, indent: Int = 0) {
+        if (indent == 0 && testReport.reports.isNotEmpty())
+            div("pre-test")
         div("line") {
             repeat(indent) { div("block-col") }
             div("result-col") { span("result") { +testReport.symbol } }

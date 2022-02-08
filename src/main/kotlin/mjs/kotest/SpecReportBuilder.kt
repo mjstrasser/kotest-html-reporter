@@ -76,7 +76,7 @@ internal object SpecReportBuilder {
     /** Format a positive [Duration] to string in milliseconds, else null.  */
     private fun durationInMsIfPositive(result: TestResult): String? =
         if (result.duration > Duration.ZERO)
-            result.duration.toString(DurationUnit.MILLISECONDS, 3)
+            result.duration.toString(DurationUnit.MILLISECONDS, 2)
         else null
 
     /**

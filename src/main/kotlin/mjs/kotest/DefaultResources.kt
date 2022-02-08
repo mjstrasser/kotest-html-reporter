@@ -43,6 +43,10 @@ const val DefaultCss = """
     margin: 2px;
 }
 
+.pre-test {
+    height: 10px;
+}
+
 .block-col {
     flex: 0 0 1em;
     margin: 2px;
@@ -58,24 +62,24 @@ const val DefaultCss = """
     margin: 2px;
     border-top: 1px solid #EEEEEE;
     border-left: 1px solid #EEEEEE;
-    box-shadow: 4px 4px 2px #EEEEEE;
+    box-shadow: 4px 4px 2px #F6F6F6;
 }
 
 .Failure {
-    background: #fceef1;
+    background: #fcf3f3;
 }
 
 .ChildFailure {
-    background: #fceef1;
+    background: #fcf3f3;
 }
 
 .Failure:hover {
-    background: #ffd7e5;
+    background: #fdd9e4;
     cursor: pointer;
 }
 
 .Success {
-    background: #eefae6;
+    background: #f2faeb;
 }
 
 .Ignored {
