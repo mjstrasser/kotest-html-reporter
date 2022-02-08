@@ -5,6 +5,11 @@ const val DefaultCss = """
     font-family: sans-serif;
 }
 
+h2 {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
 .code {
     font-family: monospace;
     background-color: #EEEEEE;
