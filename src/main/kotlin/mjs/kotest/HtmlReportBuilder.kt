@@ -59,8 +59,8 @@ internal class HtmlReportBuilder(
     private val specReports: List<SpecReport>,
 ) {
 
-    private val css = readResourceText("mjs/kotest/html-reporter.css") ?: ""
-    private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: ""
+    private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
+    private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: DefaultJavaScript
     private val now = ZonedDateTime.now()
         .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
     private val source: String? = System.getenv(GIT_COMMIT)
