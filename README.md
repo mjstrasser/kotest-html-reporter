@@ -56,7 +56,7 @@ Add Kotest HTML Reporter to your Gradle project, for example:
 dependencies {
     // ...
     testImplementation("io.kotest:kotest-runner-junit5:5.1.0")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.3.1")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.3.2")
 }
 ```
 
