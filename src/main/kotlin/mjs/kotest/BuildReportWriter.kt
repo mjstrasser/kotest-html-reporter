@@ -31,8 +31,8 @@ internal object BuildReportWriter {
 
     internal fun writeReportFile(outputDir: String, fileName: String, fileContents: String) {
         val path = outputDir(outputDir).resolve(fileName)
-        path.parent.toFile().mkdirs()
-        path.toFile().writeText(fileContents)
+        if (path.parent.toFile().mkdirs())
+            path.toFile().writeText(fileContents)
     }
 
     private fun outputDir(outputDir: String): Path {
