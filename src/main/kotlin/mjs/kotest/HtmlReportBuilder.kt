@@ -42,6 +42,8 @@ import kotlinx.html.style
 import kotlinx.html.title
 import kotlinx.html.unsafe
 import mjs.kotest.ReadResource.readResourceText
+import java.time.Instant
+import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -51,6 +53,7 @@ private const val CROSS = "x"
 private const val DASH = "–"
 private const val TO_TOP = "⇧"
 private const val GIT_COMMIT = "GIT_COMMIT"
+private const val TIMEZONE = "TIMEZONE"
 
 /**
  * Build a test report in HTML from a list of [SpecReport]s.
@@ -61,8 +64,6 @@ internal class HtmlReportBuilder(
 
     private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
     private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: DefaultJavaScript
-    private val now = ZonedDateTime.now()
-        .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG))
     private val source: String? = System.getenv(GIT_COMMIT)
 
     internal fun build(): String = buildString {
@@ -86,7 +87,7 @@ internal class HtmlReportBuilder(
         body {
             h1 { +"Test Results" }
             p("timestamp") {
-                +"Time: $now"
+                +"Time: ${now()}"
                 if (source != null) {
                     br
                     +"Commit: $source"
@@ -196,4 +197,15 @@ internal class HtmlReportBuilder(
 
     private val String.firstLine
         get() = this.lines().first()
+
+    private fun now(): String {
+        val zone = System.getenv(TIMEZONE)
+        val zoneId = try {
+            ZoneId.of(zone)
+        } catch (e: Exception) {
+            ZoneId.systemDefault()
+        }
+        return ZonedDateTime.ofInstant(Instant.now(), zoneId)
+            .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG))
+    }
 }
