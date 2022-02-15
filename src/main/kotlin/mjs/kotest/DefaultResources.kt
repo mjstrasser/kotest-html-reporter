@@ -16,6 +16,7 @@ h2 {
 }
 
 .timestamp {
+    line-height: 1.4;
     font-size: 1em;
     color: #666666;
 }

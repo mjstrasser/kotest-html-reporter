@@ -53,6 +53,7 @@ private const val CROSS = "x"
 private const val DASH = "–"
 private const val TO_TOP = "⇧"
 private const val GIT_COMMIT = "GIT_COMMIT"
+private const val GIT_MESSAGE = "GIT_MESSAGE"
 private const val TIMEZONE = "TIMEZONE"
 
 /**
@@ -65,6 +66,7 @@ internal class HtmlReportBuilder(
     private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
     private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: DefaultJavaScript
     private val source: String? = System.getenv(GIT_COMMIT)
+    private val gitMessage: String? = System.getenv(GIT_MESSAGE)
 
     internal fun build(): String = buildString {
         appendLine("<!DOCTYPE html>")
@@ -91,6 +93,10 @@ internal class HtmlReportBuilder(
                 if (source != null) {
                     br
                     +"Commit: $source"
+                }
+                if (gitMessage != null) {
+                    br
+                    fromMarkdown("Message: ${gitMessage.firstLine}")
                 }
             }
             toc()
