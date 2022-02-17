@@ -1,6 +1,6 @@
 package mjs.kotest
 
-const val DefaultCss = """
+internal const val DefaultCss = """
 * {
     font-family: sans-serif;
 }
@@ -112,7 +112,7 @@ h2 {
 }
 """
 
-const val DefaultJavaScript = """
+internal const val DefaultJavaScript = """
 function toggleItem(id) {
     const item = document.getElementById(id);
     if (item) {

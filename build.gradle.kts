@@ -29,10 +29,14 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.3.10"
+version = "0.4.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+kotlin {
+    explicitApi()
 }
 
 val kotlinSerialisationJsonVersion = "1.3.2"
