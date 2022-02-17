@@ -65,8 +65,8 @@ internal class HtmlReportBuilder(
 
     private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
     private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: DefaultJavaScript
-    private val source: String? = System.getenv(GIT_COMMIT)
-    private val gitMessage: String? = System.getenv(GIT_MESSAGE)
+    private val source: String = System.getenv(GIT_COMMIT) ?: ""
+    private val gitMessage: String = System.getenv(GIT_MESSAGE) ?: ""
 
     internal fun build(): String = buildString {
         appendLine("<!DOCTYPE html>")
@@ -90,11 +90,11 @@ internal class HtmlReportBuilder(
             h1 { +"Test Results" }
             p("timestamp") {
                 +"Time: ${now()}"
-                if (source != null) {
+                if (source.isNotEmpty()) {
                     br
                     +"Commit: $source"
                 }
-                if (gitMessage != null) {
+                if (gitMessage.isNotEmpty()) {
                     br
                     fromMarkdown("Message: ${gitMessage.firstLine}")
                 }
