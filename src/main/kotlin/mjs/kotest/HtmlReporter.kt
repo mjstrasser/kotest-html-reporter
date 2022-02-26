@@ -34,7 +34,7 @@ import kotlin.reflect.KClass
  * @param reportFilename name of the HTML report file
  * @param writeJsonReports write the reports for individual specs as JSON (for checking).
  */
-internal class HtmlReporter(
+public class HtmlReporter(
     private val outputDir: String = "reports/kotest",
     private val reportFilename: String = "kotest-report.html",
     private val writeJsonReports: Boolean = false,
