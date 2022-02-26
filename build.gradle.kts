@@ -19,13 +19,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
-    id("org.jetbrains.dokka") version "1.6.10"
-    kotlin("plugin.serialization") version "1.6.10"
+    kotlin("jvm")
+    id("org.jetbrains.dokka")
+    kotlin("plugin.serialization")
     `java-library`
     signing
     `maven-publish`
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("io.github.gradle-nexus.publish-plugin")
 }
 
 group = "com.michaelstrasser"
@@ -39,14 +39,10 @@ kotlin {
     explicitApi()
 }
 
-val kotlinSerialisationJsonVersion = "1.3.2"
-val kotestVersion = "5.1.0"
-val kotlinHtmlVersion = "0.7.3"
-
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialisationJsonVersion")
-    implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinHtmlVersion")
+    implementation(KotlinX.serialization.json)
+    implementation(Testing.kotest.runner.junit5)
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:_")
 }
 
 tasks.test {
