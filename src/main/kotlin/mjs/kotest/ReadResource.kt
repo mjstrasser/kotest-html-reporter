@@ -21,7 +21,6 @@ package mjs.kotest
 internal object ReadResource {
     internal fun readResourceText(resourcePath: String): String? {
         val stream = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath)
-            ?: ClassLoader.getPlatformClassLoader().getResourceAsStream(resourcePath)
         return stream?.bufferedReader(Charsets.UTF_8)?.readText()
     }
 }

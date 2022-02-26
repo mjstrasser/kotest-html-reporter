@@ -29,10 +29,16 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.4.0-SNAPSHOT"
+version = "0.3.11"
 
 repositories {
     mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 kotlin {
