@@ -120,7 +120,7 @@ internal class HtmlReportBuilder(
 
     private fun DIV.tocEntry(specReport: SpecReport) {
         div("toc-line") {
-            div("result-col") { span("result") { +specReport.symbol } }
+            div("result-col") { span("result-${specReport.result}") { +specReport.symbol } }
             div("toc-col") {
                 a("#${specReport.anchor}") { +specReport.name }
             }
@@ -138,7 +138,7 @@ internal class HtmlReportBuilder(
     private fun DIV.spec(specReport: SpecReport) {
         h2 {
             id = specReport.anchor
-            +specReport.symbol
+            span ("result-${specReport.result}") { +specReport.symbol }
             nbsp
             +specReport.name
             nbsp
@@ -166,7 +166,7 @@ internal class HtmlReportBuilder(
             div("pre-test")
         div("line") {
             repeat(indent) { div("block-col") }
-            div("result-col") { span("result") { +testReport.symbol } }
+            div("result-col") { span("result-${testReport.result}") { +testReport.symbol } }
             val msgId = "msg-${testReport.hashCode()}"
             val nameClasses = "name-col ${testReport.result ?: ""}"
             div(nameClasses) {
@@ -194,14 +194,14 @@ internal class HtmlReportBuilder(
     private val SpecReport.anchor: String
         get() = this.name
 
-    private val Report.symbol
+    private val Report.symbol: String
         get() = when (this.result) {
             "Ignored" -> DASH
             "Success" -> TICK
             else -> CROSS
         }
 
-    private val String.firstLine
+    private val String.firstLine: String
         get() = this.lines().first()
 
     private fun now(): String {

@@ -57,7 +57,7 @@ internal data class SpecReport(
 ) : Report {
     override val result: String
         get() = reports.fold("Success") { res, rep ->
-            if (rep.result != "Success") "ChildFailed" else res
+            if (rep.result != "Success") "ChildFailure" else res
         }
 
     internal fun toJson(): String =

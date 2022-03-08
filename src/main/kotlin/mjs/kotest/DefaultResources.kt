@@ -63,6 +63,18 @@ h2 {
     margin: 2px;
 }
 
+.result-Ignored {
+    color: grey;
+}
+
+.result-Success {
+    color: green;
+}
+
+.result-Failure, .result-ChildFailure {
+    color: red;
+}
+
 .name-col {
     flex: 1;
     margin: 2px;
