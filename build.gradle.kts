@@ -19,17 +19,17 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm")
-    id("org.jetbrains.dokka")
-    kotlin("plugin.serialization")
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.serialisation)
     `java-library`
     signing
     `maven-publish`
-    id("io.github.gradle-nexus.publish-plugin")
+    alias(libs.plugins.nexus.publish)
 }
 
 group = "com.michaelstrasser"
-version = "0.4.0-SNAPSHOT"
+version = "0.4.0"
 
 repositories {
     mavenCentral()
@@ -46,9 +46,9 @@ kotlin {
 }
 
 dependencies {
-    implementation(KotlinX.serialization.json)
-    implementation(Testing.kotest.runner.junit5)
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:_")
+    implementation(libs.kotlinx.serialisation)
+    implementation(libs.kotlin.html)
+    implementation(libs.kotest.runner)
 }
 
 tasks.test {
