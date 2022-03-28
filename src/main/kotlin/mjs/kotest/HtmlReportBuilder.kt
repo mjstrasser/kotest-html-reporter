@@ -25,6 +25,7 @@ import kotlinx.html.HTMLTag
 import kotlinx.html.a
 import kotlinx.html.body
 import kotlinx.html.br
+import kotlinx.html.details
 import kotlinx.html.div
 import kotlinx.html.h1
 import kotlinx.html.h2
@@ -32,13 +33,12 @@ import kotlinx.html.head
 import kotlinx.html.html
 import kotlinx.html.id
 import kotlinx.html.meta
-import kotlinx.html.onClick
 import kotlinx.html.p
 import kotlinx.html.pre
-import kotlinx.html.script
 import kotlinx.html.span
 import kotlinx.html.stream.appendHTML
 import kotlinx.html.style
+import kotlinx.html.summary
 import kotlinx.html.title
 import kotlinx.html.unsafe
 import mjs.kotest.ReadResource.readResourceText
@@ -64,7 +64,6 @@ internal class HtmlReportBuilder(
 ) {
 
     private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
-    private val javascript = readResourceText("mjs/kotest/html-reporter.js") ?: DefaultJavaScript
     private val source: String = System.getenv(GIT_COMMIT) ?: ""
     private val gitMessage: String = System.getenv(GIT_MESSAGE) ?: ""
 
@@ -81,7 +80,6 @@ internal class HtmlReportBuilder(
             title { +"Test Results" }
             meta(charset = "UTF-8")
             style { unsafe { raw(css) } }
-            script { unsafe { raw(javascript) } }
         }
     }
 
@@ -138,7 +136,7 @@ internal class HtmlReportBuilder(
     private fun DIV.spec(specReport: SpecReport) {
         h2 {
             id = specReport.anchor
-            span ("result-${specReport.result}") { +specReport.symbol }
+            span("result-${specReport.result}") { +specReport.symbol }
             nbsp
             +specReport.name
             nbsp
@@ -167,24 +165,14 @@ internal class HtmlReportBuilder(
         div("line") {
             repeat(indent) { div("block-col") }
             div("result-col") { span("result-${testReport.result}") { +testReport.symbol } }
-            val msgId = "msg-${testReport.hashCode()}"
             val nameClasses = "name-col ${testReport.result ?: ""}"
             div(nameClasses) {
-                if (testReport.hasMessage)
-                    onClick = "toggleItem('$msgId'); toggleItem('$msgId-first')"
-                span("name") { fromMarkdown(testReport.name) }
                 testReport.message?.let { msg ->
-                    div {
-                        id = "$msgId-first"
-                        style = "display:block"
-                        pre("error-message") { +msg.firstLine }
-                    }
-                    div {
-                        id = msgId
-                        style = "display:none"
+                    details {
+                        summary("name") { fromMarkdown(testReport.name) }
                         pre("error-message") { +msg }
                     }
-                }
+                } ?: span("name") { fromMarkdown(testReport.name) }
             }
             div("duration-col") { span("duration") { +(testReport.duration ?: "") } }
         }

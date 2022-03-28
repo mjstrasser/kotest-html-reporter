@@ -37,9 +37,6 @@ internal object BuildReportWriter {
 
     private fun outputDir(outputDir: String): Path {
         val buildDir = System.getProperty(GradleBuildDirKey)
-        return if (buildDir != null)
-            Paths.get(buildDir).resolve(outputDir)
-        else
-            Paths.get(DefaultBuildDir).resolve(outputDir)
+        return Paths.get(buildDir ?: DefaultBuildDir).resolve(outputDir)
     }
 }
