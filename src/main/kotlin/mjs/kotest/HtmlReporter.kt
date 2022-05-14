@@ -44,11 +44,12 @@ public class HtmlReporter(
 
     /** After each spec, write a [SpecReport] for it. */
     override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
-        val className = kclass.qualifiedName!!
-        val specReport = reportFromResults(className, results)
-        specReports.add(specReport)
-        if (writeJsonReports)
-            writeReportFile(outputDir, "$className.json", specReport.toJson())
+        kclass.qualifiedName?.let { className ->
+            val specReport = reportFromResults(className, results)
+            specReports.add(specReport)
+            if (writeJsonReports)
+                writeReportFile(outputDir, "$className.json", specReport.toJson())
+        }
     }
 
     /** After all specs have been run, write the [SpecReport]s into an HTML report. */

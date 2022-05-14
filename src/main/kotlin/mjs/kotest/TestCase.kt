@@ -22,15 +22,15 @@ import io.kotest.core.source.SourceRef
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.test.TestCase
 
-private const val SourceFormatter = "%s:%04d"
+private const val SourceFormatter = "%s:%05d:%s"
 
 /** For sorting test cases by source file/class and line. */
 internal val TestCase.sourceAndLine: String
     get() = source.let {
         when (it) {
-            is SourceRef.FileSource -> SourceFormatter.format(it.fileName, it.lineNumber)
-            is SourceRef.ClassSource -> SourceFormatter.format(it.fqn, it.lineNumber)
-            else -> "zzzzzz:0000"
+            is SourceRef.FileSource -> SourceFormatter.format(it.fileName, it.lineNumber, this.name.testName)
+            is SourceRef.ClassSource -> SourceFormatter.format(it.fqn, it.lineNumber, this.name.testName)
+            else -> "zzzzzz:00000:zzzzzz"
         }
     }
 

@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.kotlinx.serialisation)
     implementation(libs.kotlin.html)
     implementation(libs.kotest.runner)
+
+    testImplementation(libs.kotest.data)
 }
 
 tasks.test {
