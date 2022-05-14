@@ -29,7 +29,7 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.5.0-SNAPSHOT"
+version = "0.5.0"
 
 repositories {
     mavenCentral()
@@ -49,8 +49,6 @@ dependencies {
     implementation(libs.kotlinx.serialisation)
     implementation(libs.kotlin.html)
     implementation(libs.kotest.runner)
-
-    testImplementation(libs.kotest.data)
 }
 
 tasks.test {

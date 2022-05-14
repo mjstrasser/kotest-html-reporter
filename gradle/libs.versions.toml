@@ -9,7 +9,6 @@ nexus = "1.1.0"
 kotlinx-serialisation = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialisation" }
 kotlin-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "kotlin-html" }
 kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotest-data = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
 
 [bundles]
 

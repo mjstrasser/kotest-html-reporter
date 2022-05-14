@@ -19,13 +19,14 @@
 package mjs.kotest
 
 import io.kotest.core.listeners.AfterProjectListener
-import io.kotest.core.listeners.FinalizeSpecListener
+import io.kotest.core.listeners.AfterSpecListener
+import io.kotest.core.listeners.AfterTestListener
+import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
 import mjs.kotest.BuildReportWriter.writeReportFile
 import mjs.kotest.SpecReportBuilder.reportFromResults
-import kotlin.reflect.KClass
 
 /**
  * Kotest extension that creates an HTML report from a test run (project).
@@ -38,17 +39,33 @@ public class HtmlReporter(
     private val outputDir: String = "reports/kotest",
     private val reportFilename: String = "kotest-report.html",
     private val writeJsonReports: Boolean = false,
-) : FinalizeSpecListener, AfterProjectListener {
+) : BeforeSpecListener, AfterTestListener, AfterSpecListener, AfterProjectListener {
 
     private val specReports: MutableList<SpecReport> = mutableListOf()
 
-    /** After each spec, write a [SpecReport] for it. */
-    override suspend fun finalizeSpec(kclass: KClass<out Spec>, results: Map<TestCase, TestResult>) {
-        kclass.qualifiedName?.let { className ->
-            val specReport = reportFromResults(className, results)
-            specReports.add(specReport)
-            if (writeJsonReports)
-                writeReportFile(outputDir, "$className.json", specReport.toJson())
+    /**
+     * Map of maps of test results by case by spec. They are linked hash maps so insertion
+     * order is preserved.
+     */
+    private val testResults: LinkedHashMap<Spec, LinkedHashMap<TestCase, TestResult>> = linkedMapOf()
+
+    override suspend fun beforeSpec(spec: Spec) {
+        testResults[spec] = linkedMapOf()
+    }
+
+    override suspend fun afterAny(testCase: TestCase, result: TestResult) {
+        testResults[testCase.spec]?.let { it[testCase] = result }
+    }
+
+    /** After each spec, create a [SpecReport] for it. */
+    override suspend fun afterSpec(spec: Spec) {
+        spec::class.qualifiedName?.let { specClass ->
+            testResults[spec]?.let { result ->
+                val specReport = reportFromResults(specClass, result)
+                specReports.add(specReport)
+                if (writeJsonReports)
+                    writeReportFile(outputDir, "$specClass.json", specReport.toJson())
+            }
         }
     }
 

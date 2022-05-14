@@ -19,6 +19,7 @@
 package mjs.kotest
 
 import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.spec.style.scopes.RootScope
 import io.kotest.core.test.TestCase
 import io.kotest.core.test.TestResult
@@ -39,8 +40,7 @@ internal object SpecReportBuilder {
         val specReport = SpecReport(className)
 
         val reports = reportsFromResults(results)
-        val casesInSourceOrder = results.keys.sortedBy { it.sourceAndLine }
-        casesInSourceOrder.forEach { case ->
+        results.keys.forEach { case ->
             val report = reports[case]!!
             val parent = case.parent
             if (parent != null) {
@@ -57,7 +57,7 @@ internal object SpecReportBuilder {
         return specReport
     }
 
-    private fun rootScopeDescription(spec: Spec): String? = when(spec) {
+    private fun rootScopeDescription(spec: Spec): String? = when (spec) {
         is RootScope -> spec.description
         else -> null
     }
@@ -71,6 +71,12 @@ internal object SpecReportBuilder {
                 duration = durationInMsIfPositive(result),
                 message = result.errorOrNull?.stackTraceToString(),
             )
+        }
+
+    private val TestCase.reportingName: String
+        get() = when (spec) {
+            is BehaviorSpec -> with(name) { (prefix ?: "") + testName + (suffix ?: "") }
+            else -> name.testName
         }
 
     /** Format a positive [Duration] to string in milliseconds, else null.  */
