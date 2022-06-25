@@ -18,6 +18,7 @@
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.dokka)
@@ -29,7 +30,7 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.6.0-SNAPSHOT"
+version = "0.6.0"
 
 repositories {
     mavenCentral()
@@ -43,6 +44,9 @@ java {
 
 kotlin {
     explicitApi()
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of("8"))
+    }
 }
 
 dependencies {

@@ -7,8 +7,6 @@
 A [Kotest](https://kotest.io) [framework extension](https://kotest.io/docs/framework/extensions/extensions-introduction.html)
 for reporting test results in a single HTML file.
 
-🚧 **Kotest HTML Reporter is early-stage work in progress** 🚧
-
 ## What is it?
 
 Kotest HTML Reporter is intended to be used with meaningful test descriptions, in any Kotest style, to create useful
@@ -55,8 +53,8 @@ Add Kotest HTML Reporter to your Gradle project, for example:
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.5.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.6.0")
 }
 ```
 
