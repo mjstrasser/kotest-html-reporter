@@ -122,4 +122,8 @@ h2 {
     border-left: 1px solid #EEEEEE;
     box-shadow: 6px 6px 3px #EEEEEE;
 }
+
+.tagline {
+    text-align: center;
+}
 """
