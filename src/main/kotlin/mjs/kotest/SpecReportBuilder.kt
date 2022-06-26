@@ -68,7 +68,7 @@ internal object SpecReportBuilder {
             TestReport(
                 name = case.reportingName,
                 result = result.name,
-                duration = durationInMsIfPositive(result),
+                duration = result.durationInMsIfPositive,
                 message = result.errorOrNull?.stackTraceToString(),
             )
         }
@@ -80,9 +80,8 @@ internal object SpecReportBuilder {
         }
 
     /** Format a positive [Duration] to string in milliseconds, else null.  */
-    private fun durationInMsIfPositive(result: TestResult): String? =
-        if (result.duration > Duration.ZERO)
-            result.duration.toString(DurationUnit.MILLISECONDS, 2)
+    private val TestResult.durationInMsIfPositive: String?
+        get() = if (duration > Duration.ZERO) duration.toString(DurationUnit.MILLISECONDS, 2)
         else null
 
     /**
