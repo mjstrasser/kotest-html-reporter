@@ -6,8 +6,8 @@ internal const val DefaultCss = """
 }
 
 h2 {
-	margin-top: 20px;
-	margin-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .code {

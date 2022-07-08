@@ -27,6 +27,8 @@ plugins {
     signing
     `maven-publish`
     alias(libs.plugins.nexus.publish)
+    alias(libs.plugins.versions)
+    alias(libs.plugins.versionCatalogUpdate)
 }
 
 group = "com.michaelstrasser"
