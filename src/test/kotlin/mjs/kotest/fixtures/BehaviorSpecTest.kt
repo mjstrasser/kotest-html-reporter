@@ -21,12 +21,15 @@ package mjs.kotest.fixtures
 import io.kotest.core.spec.style.BehaviorSpec
 import mjs.kotest.SpecReport
 import mjs.kotest.TestReport
+import mjs.kotest.errorTest
 import mjs.kotest.failingTest
 import mjs.kotest.fixtures.BehaviorSpecFixture.givenName
 import mjs.kotest.fixtures.BehaviorSpecFixture.thenName1
 import mjs.kotest.fixtures.BehaviorSpecFixture.thenName2
+import mjs.kotest.fixtures.BehaviorSpecFixture.thenName3
 import mjs.kotest.fixtures.BehaviorSpecFixture.whenName1
 import mjs.kotest.fixtures.BehaviorSpecFixture.whenName2
+import mjs.kotest.fixtures.BehaviorSpecFixture.whenName3
 import mjs.kotest.passingTest
 import mjs.kotest.randomName
 
@@ -42,6 +45,11 @@ class BehaviorSpecTest : BehaviorSpec({
                 failingTest()
             }
         }
+        When(whenName3) {
+            Then(thenName3) {
+                errorTest()
+            }
+        }
     }
 })
 
@@ -51,6 +59,8 @@ internal object BehaviorSpecFixture {
     val thenName1 = randomName()
     val whenName2 = randomName()
     val thenName2 = randomName()
+    val whenName3 = randomName()
+    val thenName3 = randomName()
 
     val behaviorExpectedReport: SpecReport = SpecReport(
         "mjs.kotest.fixtures.BehaviorSpecTest",

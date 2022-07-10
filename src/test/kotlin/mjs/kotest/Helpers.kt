@@ -37,6 +37,10 @@ fun failingTest() {
     word shouldNotBe word
 }
 
+fun errorTest() {
+    throw RuntimeException("Oh noes")
+}
+
 private val words = listOf(
     "April", "August", "December", "Earth", "February", "Friday", "God", "I", "January", "July", "June", "March",
     "May", "Monday", "November", "October", "Saturday", "September", "Sunday", "Thursday", "Tuesday", "Wednesday",

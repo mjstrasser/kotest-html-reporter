@@ -33,6 +33,7 @@ import kotlin.time.DurationUnit
 internal object SpecReportBuilder {
 
     private const val FAILURE = "Failure"
+    private const val ERROR = "Error"
     private const val CHILD_FAILURE = "ChildFailure"
 
     internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): SpecReport {
@@ -67,7 +68,7 @@ internal object SpecReportBuilder {
         results.mapValues { (case, result) ->
             TestReport(
                 name = case.reportingName,
-                result = result.name,
+                result = if (result.name == ERROR) FAILURE else result.name,
                 duration = result.durationInMsIfPositive,
                 message = result.errorOrNull?.stackTraceToString(),
             )
@@ -92,7 +93,7 @@ internal object SpecReportBuilder {
         fun setChildFailures(report: TestReport) {
             report.reports.forEach {
                 setChildFailures(it)
-                if (it.result == FAILURE || it.result == CHILD_FAILURE)
+                if (it.result == FAILURE || it.result == ERROR || it.result == CHILD_FAILURE)
                     report.result = CHILD_FAILURE
             }
         }
