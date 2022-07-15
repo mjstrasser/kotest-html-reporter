@@ -20,11 +20,20 @@ package mjs.kotest
 
 import io.kotest.core.spec.style.scopes.RootScope
 
+/**
+ * Map of any descriptions to include in reports, keyed by [RootScope].
+ */
 private val SpecDescriptions: MutableMap<RootScope, String> = mutableMapOf()
 
+/**
+ * DSL extension function on [RootScope] to specify a description in Markdown.
+ */
 public fun RootScope.description(specDescription: String) {
     SpecDescriptions[this] = specDescription
 }
 
+/**
+ * Extension property on [RootScope] that returns any description specified for it.
+ */
 public val RootScope.description: String?
     get() = SpecDescriptions[this]
