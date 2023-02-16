@@ -28,7 +28,8 @@ class MarkdownTest : FunSpec({
         | This is an example of using the `description` extension property, that
         | can be used to describe the code being tested by a spec. 
         | 
-        | You can put limited Markdown in the description and it will be converted to HTML.
+        | You can put limited Markdown in the description and it will be converted to HTML. Double
+        | newlines are converted into double line breaks.
         | 
         | - It converts `code in backticks`.
         | 
@@ -43,11 +44,12 @@ class MarkdownTest : FunSpec({
     test("it converts double newlines into double line breaks") {
         "one\n\ntwo".convertMarkdown() shouldBe "one<br><br>two"
     }
-
-    test("it ignores blank lines when converting double newlines") {
-        "one\n     \ntwo".convertMarkdown() shouldBe "one<br><br>two"
+    test("it ignores blank lines with spaces and/or tabs when converting double newlines") {
+        "one\n  \t   \ntwo".convertMarkdown() shouldBe "one<br><br>two"
     }
-
+    test("it ignores single newlines") {
+        "one\ntwo".convertMarkdown() shouldBe "one\ntwo"
+    }
     test("it converts code at the start of strings") {
         "`one` and two".convertMarkdown() shouldBe "<span class='code'>one</span> and two"
     }
@@ -63,5 +65,4 @@ class MarkdownTest : FunSpec({
     test("it converts multi-line code") {
         "one `and\n\ntwo`".convertMarkdown() shouldBe "one <span class='code'>and<br><br>two</span>"
     }
-
 })

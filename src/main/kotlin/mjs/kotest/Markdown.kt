@@ -18,7 +18,7 @@
 
 package mjs.kotest
 
-private val paraRegex = Regex("\n *\n")
+private val paraRegex = Regex("\n[ \t]*\n")
 private val codeRegex = Regex("`([^`]+)`")
 private val italicRegex = Regex("_(\\S[^_]+)_")
 private val boldRegex = Regex("\\*\\*(\\S[^_]+)\\*\\*")
