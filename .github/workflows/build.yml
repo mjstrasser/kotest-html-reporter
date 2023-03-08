@@ -18,6 +18,9 @@ jobs:
     env:
       ORG_GRADLE_PROJECT_signingKeyId: 40D4E7C6
       ORG_GRADLE_PROJECT_ossrhUsername: mjstrasser
+      GIT_COMMIT: ${{ github.sha }}
+      GIT_MESSAGE: ${{ github.event.head_commit.message }}
+      TIMEZONE: Australia/Brisbane
 
     permissions:
       contents: write # Required to be able to publish releases, see https://docs.github.com/en/rest/reference/permissions-required-for-github-apps#permission-on-contents
@@ -42,6 +45,15 @@ jobs:
 
       - name: Gradle test
         run: ./gradlew test
+
+      - name: Create CNAME file
+        run: echo "kotest-html-reporter.michaelstrasser.com" > ./build/reports/kotest/CNAME
+
+      - name: Publish test results
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/reports/kotest
 
       - name: Generate KDoc
         run: ./gradlew dokkaHtml

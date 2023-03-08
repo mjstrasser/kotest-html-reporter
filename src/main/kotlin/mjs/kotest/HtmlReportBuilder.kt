@@ -46,7 +46,6 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 private const val TICK = "✓"
 private const val CROSS = "x"
@@ -201,7 +200,7 @@ internal class HtmlReportBuilder(
             ZoneId.systemDefault()
         }
         return ZonedDateTime.ofInstant(Instant.now(), zoneId)
-            .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG))
+            .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
     }
 
     private fun BODY.tagline() {
