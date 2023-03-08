@@ -7,6 +7,9 @@
 A [Kotest](https://kotest.io) [framework extension](https://kotest.io/docs/framework/extensions/extensions-introduction.html)
 for reporting test results in a single HTML file.
 
+[This example](https://kotest-html-reporter.michaelstrasser.com) is the most recent report of the tests of Kotest HTML
+Reporter itself. (It deliberately includes failing tests to demonstrate how those are rendered in a report.)
+
 ## What is it?
 
 Kotest HTML Reporter is intended to be used with meaningful test descriptions, in any Kotest style, to create useful
@@ -110,6 +113,18 @@ HtmlReporter(
 - `writeJsonReports`: write JSON serialisations of the internal `SpecReport` and `TestReport` data classes. May be
   useful for understanding how HTML Reporter works.
 
+### Environment variables
+
+These environment variables affect the generated output.
+
+* `GIT_COMMIT`: Display the commit identifier of the build that generated the report.
+* `GIT_MESSAGE`: Display the commit message of the build that generated the report.
+* `TIMEZONE`: Display the timestamp using this timezone. The specified value is passed to the Java `ZoneId.of()` method.
+
+This project’s [GitHub Actions build file](.github/workflows/build.yml#L21) shows an example of setting these variables.
+
 ## Example report
+
+> Note: this image is slightly out of date.
 
 ![Example of rendered HTML Report](kotest-html-report-example.gif)

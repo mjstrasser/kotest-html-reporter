@@ -32,7 +32,7 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.7.0-SNAPSHOT"
+version = "0.6.2"
 
 repositories {
     mavenCentral()
