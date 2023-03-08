@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build](https://github.com/mjstrasser/kotest-html-reporter/actions/workflows/build.yml/badge.svg)](https://github.com/mjstrasser/kotest-html-reporter/actions/workflows/build.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/com.michaelstrasser/kotest-html-reporter?label=maven%20central)](https://search.maven.org/search?q=a:kotest-html-reporter)
+[![Maven Central](https://img.shields.io/maven-central/v/com.michaelstrasser/kotest-html-reporter?label=maven%20central)](https://central.sonatype.com/search?q=a:kotest-html-reporter)
 
 A [Kotest](https://kotest.io) [framework extension](https://kotest.io/docs/framework/extensions/extensions-introduction.html)
 for reporting test results in a single HTML file.
@@ -56,8 +56,8 @@ Add Kotest HTML Reporter to your Gradle project, for example:
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.6.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.6.2")
 }
 ```
 
@@ -91,8 +91,8 @@ repositories {
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.6.0-SNAPSHOT")
+    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.7.0-SNAPSHOT")
 }
 ```
 
