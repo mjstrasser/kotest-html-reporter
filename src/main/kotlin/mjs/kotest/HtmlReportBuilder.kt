@@ -101,7 +101,7 @@ internal class HtmlReportBuilder(
             tagline()
         }
     }
-    
+
     private fun BODY.toc() {
         div("toc") {
             h2 {
@@ -169,8 +169,11 @@ internal class HtmlReportBuilder(
             div(nameClasses) {
                 testReport.message?.let { msg ->
                     details {
-                        summary("name") { fromMarkdown(testReport.name) }
-                        pre("error-message") { +msg }
+                        summary("name") {
+                            fromMarkdown(testReport.name)
+                            pre("error-message") { +(msg.firstLine) }
+                        }
+                        pre("error-message") { +(msg.remainingLines) }
                     }
                 } ?: span("name") { fromMarkdown(testReport.name) }
             }
@@ -191,6 +194,9 @@ internal class HtmlReportBuilder(
 
     private val String.firstLine: String
         get() = this.lines().first()
+
+    private val String.remainingLines: String
+        get() = this.lines().drop(1).joinToString("\n")
 
     private fun now(): String {
         val zone = System.getenv(TIMEZONE)

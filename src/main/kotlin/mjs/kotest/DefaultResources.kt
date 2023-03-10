@@ -102,6 +102,7 @@ h2 {
 
 .error-message {
     font-family: monospace;
+    margin-bottom: 2px;
 }
 
 .Failure {
