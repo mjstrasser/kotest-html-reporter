@@ -1,6 +1,5 @@
 /*
-
-   Copyright 2022 Michael Strasser.
+   Copyright 2022-2023 Michael Strasser.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 */
-
 package mjs.kotest.fixtures
 
 import io.kotest.core.spec.style.DescribeSpec
@@ -29,7 +26,7 @@ class ThingTest : DescribeSpec({
         Here is a slightly convoluted test class with some levels of containers.
 
         It also contains some ignored tests and one that fails.
-        """.trimIndent()
+        """.trimIndent(),
     )
     describe("0. Describe the thing") {
         xit("1. don’t care") {

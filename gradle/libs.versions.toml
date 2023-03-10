@@ -5,7 +5,9 @@ kotest = "5.5.4"
 kotlin = "1.8.0"
 kotlin-html = "0.8.0"
 kotlin-serialisation = "1.4.1"
+ktlint = "0.48.2"
 nexus = "1.1.0"
+spotless = "6.16.0"
 versions = "0.44.0"
 
 [libraries]
@@ -18,5 +20,6 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
 serialisation = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

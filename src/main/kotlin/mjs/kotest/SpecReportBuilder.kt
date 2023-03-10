@@ -1,6 +1,5 @@
 /*
-
-   Copyright 2022 Michael Strasser.
+   Copyright 2022-2023 Michael Strasser.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 */
-
 package mjs.kotest
 
 import io.kotest.core.spec.Spec
@@ -37,7 +34,6 @@ internal object SpecReportBuilder {
     private const val CHILD_FAILURE = "ChildFailure"
 
     internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): SpecReport {
-
         val specReport = SpecReport(className)
 
         val reports = reportsFromResults(results)
@@ -82,8 +78,11 @@ internal object SpecReportBuilder {
 
     /** Format a positive [Duration] to string in milliseconds, else null.  */
     private val TestResult.durationInMsIfPositive: String?
-        get() = if (duration > Duration.ZERO) duration.toString(DurationUnit.MILLISECONDS, 2)
-        else null
+        get() = if (duration > Duration.ZERO) {
+            duration.toString(DurationUnit.MILLISECONDS, 2)
+        } else {
+            null
+        }
 
     /**
      * Set [TestReport.result] value to "ChildFailure" if any of its descendant reports
@@ -93,8 +92,9 @@ internal object SpecReportBuilder {
         fun setChildFailures(report: TestReport) {
             report.reports.forEach {
                 setChildFailures(it)
-                if (it.result == FAILURE || it.result == ERROR || it.result == CHILD_FAILURE)
+                if (it.result == FAILURE || it.result == ERROR || it.result == CHILD_FAILURE) {
                     report.result = CHILD_FAILURE
+                }
             }
         }
         report.reports.forEach { setChildFailures(it) }

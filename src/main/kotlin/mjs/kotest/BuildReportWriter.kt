@@ -1,6 +1,5 @@
 /*
-
-   Copyright 2022 Michael Strasser.
+   Copyright 2022-2023 Michael Strasser.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 */
-
 package mjs.kotest
 
 import java.nio.file.Path
@@ -31,8 +28,9 @@ internal object BuildReportWriter {
 
     internal fun writeReportFile(outputDir: String, fileName: String, fileContents: String) {
         val path = outputDir(outputDir).resolve(fileName)
-        if (path.parent.toFile().mkdirs())
+        if (path.parent.toFile().mkdirs()) {
             path.toFile().writeText(fileContents)
+        }
     }
 
     private fun outputDir(outputDir: String): Path {

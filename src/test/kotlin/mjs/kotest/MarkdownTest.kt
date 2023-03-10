@@ -1,6 +1,5 @@
 /*
-
-   Copyright 2022 Michael Strasser.
+   Copyright 2022-2023 Michael Strasser.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 */
-
 package mjs.kotest
 
 import io.kotest.core.spec.style.FunSpec
@@ -26,19 +23,19 @@ class MarkdownTest : FunSpec({
     description(
         """
         | This is an example of using the `description` extension property, that
-        | can be used to describe the code being tested by a spec. 
-        | 
+        | can be used to describe the code being tested by a spec.
+        |
         | You can put limited Markdown in the description and it will be converted to HTML. Double
         | newlines are converted into double line breaks.
-        | 
+        |
         | - It converts `code in backticks`.
-        | 
+        |
         | - It converts **bold** text.
-        | 
+        |
         | - It converts _italic_ text.
-        | 
+        |
         | (It does not convert lists.)
-    """.trimMargin()
+        """.trimMargin(),
     )
 
     test("it converts double newlines into double line breaks") {
