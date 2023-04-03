@@ -17,3 +17,11 @@
 */
 
 rootProject.name = "kotest-html-reporter"
+
+// Setup so builds succeed when a new version of Kotlin has only partly propagated to repositories.
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
