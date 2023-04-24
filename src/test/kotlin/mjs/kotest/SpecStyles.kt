@@ -33,35 +33,35 @@ fun randomTestResult() = listOf(
 ).random().invoke()
 
 class FunSpecExample : FunSpec({
-    test("Using `FunSpec`") {
+    test("Using `FunSpec` (will randomly pass, fail or error)") {
         randomTestResult()
     }
 })
 
 class DescribeSpecExample : DescribeSpec({
     describe("Using `DescribeSpec`") {
-        it("with `it` nested in `describe`") {
+        it("with `it` nested in `describe` (will randomly pass, fail or error)") {
             randomTestResult()
         }
     }
 })
 
 class ShouldSpecExample : ShouldSpec({
-    should("Using `ShouldSpec`") {
+    should("Using `ShouldSpec` (will randomly pass, fail or error)") {
         randomTestResult()
     }
 })
 
 class StringSpecExample : StringSpec({
-    "Using `StringSpec`" {
+    "Using `StringSpec` (will randomly pass, fail or error)" {
         randomTestResult()
     }
 })
 
-class BehaviourSpecExample : BehaviorSpec({
-    Given("Using `BehaviourSpec`") {
+class BehaviorSpecExample : BehaviorSpec({
+    Given("Using `BehaviorSpec`") {
         When("the test runs") {
-            Then("it passes or not") {
+            Then("it passes or not (will randomly pass, fail or error)") {
                 randomTestResult()
             }
         }
@@ -71,7 +71,7 @@ class BehaviourSpecExample : BehaviorSpec({
 class FreeSpecExample : FreeSpec({
     "Using `FreeSpec`" - {
         "can nest" - {
-            "another level" {
+            "another level (will randomly pass, fail or error)" {
                 randomTestResult()
             }
         }
@@ -80,7 +80,7 @@ class FreeSpecExample : FreeSpec({
 
 class WordSpecExample : WordSpec({
     "Using `WordSpec`" should {
-        "pass or not" {
+        "pass or not (will randomly pass, fail or error)" {
             randomTestResult()
         }
     }
@@ -88,7 +88,7 @@ class WordSpecExample : WordSpec({
 
 class FeatureSpecExample : FeatureSpec({
     feature("Using `FeatureSpec`") {
-        scenario("with a scenario") {
+        scenario("with a scenario (will randomly pass, fail or error)") {
             randomTestResult()
         }
     }
@@ -96,7 +96,7 @@ class FeatureSpecExample : FeatureSpec({
 
 class ExpectSpecExample : ExpectSpec({
     context("Using `ExpectSpec`") {
-        expect("pass or not") {
+        expect("pass or not (will randomly pass, fail or error)") {
             randomTestResult()
         }
     }
@@ -104,7 +104,7 @@ class ExpectSpecExample : ExpectSpec({
 
 class AnnotationSpecExample : AnnotationSpec() {
     @Test
-    fun `Using AnnotationSpec`() {
+    fun `Using AnnotationSpec (will randomly pass, fail or error)`() {
         randomTestResult()
     }
 }

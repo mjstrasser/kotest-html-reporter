@@ -35,9 +35,9 @@ class SpecReportBuilderTest : DescribeSpec({
             val name = "error result"
             val descriptor = Descriptor.TestDescriptor(specDescriptor, DescriptorId(name))
             val case = TestCase(descriptor, TestName(name), thisSpec, {}, type = TestType.Test)
-            val result = TestResult.Error(Duration.parse("16.342524ms"), NullPointerException("Oh noes!"))
+            val errorResult = TestResult.Error(Duration.parse("16.342524ms"), NullPointerException("Oh noes!"))
 
-            val report = reportFromResults(randomWord(), mapOf(case to result))
+            val report = reportFromResults(randomWord(), mapOf(case to errorResult))
 
             report.reports shouldHaveSize 1
             report.reports[0].result shouldBe "Failure"
