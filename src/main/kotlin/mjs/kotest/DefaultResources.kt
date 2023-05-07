@@ -138,7 +138,17 @@ h2 {
     box-shadow: 6px 6px 3px #EEEEEE;
 }
 
-.tagline {
+div.tagline {
     text-align: center;
+    color: darkgray;
+    font-size: 80%;
+}
+
+a.tagline {
+    color: darkblue;
+}
+
+a.tagline:visited {
+    color: #8f8fcc;
 }
 """
