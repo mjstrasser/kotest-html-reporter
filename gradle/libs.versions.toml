@@ -2,7 +2,7 @@
 dokka = "1.8.20"
 gradlePlugins-versionCatalog = "0.8.0"
 kotest = "5.6.2"
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 kotlin-html = "0.8.1"
 kotlin-serialisation = "1.5.1"
 ktlint = "0.48.2"
