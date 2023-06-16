@@ -104,14 +104,11 @@ Kotest HTML Reporter accepts these configuration options, here showing default v
 HtmlReporter(
     outputDir = "reports/kotest",
     reportFilename = "kotest-report.html",
-    writeJsonReports = false,
 )
 ```
 
 - `outputDir`: output directory, relative to Gradle build directory.
 - `reportFilename`: name of the HTML report file.
-- `writeJsonReports`: write JSON serialisations of the internal `SpecReport` and `TestReport` data classes. May be
-  useful for understanding how HTML Reporter works.
 
 ### Environment variables
 

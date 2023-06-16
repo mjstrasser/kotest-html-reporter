@@ -53,7 +53,6 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.kotlinx.serialisation)
     implementation(libs.kotlin.html)
     implementation(libs.kotest.runner)
 }
