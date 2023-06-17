@@ -8,7 +8,7 @@ A [Kotest](https://kotest.io) [framework extension](https://kotest.io/docs/frame
 for reporting test results in a single HTML file.
 
 [This example](https://kotest-html-reporter.michaelstrasser.com) is the most recent report of the tests of Kotest HTML
-Reporter itself. (It deliberately includes failing tests to demonstrate how those are rendered in a report.)
+Reporter itself. It deliberately includes failing tests to demonstrate how those are rendered in a report.
 
 ## What is it?
 
@@ -56,8 +56,8 @@ Add Kotest HTML Reporter to your Gradle project, for example:
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.6.3")
+    testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.7.0")
 }
 ```
 
@@ -91,8 +91,8 @@ repositories {
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.7.0-SNAPSHOT")
+    testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.0-SNAPSHOT")
 }
 ```
 
