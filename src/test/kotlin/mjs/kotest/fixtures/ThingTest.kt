@@ -36,7 +36,7 @@ class ThingTest : DescribeSpec({
             it("2a. is thing") {
                 "thing" shouldBe "thing"
             }
-            it("2b. is not thang") {
+            it("2b. is not thang (will fail)") {
                 "thing" shouldBe "thang"
             }
         }

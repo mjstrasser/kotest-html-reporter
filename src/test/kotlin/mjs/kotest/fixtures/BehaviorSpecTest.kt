@@ -37,12 +37,12 @@ class BehaviorSpecTest : BehaviorSpec({
                 passingTest()
             }
         }
-        When(whenName2) {
+        When("$whenName2 (will fail)") {
             Then(thenName2) {
                 failingTest()
             }
         }
-        When(whenName3) {
+        When("$whenName3 (will fail because exception thrown)") {
             Then(thenName3) {
                 errorTest()
             }
@@ -58,17 +58,4 @@ internal object BehaviorSpecFixture {
     val thenName2 = randomName()
     val whenName3 = randomName()
     val thenName3 = randomName()
-
-    val behaviorExpectedReport: SpecReport = SpecReport(
-        "mjs.kotest.fixtures.BehaviorSpecTest",
-        reports = mutableListOf(
-            TestReport(
-                "Given: $givenName",
-                reports = mutableListOf(
-                    TestReport("When: $whenName1", reports = mutableListOf(TestReport("Then: $thenName1"))),
-                    TestReport("When: $whenName2", reports = mutableListOf(TestReport("Then: $thenName2"))),
-                ),
-            ),
-        ),
-    )
 }
