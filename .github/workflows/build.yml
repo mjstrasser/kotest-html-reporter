@@ -62,6 +62,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/reports/kotest
+        if: steps.check_test_output.outputs.file_exists == 'true'
 
       - name: Generate KDoc
         run: ./gradlew dokkaHtml
