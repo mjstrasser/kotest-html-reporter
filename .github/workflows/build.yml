@@ -46,8 +46,16 @@ jobs:
       - name: Gradle test
         run: ./gradlew test
 
+      - name: Check test output existence
+        id: check_test_output
+        uses: andstor/file-existence-action@v2
+        with:
+          files: ./build/reports/kotest
+        if: success() || failure()
+
       - name: Create CNAME file
         run: echo "kotest-html-reporter.michaelstrasser.com" > ./build/reports/kotest/CNAME
+        if: steps.check_test_output.outputs.file_exists == 'true'
 
       - name: Publish test results
         uses: peaceiris/actions-gh-pages@v3
