@@ -1,6 +1,6 @@
 [versions]
 dokka = "1.8.20"
-gradlePlugins-versionCatalog = "0.8.0"
+gradlePlugins-versionCatalog = "0.8.1"
 kotest = "5.6.2"
 kotlin = "1.9.0"
 kotlin-html = "0.9.1"
