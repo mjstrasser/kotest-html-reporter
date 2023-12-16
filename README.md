@@ -122,6 +122,6 @@ This project’s [GitHub Actions build file](.github/workflows/build.yml#L21) sh
 
 ## Example report
 
-> Note: this image is slightly out of date.
+Here is an example report showing table of contents and expansion of a stacktrace.
 
 ![Example of rendered HTML Report](kotest-html-report-example.gif)
