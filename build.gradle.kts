@@ -19,7 +19,6 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -34,7 +33,7 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.8.0-SNAPSHOT"
+version = "0.7.3"
 
 repositories {
     mavenCentral()
@@ -56,10 +55,6 @@ tasks.test {
     useJUnitPlatform()
     // For now, because we have failing tests so they can be reported.
     ignoreFailures = true
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
 }
 
 val kotlinLicenseHeader = """/*
@@ -87,7 +82,7 @@ spotless {
         licenseHeader(kotlinLicenseHeader)
 
         trimTrailingWhitespace()
-        indentWithSpaces()
+        leadingTabsToSpaces()
         endWithNewline()
     }
 }
@@ -107,10 +102,12 @@ tasks.register<Jar>("dokkaJar") {
 }
 
 mavenPublishing {
-    configure(KotlinJvm(
-        javadocJar = JavadocJar.Dokka("dokkaHtml"),
-        sourcesJar = true,
-    ))
+    configure(
+        KotlinJvm(
+            javadocJar = JavadocJar.Dokka("dokkaHtml"),
+            sourcesJar = true,
+        )
+    )
 
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
 
