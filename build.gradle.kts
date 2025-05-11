@@ -26,7 +26,6 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.serialisation)
     `java-library`
-    signing
     alias(libs.plugins.vanniktech.publish)
     alias(libs.plugins.versions)
     alias(libs.plugins.spotless)
