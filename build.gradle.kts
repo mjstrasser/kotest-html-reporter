@@ -35,7 +35,7 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.8.0-SNAPSHOT"
+version = "0.7.2"
 
 repositories {
     mavenCentral()
@@ -113,7 +113,7 @@ mavenPublishing {
         sourcesJar = true,
     ))
 
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
 
     signAllPublications()
 
