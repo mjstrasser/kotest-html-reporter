@@ -33,7 +33,6 @@ plugins {
 }
 
 group = "com.michaelstrasser"
-version = "0.7.3"
 
 repositories {
     mavenCentral()
