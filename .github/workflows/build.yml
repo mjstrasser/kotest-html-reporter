@@ -16,8 +16,6 @@ jobs:
     name: "Build, Test and Publish"
     runs-on: ubuntu-latest
     env:
-      ORG_GRADLE_PROJECT_signingKeyId: 40D4E7C6
-      ORG_GRADLE_PROJECT_ossrhUsername: mjstrasser
       GIT_COMMIT: ${{ github.sha }}
       GIT_MESSAGE: ${{ github.event.head_commit.message }}
       TIMEZONE: Australia/Brisbane
@@ -67,18 +65,11 @@ jobs:
       - name: Generate KDoc
         run: ./gradlew dokkaHtml
 
-      - name: Publish snapshot
-        run: ./gradlew publishToSonatype
+      - name: Publish artefacts to Maven Central
+        run: ./gradlew publishAllPublicationsToMavenCentralRepository
         env:
-          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
-        if: github.repository == 'mjstrasser/kotest-html-reporter' && github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-      - name: Publish release
-        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
-        env:
-          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
-        if: github.repository == 'mjstrasser/kotest-html-reporter' && startsWith(github.ref, 'refs/tags/') && github.event_name == 'push'
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVENCENTRALUSERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVENCENTRALPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: 40D4E7C6
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
