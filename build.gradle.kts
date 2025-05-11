@@ -30,7 +30,6 @@ plugins {
     signing
     alias(libs.plugins.vanniktech.publish)
     alias(libs.plugins.versions)
-    alias(libs.plugins.versionCatalogUpdate)
     alias(libs.plugins.spotless)
 }
 
