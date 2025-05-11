@@ -16,6 +16,9 @@
 
 */
 
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinJvm
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 @Suppress("DSL_SCOPE_VIOLATION")
@@ -25,8 +28,7 @@ plugins {
     alias(libs.plugins.serialisation)
     `java-library`
     signing
-    `maven-publish`
-    alias(libs.plugins.nexus.publish)
+    alias(libs.plugins.vanniktech.publish)
     alias(libs.plugins.versions)
     alias(libs.plugins.versionCatalogUpdate)
     alias(libs.plugins.spotless)
@@ -92,7 +94,7 @@ spotless {
 }
 
 tasks.dokkaHtml.configure {
-    outputDirectory.set(buildDir.resolve("dokka"))
+    outputDirectory.set(layout.buildDirectory.dir("dokka"))
 }
 
 tasks.register<Jar>("sourcesJar") {
@@ -105,55 +107,38 @@ tasks.register<Jar>("dokkaJar") {
     from(layout.buildDirectory.dir("dokka/html"))
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("kotlinLibrary") {
-            from(components["kotlin"])
-            artifact(tasks["sourcesJar"])
-            artifact(tasks["dokkaJar"])
-            pom {
-                name.set("kotes-html-reporter")
-                description.set("Kotest plugin to create HTML reports of test runs")
-                url.set("https://github.com/mjstrasser/kotest-html-reporter")
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                    developers {
-                        developer {
-                            id.set("mjstrasser")
-                            name.set("Michael Strasser")
-                            email.set("kotest-html-reporter@michaelstrasser.com")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git://github.com/mjstrasser/kotest-html-reporter.git")
-                        url.set("https://github.com/mjstrasser/kotest-html-reporter")
-                    }
+mavenPublishing {
+    configure(KotlinJvm(
+        javadocJar = JavadocJar.Dokka("dokkaHtml"),
+        sourcesJar = true,
+    ))
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+
+    coordinates("com.michaelstrasser", "kotest-html-reporter", version.toString())
+
+    pom {
+        name.set("kotes-html-reporter")
+        description.set("Kotest plugin to create HTML reports of test runs")
+        url.set("https://github.com/mjstrasser/kotest-html-reporter")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+            developers {
+                developer {
+                    id.set("mjstrasser")
+                    name.set("Michael Strasser")
+                    email.set("kotest-html-reporter@michaelstrasser.com")
                 }
+            }
+            scm {
+                connection.set("scm:git:git://github.com/mjstrasser/kotest-html-reporter.git")
+                url.set("https://github.com/mjstrasser/kotest-html-reporter")
             }
         }
     }
-}
-
-nexusPublishing {
-    val ossrhUsername: String? by project
-    val ossrhPassword: String? by project
-    repositories {
-        create("sonatype") {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(ossrhUsername)
-            password.set(ossrhPassword)
-        }
-    }
-}
-
-signing {
-    val signingKeyId: String? by project
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-    sign(publishing.publications["kotlinLibrary"])
 }
