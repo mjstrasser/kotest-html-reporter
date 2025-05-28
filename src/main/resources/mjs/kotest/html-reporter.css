@@ -17,6 +17,11 @@ h2 {
     background-color: #EEEEEE;
 }
 
+.name {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 .timestamp {
     line-height: 1.4;
     font-size: 1em;
