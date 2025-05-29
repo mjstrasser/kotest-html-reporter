@@ -15,10 +15,13 @@
 */
 package mjs.kotest
 
+import org.intellij.lang.annotations.Language
+
 /**
  * Default CSS to load if `html-reporter.css` is not available on the classpath.
  * It should contain an exact copy of that file.
  */
+@Language("CSS")
 internal const val DefaultCss = """
 * {
     font-family: sans-serif;
@@ -32,6 +35,11 @@ h2 {
 .code {
     font-family: monospace;
     background-color: #EEEEEE;
+}
+
+.name {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .timestamp {

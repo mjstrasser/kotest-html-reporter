@@ -72,8 +72,8 @@ internal object SpecReportBuilder {
 
     private val TestCase.reportingName: String
         get() = when (spec) {
-            is BehaviorSpec -> with(name) { (prefix ?: "") + testName + (suffix ?: "") }
-            else -> name.testName
+            is BehaviorSpec -> with(name) { (prefix ?: "") + name + (suffix ?: "") }
+            else -> name.name
         }
 
     /** Format a positive [Duration] to string in milliseconds, else null.  */

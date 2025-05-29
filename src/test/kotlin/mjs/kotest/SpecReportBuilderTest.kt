@@ -31,10 +31,10 @@ class SpecReportBuilderTest : DescribeSpec({
     val thisSpec = this
     describe("`reportFromResults()` function") {
         it("converts `Error` result to `Failure`") {
-            val specDescriptor = Descriptor.SpecDescriptor(DescriptorId("SpecReportBuilderTest.kt"), thisSpec::class)
+            val specDescriptor = Descriptor.SpecDescriptor(DescriptorId("SpecReportBuilderTest.kt"))
             val name = "error result"
             val descriptor = Descriptor.TestDescriptor(specDescriptor, DescriptorId(name))
-            val case = TestCase(descriptor, TestName(name), thisSpec, {}, type = TestType.Test)
+            val case = TestCase(descriptor, TestName(name, false, false, null, null, false), thisSpec, {}, type = TestType.Test)
             val errorResult = TestResult.Error(Duration.parse("16.342524ms"), NullPointerException("Oh noes!"))
 
             val report = reportFromResults(randomWord(), mapOf(case to errorResult))
