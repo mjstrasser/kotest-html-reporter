@@ -46,7 +46,7 @@ jobs:
 
       - name: Check test output existence
         id: check_test_output
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: ./build/reports/kotest
         if: success() || failure()
