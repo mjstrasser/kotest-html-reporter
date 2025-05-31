@@ -25,17 +25,17 @@ import io.kotest.core.test.TestResult
 import io.kotest.core.test.TestType
 import kotlin.time.Duration
 
-val specDescriptor = Descriptor.SpecDescriptor(DescriptorId(ThingTest::class.qualifiedName!!), ThingTest::class)
+val specDescriptor = Descriptor.SpecDescriptor(DescriptorId(ThingTest::class.qualifiedName!!))
 val thingTest = ThingTest()
 
 const val name0 = "0. Describe the thing"
 val descriptor0 = Descriptor.TestDescriptor(specDescriptor, DescriptorId(name0))
 val case0 = TestCase(
     descriptor0,
-    TestName(name0),
+    TestName(name0, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 8),
+    SourceRef.ClassSource(ThingTest::class.java.name, 8),
     TestType.Container,
     parent = null,
 )
@@ -45,10 +45,10 @@ const val name1 = "1. I don’t care"
 val descriptor1 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name1))
 val case1 = TestCase(
     descriptor1,
-    TestName(name1),
+    TestName(name1, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 9),
+    SourceRef.ClassSource(ThingTest::class.java.name, 9),
     TestType.Test,
     parent = case0,
 )
@@ -58,10 +58,10 @@ const val name2 = "2. the inner thing"
 val descriptor2 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name2))
 val case2 = TestCase(
     descriptor2,
-    TestName(name2),
+    TestName(name2, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 12),
+    SourceRef.ClassSource(ThingTest::class.java.name, 12),
     TestType.Container,
     parent = case0,
 )
@@ -71,10 +71,10 @@ const val name2a = "2a. is thing"
 val descriptor2a = Descriptor.TestDescriptor(descriptor2, DescriptorId(name2a))
 val case2a = TestCase(
     descriptor2a,
-    TestName(name2a),
+    TestName(name2a, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 13),
+    SourceRef.ClassSource(ThingTest::class.java.name, 13),
     TestType.Test,
     parent = case2,
 )
@@ -84,10 +84,10 @@ const val name2b = "2b. is not thang"
 val descriptor2b = Descriptor.TestDescriptor(descriptor2, DescriptorId(name2b))
 val case2b = TestCase(
     descriptor2b,
-    TestName(name2b),
+    TestName(name2b, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 16),
+    SourceRef.ClassSource(ThingTest::class.java.name, 16),
     TestType.Test,
     parent = case2,
 )
@@ -100,10 +100,10 @@ const val name3 = "3. also ignored"
 val descriptor3 = Descriptor.TestDescriptor(descriptor0, DescriptorId(name3))
 val case3 = TestCase(
     descriptor3,
-    TestName(name3),
+    TestName(name3, false, false, null, null, false),
     thingTest,
     {},
-    SourceRef.FileSource("ThingTest.kt", 20),
+    SourceRef.ClassSource(ThingTest::class.java.name, 20),
     TestType.Container,
     parent = case0,
 )
