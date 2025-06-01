@@ -48,19 +48,19 @@ jobs:
         id: check_test_output
         uses: andstor/file-existence-action@v3
         with:
-          files: ./build/reports/kotest
+          files: ./build/reports/kotest/index.html
         if: success() || failure()
 
       - name: Create CNAME file
-        run: echo "kotest-html-reporter.michaelstrasser.com" > ./build/reports/kotest/CNAME
         if: steps.check_test_output.outputs.file_exists == 'true'
+        run: echo "kotest-html-reporter.michaelstrasser.com" > ./build/reports/kotest/CNAME
 
       - name: Publish test results
+        if: steps.check_test_output.outputs.file_exists == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/reports/kotest
-        if: steps.check_test_output.outputs.file_exists == 'true'
 
       - name: Generate KDoc
         run: ./gradlew dokkaHtml
