@@ -45,7 +45,7 @@ jobs:
         run: ./gradlew test
 
       - name: List test output
-        run: ls -lr ./build/reports
+        run: ls -l ./build/reports/kotest
 
       - name: Check test output existence
         id: check_test_output
