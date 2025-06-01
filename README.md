@@ -51,13 +51,19 @@ is rendered as:
 
 ## Quick start
 
-Add Kotest HTML Reporter to your Gradle project, for example:
+Add Kotest HTML Reporter to your Gradle project.
+
+> Kotest version 6 has some breaking changes and is supported by version 0.8 and above of this
+> extension. If you are using an earlier version of Kotest (e.g. 5.9.1) then use version 0.7.3 of
+> this extension.
+
+### Kotest versions below 6
 
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.7.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.7.3")
 }
 ```
 
@@ -76,6 +82,40 @@ object KotestConfig : AbstractProjectConfig() {
 }
 ```
 
+### Kotest versions 6 and above
+
+```kotlin
+dependencies {
+    // ...
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.0.M4")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.0")
+}
+```
+
+Configure Kotest to use HTML Reporter like this:
+
+```kotlin
+package com.thing
+
+import io.kotest.core.config.AbstractProjectConfig
+import io.kotest.core.extensions.Extension
+import mjs.kotest.HtmlReporter
+
+/** Create an HTML report for every test run. */
+object KotestConfig : AbstractProjectConfig() {
+    override val extensions: List<Extension> = listOf(
+        HtmlReporter(),
+    )
+}
+```
+
+Place a `kotest.properties` file in your `src/test/resources` directory with a line that specifies
+the fully qualified name of your configuration class or object:
+
+```properties
+kotest.framework.config.fqn=com.thing.KotestConfig
+```
+
 ### Using snapshot builds
 
 If you want to use snapshot builds of Kotest HTML Reporter, specify these in your Gradle build:
@@ -83,7 +123,7 @@ If you want to use snapshot builds of Kotest HTML Reporter, specify these in you
 ```kotlin
 repositories {
     // ...
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://central.sonatype.com/repository/maven-snapshots/")
 }
 
 ```
@@ -91,8 +131,8 @@ repositories {
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.0-SNAPSHOT")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.0.M4")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.9.0-SNAPSHOT")
 }
 ```
 
@@ -118,10 +158,10 @@ These environment variables affect the generated output.
 * `GIT_MESSAGE`: Display the commit message of the build that generated the report.
 * `TIMEZONE`: Display the timestamp using this timezone. The specified value is passed to the Java `ZoneId.of()` method.
 
-This project’s [GitHub Actions build file](.github/workflows/build.yml#L21) shows an example of setting these variables.
+This project’s [GitHub Actions build file](.github/workflows/build.yml#L19) shows an example of setting these variables.
 
 ## Example report
 
-Here is an example report showing table of contents and expansion of a stacktrace.
+Here is an example report showing the table of contents and expansion of a stacktrace.
 
 ![Example of rendered HTML Report](kotest-html-report-example.gif)
