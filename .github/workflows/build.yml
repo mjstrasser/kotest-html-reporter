@@ -42,7 +42,7 @@ jobs:
         run: ./gradlew build
 
       - name: Gradle test
-        run: ./gradlew test
+        run: ./gradlew test --no-build-cache # Ensure Kotest report is created
 
       - name: Check test output existence
         id: check_test_output
