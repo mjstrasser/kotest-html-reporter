@@ -55,11 +55,11 @@ jobs:
         if: success() || failure()
 
       - name: Create CNAME file
-        if: steps.check_test_output.outputs.file_exists == 'true'
+        if: steps.check_test_output.outputs.files_exists == 'true'
         run: echo "kotest-html-reporter.michaelstrasser.com" > ./build/reports/kotest/CNAME
 
       - name: Publish test results
-        if: steps.check_test_output.outputs.file_exists == 'true'
+        if: steps.check_test_output.outputs.files_exists == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
