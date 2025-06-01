@@ -1,5 +1,5 @@
 [versions]
-dokka = "1.9.10"
+dokka = "2.0.0"
 kotest = "6.0.0.M4"
 kotlin = "2.1.20"
 kotlin-html = "0.12.0"
