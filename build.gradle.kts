@@ -40,7 +40,7 @@ repositories {
 kotlin {
     explicitApi()
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of("8"))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -51,7 +51,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    // For now, because we have failing tests so they can be reported.
+    // Because we have failing tests so they can be reported.
     ignoreFailures = true
 }
 
