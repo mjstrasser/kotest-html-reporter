@@ -57,7 +57,7 @@ jobs:
 
       - name: Publish test results
         if: steps.check_test_output.outputs.files_exists == 'true'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/reports/kotest
