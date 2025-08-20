@@ -4,7 +4,7 @@ kotest = "6.0.0"
 kotlin = "2.2.10"
 kotlin-html = "0.12.0"
 ktlint = "0.48.2"
-spotless = "7.0.3"
+spotless = "7.2.1"
 vanniktech = "0.32.0"
 versions = "0.52.0"
 
