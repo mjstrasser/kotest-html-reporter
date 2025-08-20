@@ -41,16 +41,16 @@ kotlin {
     explicitApi()
     java {
         compilerOptions {
-            // Needed to allow for JVM 8 class format.
-            jvmTarget.set(JvmTarget.JVM_1_8)
+            // Needed to allow for JVM 11 class format.
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 }
 
-// Needed to allow for JVM 8 class format.
+// Needed to allow for JVM 11 class format.
 tasks.withType<JavaCompile>().configureEach {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
 }
 
 dependencies {
