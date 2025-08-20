@@ -87,8 +87,8 @@ object KotestConfig : AbstractProjectConfig() {
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:6.0.0.M4")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.0")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.0")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.1")
 }
 ```
 
@@ -131,7 +131,7 @@ repositories {
 ```kotlin
 dependencies {
     // ...
-    testImplementation("io.kotest:kotest-runner-junit5:6.0.0.M4")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.0")
     testImplementation("com.michaelstrasser:kotest-html-reporter:0.9.0-SNAPSHOT")
 }
 ```
