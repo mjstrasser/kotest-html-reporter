@@ -23,6 +23,7 @@ package mjs.kotest
 internal interface Report {
     val result: String?
     val reports: MutableList<TestReport>
+
     fun addChildReport(childReport: TestReport) {
         reports.add(childReport)
     }
@@ -44,7 +45,8 @@ internal data class SpecReport(
     override val reports: MutableList<TestReport> = mutableListOf(),
 ) : Report {
     override val result: String
-        get() = reports.fold("Success") { res, rep ->
-            if (rep.result != "Success") "ChildFailure" else res
-        }
+        get() =
+            reports.fold("Success") { res, rep ->
+                if (rep.result != "Success") "ChildFailure" else res
+            }
 }

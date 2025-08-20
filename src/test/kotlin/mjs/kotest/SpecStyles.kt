@@ -26,81 +26,91 @@ import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.spec.style.WordSpec
 
-fun randomTestResult() = listOf(
-    ::passingTest,
-    ::failingTest,
-    ::errorTest,
-).random().invoke()
+fun randomTestResult() =
+    listOf(
+        ::passingTest,
+        ::failingTest,
+        ::errorTest,
+    ).random().invoke()
 
-class FunSpecExample : FunSpec({
-    test("Using `FunSpec` (will randomly pass, fail or error)") {
-        randomTestResult()
-    }
-})
-
-class DescribeSpecExample : DescribeSpec({
-    describe("Using `DescribeSpec`") {
-        it("with `it` nested in `describe` (will randomly pass, fail or error)") {
+class FunSpecExample :
+    FunSpec({
+        test("Using `FunSpec` (will randomly pass, fail or error)") {
             randomTestResult()
         }
-    }
-})
+    })
 
-class ShouldSpecExample : ShouldSpec({
-    should("Using `ShouldSpec` (will randomly pass, fail or error)") {
-        randomTestResult()
-    }
-})
-
-class StringSpecExample : StringSpec({
-    "Using `StringSpec` (will randomly pass, fail or error)" {
-        randomTestResult()
-    }
-})
-
-class BehaviorSpecExample : BehaviorSpec({
-    Given("Using `BehaviorSpec`") {
-        When("the test runs") {
-            Then("it passes or not (will randomly pass, fail or error)") {
+class DescribeSpecExample :
+    DescribeSpec({
+        describe("Using `DescribeSpec`") {
+            it("with `it` nested in `describe` (will randomly pass, fail or error)") {
                 randomTestResult()
             }
         }
-    }
-})
+    })
 
-class FreeSpecExample : FreeSpec({
-    "Using `FreeSpec`" - {
-        "can nest" - {
-            "another level (will randomly pass, fail or error)" {
+class ShouldSpecExample :
+    ShouldSpec({
+        should("Using `ShouldSpec` (will randomly pass, fail or error)") {
+            randomTestResult()
+        }
+    })
+
+class StringSpecExample :
+    StringSpec({
+        "Using `StringSpec` (will randomly pass, fail or error)" {
+            randomTestResult()
+        }
+    })
+
+class BehaviorSpecExample :
+    BehaviorSpec({
+        Given("Using `BehaviorSpec`") {
+            When("the test runs") {
+                Then("it passes or not (will randomly pass, fail or error)") {
+                    randomTestResult()
+                }
+            }
+        }
+    })
+
+class FreeSpecExample :
+    FreeSpec({
+        "Using `FreeSpec`" - {
+            "can nest" - {
+                "another level (will randomly pass, fail or error)" {
+                    randomTestResult()
+                }
+            }
+        }
+    })
+
+class WordSpecExample :
+    WordSpec({
+        "Using `WordSpec`" should {
+            "pass or not (will randomly pass, fail or error)" {
                 randomTestResult()
             }
         }
-    }
-})
+    })
 
-class WordSpecExample : WordSpec({
-    "Using `WordSpec`" should {
-        "pass or not (will randomly pass, fail or error)" {
-            randomTestResult()
+class FeatureSpecExample :
+    FeatureSpec({
+        feature("Using `FeatureSpec`") {
+            scenario("with a scenario (will randomly pass, fail or error)") {
+                randomTestResult()
+            }
         }
-    }
-})
+    })
 
-class FeatureSpecExample : FeatureSpec({
-    feature("Using `FeatureSpec`") {
-        scenario("with a scenario (will randomly pass, fail or error)") {
-            randomTestResult()
+class ExpectSpecExample :
+    ExpectSpec({
+        context("Using `ExpectSpec`") {
+            expect("pass or not (will randomly pass, fail or error)") {
+                randomTestResult()
+            }
         }
-    }
-})
-
-class ExpectSpecExample : ExpectSpec({
-    context("Using `ExpectSpec`") {
-        expect("pass or not (will randomly pass, fail or error)") {
-            randomTestResult()
-        }
-    }
-})
+    })
 
 class AnnotationSpecExample : AnnotationSpec() {
     @Test

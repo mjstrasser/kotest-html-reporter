@@ -33,8 +33,9 @@ import mjs.kotest.SpecReportBuilder.reportFromResults
 public class HtmlReporter(
     private val outputDir: String = "reports/kotest",
     private val reportFilename: String = "kotest-report.html",
-) : BeforeSpecListener, AfterTestListener, AfterProjectListener {
-
+) : BeforeSpecListener,
+    AfterTestListener,
+    AfterProjectListener {
     /**
      * Map of maps of test results by case by spec. They are linked hash maps so insertion
      * order is preserved.
@@ -45,7 +46,10 @@ public class HtmlReporter(
         spec::class.qualifiedName?.let { testResults.getOrPut(it) { linkedMapOf() } }
     }
 
-    override suspend fun afterAny(testCase: TestCase, result: TestResult) {
+    override suspend fun afterAny(
+        testCase: TestCase,
+        result: TestResult,
+    ) {
         testCase.spec::class.qualifiedName?.let { specClass ->
             testResults[specClass]?.let { it[testCase] = result }
         }
@@ -53,9 +57,10 @@ public class HtmlReporter(
 
     /** After all specs have been run, write the [SpecReport]s into an HTML report. */
     override suspend fun afterProject() {
-        val reports = testResults.map { (className, results) ->
-            reportFromResults(className, results)
-        }
+        val reports =
+            testResults.map { (className, results) ->
+                reportFromResults(className, results)
+            }
         if (reports.isEmpty()) return
         val htmlReport = HtmlReportBuilder(reports).build()
         writeReportFile(outputDir, reportFilename, htmlReport)

@@ -58,18 +58,18 @@ private const val TIMEZONE = "TIMEZONE"
 internal class HtmlReportBuilder(
     private val specReports: List<SpecReport>,
 ) {
-
-    private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DefaultCss
+    private val css = readResourceText("mjs/kotest/html-reporter.css") ?: DEFAULT_CSS
     private val source: String = System.getenv(GIT_COMMIT) ?: ""
     private val gitMessage: String = System.getenv(GIT_MESSAGE) ?: ""
 
-    internal fun build(): String = buildString {
-        appendLine("<!DOCTYPE html>")
-        appendHTML().html {
-            reportHead()
-            reportBody()
+    internal fun build(): String =
+        buildString {
+            appendLine("<!DOCTYPE html>")
+            appendHTML().html {
+                reportHead()
+                reportBody()
+            }
         }
-    }
 
     private fun HTML.reportHead() {
         head {
@@ -156,7 +156,10 @@ internal class HtmlReportBuilder(
         unsafe { raw(markdown.convertMarkdown()) }
     }
 
-    private fun DIV.test(testReport: TestReport, indent: Int = 0) {
+    private fun DIV.test(
+        testReport: TestReport,
+        indent: Int = 0,
+    ) {
         if (indent == 0 && testReport.reports.isNotEmpty()) {
             div("pre-test")
         }
@@ -184,11 +187,12 @@ internal class HtmlReportBuilder(
         get() = this.name
 
     private val Report.symbol: String
-        get() = when (this.result) {
-            "Ignored" -> DASH
-            "Success" -> TICK
-            else -> CROSS
-        }
+        get() =
+            when (this.result) {
+                "Ignored" -> DASH
+                "Success" -> TICK
+                else -> CROSS
+            }
 
     private val String.firstLine: String
         get() = this.lines().first()
@@ -198,12 +202,14 @@ internal class HtmlReportBuilder(
 
     private fun now(): String {
         val zone = System.getenv(TIMEZONE)
-        val zoneId = try {
-            ZoneId.of(zone)
-        } catch (e: Exception) {
-            ZoneId.systemDefault()
-        }
-        return ZonedDateTime.ofInstant(Instant.now(), zoneId)
+        val zoneId =
+            try {
+                ZoneId.of(zone)
+            } catch (e: Exception) {
+                ZoneId.systemDefault()
+            }
+        return ZonedDateTime
+            .ofInstant(Instant.now(), zoneId)
             .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
     }
 

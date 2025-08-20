@@ -104,7 +104,7 @@ mavenPublishing {
         KotlinJvm(
             javadocJar = JavadocJar.Dokka("dokkaHtml"),
             sourcesJar = true,
-        )
+        ),
     )
 
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)

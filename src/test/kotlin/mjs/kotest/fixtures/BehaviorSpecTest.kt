@@ -28,25 +28,26 @@ import mjs.kotest.fixtures.BehaviorSpecFixture.whenName3
 import mjs.kotest.passingTest
 import mjs.kotest.randomName
 
-class BehaviorSpecTest : BehaviorSpec({
-    Given(givenName) {
-        When(whenName1) {
-            Then(thenName1) {
-                passingTest()
+class BehaviorSpecTest :
+    BehaviorSpec({
+        Given(givenName) {
+            When(whenName1) {
+                Then(thenName1) {
+                    passingTest()
+                }
+            }
+            When("$whenName2 (will fail)") {
+                Then(thenName2) {
+                    failingTest()
+                }
+            }
+            When("$whenName3 (will fail because exception thrown)") {
+                Then(thenName3) {
+                    errorTest()
+                }
             }
         }
-        When("$whenName2 (will fail)") {
-            Then(thenName2) {
-                failingTest()
-            }
-        }
-        When("$whenName3 (will fail because exception thrown)") {
-            Then(thenName3) {
-                errorTest()
-            }
-        }
-    }
-})
+    })
 
 internal object BehaviorSpecFixture {
     val givenName = randomName()

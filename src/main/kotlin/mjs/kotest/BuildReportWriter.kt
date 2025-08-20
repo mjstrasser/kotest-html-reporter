@@ -22,18 +22,21 @@ import java.nio.file.Paths
  * Write build reports to a directory relative to the build directory.
  */
 internal object BuildReportWriter {
+    private const val DEFAULT_BUILD_DIR = "./build"
+    private const val GRADLE_BUILD_DIR_KEY = "gradle.build.dir"
 
-    private const val DefaultBuildDir = "./build"
-    private const val GradleBuildDirKey = "gradle.build.dir"
-
-    internal fun writeReportFile(outputDir: String, fileName: String, fileContents: String) {
+    internal fun writeReportFile(
+        outputDir: String,
+        fileName: String,
+        fileContents: String,
+    ) {
         val path = outputDir(outputDir).resolve(fileName)
         path.parent.toFile().mkdirs()
         path.toFile().writeText(fileContents)
     }
 
     private fun outputDir(outputDir: String): Path {
-        val buildDir = System.getProperty(GradleBuildDirKey)
-        return Paths.get(buildDir ?: DefaultBuildDir).resolve(outputDir)
+        val buildDir = System.getProperty(GRADLE_BUILD_DIR_KEY)
+        return Paths.get(buildDir ?: DEFAULT_BUILD_DIR).resolve(outputDir)
     }
 }

@@ -22,7 +22,7 @@ import org.intellij.lang.annotations.Language
  * It should contain an exact copy of that file.
  */
 @Language("CSS")
-internal const val DefaultCss = """
+internal const val DEFAULT_CSS = """
 * {
     font-family: sans-serif;
 }

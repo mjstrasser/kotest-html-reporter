@@ -28,12 +28,14 @@ import kotlin.time.DurationUnit
  * [TestResult] instances.
  */
 internal object SpecReportBuilder {
-
     private const val FAILURE = "Failure"
     private const val ERROR = "Error"
     private const val CHILD_FAILURE = "ChildFailure"
 
-    internal fun reportFromResults(className: String, results: Map<TestCase, TestResult>): SpecReport {
+    internal fun reportFromResults(
+        className: String,
+        results: Map<TestCase, TestResult>,
+    ): SpecReport {
         val specReport = SpecReport(className)
 
         val reports = reportsFromResults(results)
@@ -54,10 +56,11 @@ internal object SpecReportBuilder {
         return specReport
     }
 
-    private fun rootScopeDescription(spec: Spec): String? = when (spec) {
-        is RootScope -> spec.description
-        else -> null
-    }
+    private fun rootScopeDescription(spec: Spec): String? =
+        when (spec) {
+            is RootScope -> spec.description
+            else -> null
+        }
 
     /** Map [TestResult]s to [TestReport]s, keyed by the same [TestCase]s. */
     private fun reportsFromResults(results: Map<TestCase, TestResult>): Map<TestCase, TestReport> =
@@ -71,18 +74,20 @@ internal object SpecReportBuilder {
         }
 
     private val TestCase.reportingName: String
-        get() = when (spec) {
-            is BehaviorSpec -> with(name) { (prefix ?: "") + name + (suffix ?: "") }
-            else -> name.name
-        }
+        get() =
+            when (spec) {
+                is BehaviorSpec -> with(name) { (prefix ?: "") + name + (suffix ?: "") }
+                else -> name.name
+            }
 
     /** Format a positive [Duration] to string in milliseconds, else null.  */
     private val TestResult.durationInMsIfPositive: String?
-        get() = if (duration > Duration.ZERO) {
-            duration.toString(DurationUnit.MILLISECONDS, 2)
-        } else {
-            null
-        }
+        get() =
+            if (duration > Duration.ZERO) {
+                duration.toString(DurationUnit.MILLISECONDS, 2)
+            } else {
+                null
+            }
 
     /**
      * Set [TestReport.result] value to "ChildFailure" if any of its descendant reports

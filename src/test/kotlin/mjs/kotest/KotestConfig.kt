@@ -20,7 +20,8 @@ import io.kotest.core.extensions.Extension
 
 /** Create an HTML report for every test run. */
 object KotestConfig : AbstractProjectConfig() {
-    override val extensions: List<Extension> = listOf(
-        HtmlReporter(reportFilename = "index.html"),
-    )
+    override val extensions: List<Extension> =
+        listOf(
+            HtmlReporter(reportFilename = "index.html"),
+        )
 }
