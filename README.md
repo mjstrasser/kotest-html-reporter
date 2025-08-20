@@ -88,7 +88,7 @@ object KotestConfig : AbstractProjectConfig() {
 dependencies {
     // ...
     testImplementation("io.kotest:kotest-runner-junit5:6.0.0")
-    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.1")
+    testImplementation("com.michaelstrasser:kotest-html-reporter:0.8.2")
 }
 ```
 
