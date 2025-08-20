@@ -18,6 +18,7 @@
 
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -38,9 +39,18 @@ repositories {
 
 kotlin {
     explicitApi()
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+    java {
+        compilerOptions {
+            // Needed to allow for JVM 8 class format.
+            jvmTarget.set(JvmTarget.JVM_1_8)
+        }
     }
+}
+
+// Needed to allow for JVM 8 class format.
+tasks.withType<JavaCompile>().configureEach {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
 }
 
 dependencies {
