@@ -20,7 +20,7 @@ import io.kotest.core.listeners.AfterTestListener
 import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
-import io.kotest.core.test.TestResult
+import io.kotest.engine.test.TestResult
 import mjs.kotest.BuildReportWriter.writeReportFile
 import mjs.kotest.SpecReportBuilder.reportFromResults
 

@@ -15,14 +15,14 @@
 */
 package mjs.kotest.fixtures
 
-import io.kotest.assertions.AssertionFailedError
+import io.kotest.assertions.KotestAssertionFailedError
 import io.kotest.core.descriptors.Descriptor
 import io.kotest.core.descriptors.DescriptorId
 import io.kotest.core.names.TestName
 import io.kotest.core.source.SourceRef
 import io.kotest.core.test.TestCase
-import io.kotest.core.test.TestResult
 import io.kotest.core.test.TestType
+import io.kotest.engine.test.TestResult
 import kotlin.time.Duration
 
 val specDescriptor = Descriptor.SpecDescriptor(DescriptorId(ThingTest::class.qualifiedName!!))
@@ -36,7 +36,7 @@ val case0 =
         TestName(NAME_0, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 8),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Container,
         parent = null,
     )
@@ -50,7 +50,7 @@ val case1 =
         TestName(NAME_1, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 9),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Test,
         parent = case0,
     )
@@ -64,7 +64,7 @@ val case2 =
         TestName(NAME_2, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 12),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Container,
         parent = case0,
     )
@@ -78,7 +78,7 @@ val case2a =
         TestName(NAME_2A, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 13),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Test,
         parent = case2,
     )
@@ -92,14 +92,14 @@ val case2b =
         TestName(NAME_2B, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 16),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Test,
         parent = case2,
     )
 val result2b =
     TestResult.Failure(
         Duration.parse("17.143399ms"),
-        AssertionFailedError("expected:<\"thang\"> but was:<\"thing\">", null, "thang", "thing"),
+        KotestAssertionFailedError("expected:<\"thang\"> but was:<\"thing\">", null, "thang", "thing"),
     )
 
 const val NAME_3 = "3. also ignored"
@@ -110,7 +110,7 @@ val case3 =
         TestName(NAME_3, false, false, null, null, false),
         thingTest,
         {},
-        SourceRef.ClassSource(ThingTest::class.java.name, 20),
+        SourceRef.ClassSource(ThingTest::class.java.name),
         TestType.Container,
         parent = case0,
     )

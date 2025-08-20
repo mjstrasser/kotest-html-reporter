@@ -19,7 +19,7 @@ import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.spec.style.scopes.RootScope
 import io.kotest.core.test.TestCase
-import io.kotest.core.test.TestResult
+import io.kotest.engine.test.TestResult
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 

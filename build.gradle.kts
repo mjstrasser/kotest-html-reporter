@@ -28,6 +28,7 @@ plugins {
     alias(libs.plugins.vanniktech.publish)
     alias(libs.plugins.versions)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.kotest)
 }
 
 group = "com.michaelstrasser"
@@ -39,7 +40,7 @@ repositories {
 kotlin {
     explicitApi()
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
