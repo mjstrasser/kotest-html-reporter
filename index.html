@@ -148,7 +148,7 @@ a.tagline:visited {
   </head>
   <body>
     <h1>Test Results</h1>
-    <p class="timestamp">Time: 2025-09-04T09:11:22.334517942+10:00<br>Commit: df9bda4dc1d471f3e48acb2f8fd85230d7ef687a</p>
+    <p class="timestamp">Time: 2025-09-04T09:36:12.735148799+10:00<br>Commit: 6ad38f3ef04c66bb69604eb16990627d9ba9bc4e<br>Message: Merge pull request #80 from mjstrasser/dependabot/github_actions/actions/setup-java-5</p>
     <div class="toc">
       <h2 id="toc">Specs</h2>
       <div class="toc-entries shadow-box">
@@ -197,7 +197,7 @@ a.tagline:visited {
           <div class="toc-col"><a href="#mjs.kotest.StringSpecExample">mjs.kotest.StringSpecExample</a></div>
         </div>
         <div class="toc-line">
-          <div class="result-col"><span class="result-ChildFailure">x</span></div>
+          <div class="result-col"><span class="result-Success">✓</span></div>
           <div class="toc-col"><a href="#mjs.kotest.WordSpecExample">mjs.kotest.WordSpecExample</a></div>
         </div>
         <div class="toc-line">
@@ -497,20 +497,20 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">82.13ms</span></div>
+        <div class="duration-col"><span class="duration">93.67ms</span></div>
       </div>
       <h2 id="mjs.kotest.BehaviorSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.BehaviorSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">Given: Using <span class='code'>BehaviorSpec</span></span></div>
-        <div class="duration-col"><span class="duration">31.83ms</span></div>
+        <div class="duration-col"><span class="duration">54.01ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">When: the test runs</span></div>
-        <div class="duration-col"><span class="duration">26.21ms</span></div>
+        <div class="duration-col"><span class="duration">48.27ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
@@ -518,442 +518,11 @@ Caused by: java.lang.RuntimeException: Oh noes
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
           <details><summary class="name">Then: it passes or not (will randomly pass, fail or error)
-              <pre class="error-message">java.lang.RuntimeException: Oh noes</pre>
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;afternoon&quot; should not equal &quot;afternoon&quot;</pre>
             </summary>
-            <pre class="error-message">	at mjs.kotest.HelpersKt.errorTest(Helpers.kt:38)
-	at mjs.kotest.SpecStylesKt$randomTestResult$3.invoke(SpecStyles.kt:33)
-	at mjs.kotest.SpecStylesKt$randomTestResult$3.invoke(SpecStyles.kt:33)
-	at mjs.kotest.SpecStylesKt.randomTestResult(SpecStyles.kt:34)
-	at mjs.kotest.BehaviorSpecExample$1$1$1$1.invokeSuspend(SpecStyles.kt:71)
-	at mjs.kotest.BehaviorSpecExample$1$1$1$1.invoke(SpecStyles.kt)
-	at mjs.kotest.BehaviorSpecExample$1$1$1$1.invoke(SpecStyles.kt)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invokeSuspend(InvocationTimeoutInterceptor.kt:37)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invoke(InvocationTimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invoke(InvocationTimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeoutOrNull(Timeout.kt:105)
-	at kotlinx.coroutines.TimeoutKt.withTimeoutOrNull-KLykuaI(Timeout.kt:137)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:36)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$wrappedTest$1$1.invoke(TestInvocationInterceptor.kt:100)
-	at io.kotest.engine.test.TestInvocationInterceptor.runBeforeTestAfter(TestInvocationInterceptor.kt:103)
-	at io.kotest.engine.test.TestInvocationInterceptor.access$runBeforeTestAfter(TestInvocationInterceptor.kt:18)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:286)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeout(Timeout.kt:44)
-	at kotlinx.coroutines.TimeoutKt.withTimeout-KLykuaI(Timeout.kt:72)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:79)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.access$withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:1)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:29)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor$intercept$2.invoke(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestExtensions.intercept(TestExtensions.kt:137)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor.intercept(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:51)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:38)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryTestInterceptor.intercept(CoroutineDispatcherFactoryTestInterceptor.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.SupervisorKt.supervisorScope(Supervisor.kt:56)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor.intercept(SupervisorScopeInterceptor.kt:22)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.InvocationCountCheckInterceptor.intercept(InvocationCountCheckInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor.intercept(TestNameContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor.intercept(DescriptorPathContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestCaseExecutor.execute(TestCaseExecutor.kt:114)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.access$executeTest(SingleInstanceSpecExecutor.kt:25)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invokeSuspend(SingleInstanceSpecExecutor.kt:81)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.core.test.DefaultTestScope.registerTestCase(TestScope.kt:44)
-	at io.kotest.engine.test.scopes.TestScopeWithCoroutineContext.registerTestCase(scopes.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase$suspendImpl(ContainerScope.kt:247)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest$suspendImpl(ContainerScope.kt:53)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTest(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest$suspendImpl(ContainerScope.kt:80)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTest(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecWhenContainerScope.then(BehaviorSpecWhenContainerScope.kt:91)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecWhenContainerScope.Then(BehaviorSpecWhenContainerScope.kt:79)
-	at mjs.kotest.BehaviorSpecExample$1$1$1.invokeSuspend(SpecStyles.kt:70)
-	at mjs.kotest.BehaviorSpecExample$1$1$1.invoke(SpecStyles.kt)
-	at mjs.kotest.BehaviorSpecExample$1$1$1.invoke(SpecStyles.kt)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope$addWhen$2.invokeSuspend(BehaviorSpecGivenContainerScope.kt:76)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope$addWhen$2.invoke(BehaviorSpecGivenContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope$addWhen$2.invoke(BehaviorSpecGivenContainerScope.kt)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:27)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$wrappedTest$1$1.invoke(TestInvocationInterceptor.kt:100)
-	at io.kotest.engine.test.TestInvocationInterceptor.runBeforeTestAfter(TestInvocationInterceptor.kt:103)
-	at io.kotest.engine.test.TestInvocationInterceptor.access$runBeforeTestAfter(TestInvocationInterceptor.kt:18)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:286)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeout(Timeout.kt:44)
-	at kotlinx.coroutines.TimeoutKt.withTimeout-KLykuaI(Timeout.kt:72)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:79)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.access$withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:1)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor$intercept$2.invoke(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestExtensions.intercept(TestExtensions.kt:137)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor.intercept(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:51)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:38)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryTestInterceptor.intercept(CoroutineDispatcherFactoryTestInterceptor.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.SupervisorKt.supervisorScope(Supervisor.kt:56)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor.intercept(SupervisorScopeInterceptor.kt:22)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.InvocationCountCheckInterceptor.intercept(InvocationCountCheckInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor.intercept(TestNameContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor.intercept(DescriptorPathContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestCaseExecutor.execute(TestCaseExecutor.kt:114)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.access$executeTest(SingleInstanceSpecExecutor.kt:25)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invokeSuspend(SingleInstanceSpecExecutor.kt:81)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.core.test.DefaultTestScope.registerTestCase(TestScope.kt:44)
-	at io.kotest.engine.test.scopes.TestScopeWithCoroutineContext.registerTestCase(scopes.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase$suspendImpl(ContainerScope.kt:247)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest$suspendImpl(ContainerScope.kt:53)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTest(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerContainer$suspendImpl(ContainerScope.kt:71)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerContainer(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerContainer(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope.addWhen(BehaviorSpecGivenContainerScope.kt:75)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope.When(BehaviorSpecGivenContainerScope.kt:59)
-	at mjs.kotest.BehaviorSpecExample$1$1.invokeSuspend(SpecStyles.kt:69)
-	at mjs.kotest.BehaviorSpecExample$1$1.invoke(SpecStyles.kt)
-	at mjs.kotest.BehaviorSpecExample$1$1.invoke(SpecStyles.kt)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecRootScope$addGiven$1.invokeSuspend(BehaviorSpecRootScope.kt:41)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecRootScope$addGiven$1.invoke(BehaviorSpecRootScope.kt)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecRootScope$addGiven$1.invoke(BehaviorSpecRootScope.kt)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:27)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$wrappedTest$1$1.invoke(TestInvocationInterceptor.kt:100)
-	at io.kotest.engine.test.TestInvocationInterceptor.runBeforeTestAfter(TestInvocationInterceptor.kt:103)
-	at io.kotest.engine.test.TestInvocationInterceptor.access$runBeforeTestAfter(TestInvocationInterceptor.kt:18)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:286)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeout(Timeout.kt:44)
-	at kotlinx.coroutines.TimeoutKt.withTimeout-KLykuaI(Timeout.kt:72)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:79)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.access$withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:1)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor$intercept$2.invoke(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestExtensions.intercept(TestExtensions.kt:137)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor.intercept(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:42)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:38)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryTestInterceptor.intercept(CoroutineDispatcherFactoryTestInterceptor.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.SupervisorKt.supervisorScope(Supervisor.kt:56)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor.intercept(SupervisorScopeInterceptor.kt:22)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.InvocationCountCheckInterceptor.intercept(InvocationCountCheckInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor.intercept(TestNameContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor.intercept(DescriptorPathContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestCaseExecutor.execute(TestCaseExecutor.kt:114)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.access$executeTest(SingleInstanceSpecExecutor.kt:25)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$launchRootTests$2$1$1.invokeSuspend(SingleInstanceSpecExecutor.kt:56)
-	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
-	at kotlinx.coroutines.TimeoutKt.withTimeoutOrNull(Timeout.kt:102)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:36)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:29)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:51)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invokeSuspend(SingleInstanceSpecExecutor.kt:81)
-	at mjs.kotest.BehaviorSpecExample$1$1$1.invokeSuspend(SpecStyles.kt:70)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecGivenContainerScope$addWhen$2.invokeSuspend(BehaviorSpecGivenContainerScope.kt:76)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:27)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:26)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:51)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invokeSuspend(SingleInstanceSpecExecutor.kt:81)
-	at mjs.kotest.BehaviorSpecExample$1$1.invokeSuspend(SpecStyles.kt:69)
-	at io.kotest.core.spec.style.scopes.BehaviorSpecRootScope$addGiven$1.invokeSuspend(BehaviorSpecRootScope.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:27)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:26)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:42)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$launchRootTests$2$1$1.invokeSuspend(SingleInstanceSpecExecutor.kt:56)
-Caused by: java.lang.RuntimeException: Oh noes
-	at mjs.kotest.HelpersKt.errorTest(Helpers.kt:38)
-	at mjs.kotest.SpecStylesKt$randomTestResult$3.invoke(SpecStyles.kt:33)
-	at mjs.kotest.SpecStylesKt$randomTestResult$3.invoke(SpecStyles.kt:33)
+            <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
+	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
+	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
 	at mjs.kotest.SpecStylesKt.randomTestResult(SpecStyles.kt:34)
 	at mjs.kotest.BehaviorSpecExample$1$1$1$1.invokeSuspend(SpecStyles.kt:71)
 	at mjs.kotest.BehaviorSpecExample$1$1$1$1.invoke(SpecStyles.kt)
@@ -1315,14 +884,14 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">6.45ms</span></div>
+        <div class="duration-col"><span class="duration">29.62ms</span></div>
       </div>
       <h2 id="mjs.kotest.DescribeSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.DescribeSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">Using <span class='code'>DescribeSpec</span></span></div>
-        <div class="duration-col"><span class="duration">20.29ms</span></div>
+        <div class="duration-col"><span class="duration">14.34ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
@@ -1866,14 +1435,14 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">7.25ms</span></div>
+        <div class="duration-col"><span class="duration">4.81ms</span></div>
       </div>
       <h2 id="mjs.kotest.ExpectSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.ExpectSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">Using <span class='code'>ExpectSpec</span></span></div>
-        <div class="duration-col"><span class="duration">23.01ms</span></div>
+        <div class="duration-col"><span class="duration">17.95ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
@@ -2413,21 +1982,21 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">10.49ms</span></div>
+        <div class="duration-col"><span class="duration">7.08ms</span></div>
       </div>
       <h2 id="mjs.kotest.FeatureSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.FeatureSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">Using <span class='code'>FeatureSpec</span></span></div>
-        <div class="duration-col"><span class="duration">74.96ms</span></div>
+        <div class="duration-col"><span class="duration">6.38ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
           <details><summary class="name">with a scenario (will randomly pass, fail or error)
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;verb&quot; should not equal &quot;verb&quot;</pre>
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;laptop&quot; should not equal &quot;laptop&quot;</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
 	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
@@ -2675,20 +2244,20 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">40.74ms</span></div>
+        <div class="duration-col"><span class="duration">2.27ms</span></div>
       </div>
       <h2 id="mjs.kotest.FreeSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.FreeSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">Using <span class='code'>FreeSpec</span></span></div>
-        <div class="duration-col"><span class="duration">25.98ms</span></div>
+        <div class="duration-col"><span class="duration">30.61ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">can nest</span></div>
-        <div class="duration-col"><span class="duration">19.61ms</span></div>
+        <div class="duration-col"><span class="duration">27.53ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
@@ -2696,7 +2265,7 @@ Caused by: java.lang.RuntimeException: Oh noes
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
           <details><summary class="name">another level (will randomly pass, fail or error)
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;screen&quot; should not equal &quot;screen&quot;</pre>
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;half&quot; should not equal &quot;half&quot;</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
 	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
@@ -3063,13 +2632,13 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">5.40ms</span></div>
+        <div class="duration-col"><span class="duration">18.68ms</span></div>
       </div>
       <h2 id="mjs.kotest.FunSpecExample"><span class="result-Success">✓</span>&nbsp;mjs.kotest.FunSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">Using <span class='code'>FunSpec</span> (will randomly pass, fail or error)</span></div>
-        <div class="duration-col"><span class="duration">1.23ms</span></div>
+        <div class="duration-col"><span class="duration">4.65ms</span></div>
       </div>
       <h2 id="mjs.kotest.MarkdownTest"><span class="result-Success">✓</span>&nbsp;mjs.kotest.MarkdownTest&nbsp;<a href="#toc">⇧</a></h2>
       <div class="line">
@@ -3081,49 +2650,49 @@ Caused by: java.lang.RuntimeException: Oh noes
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts double newlines into double line breaks</span></div>
-        <div class="duration-col"><span class="duration">2.27ms</span></div>
+        <div class="duration-col"><span class="duration">2.75ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it ignores blank lines with spaces and/or tabs when converting double newlines</span></div>
-        <div class="duration-col"><span class="duration">1.15ms</span></div>
+        <div class="duration-col"><span class="duration">2.63ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it ignores single newlines</span></div>
-        <div class="duration-col"><span class="duration">2.27ms</span></div>
+        <div class="duration-col"><span class="duration">2.97ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts code at the start of strings</span></div>
-        <div class="duration-col"><span class="duration">1.19ms</span></div>
+        <div class="duration-col"><span class="duration">3.72ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts code in the middle of strings</span></div>
-        <div class="duration-col"><span class="duration">0.97ms</span></div>
+        <div class="duration-col"><span class="duration">1.28ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts code at the end of strings</span></div>
-        <div class="duration-col"><span class="duration">1.26ms</span></div>
+        <div class="duration-col"><span class="duration">1.31ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts multi-word code</span></div>
-        <div class="duration-col"><span class="duration">0.91ms</span></div>
+        <div class="duration-col"><span class="duration">0.97ms</span></div>
       </div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">it converts multi-line code</span></div>
-        <div class="duration-col"><span class="duration">0.95ms</span></div>
+        <div class="duration-col"><span class="duration">6.00ms</span></div>
       </div>
       <h2 id="mjs.kotest.ShouldSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.ShouldSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="line">
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
           <details><summary class="name">Using <span class='code'>ShouldSpec</span> (will randomly pass, fail or error)
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;tea&quot; should not equal &quot;tea&quot;</pre>
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;ocean&quot; should not equal &quot;ocean&quot;</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
 	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
@@ -3253,27 +2822,27 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">1.58ms</span></div>
+        <div class="duration-col"><span class="duration">1.57ms</span></div>
       </div>
       <h2 id="mjs.kotest.SpecReportBuilderTest"><span class="result-Success">✓</span>&nbsp;mjs.kotest.SpecReportBuilderTest&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name"><span class='code'>reportFromResults()</span> function</span></div>
-        <div class="duration-col"><span class="duration">22.52ms</span></div>
+        <div class="duration-col"><span class="duration">16.07ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">converts <span class='code'>Error</span> result to <span class='code'>Failure</span></span></div>
-        <div class="duration-col"><span class="duration">19.85ms</span></div>
+        <div class="duration-col"><span class="duration">13.48ms</span></div>
       </div>
       <h2 id="mjs.kotest.StringSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.StringSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="line">
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
           <details><summary class="name">Using <span class='code'>StringSpec</span> (will randomly pass, fail or error)
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;singular&quot; should not equal &quot;singular&quot;</pre>
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;daughter&quot; should not equal &quot;daughter&quot;</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
 	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
@@ -3406,305 +2975,54 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">1.82ms</span></div>
+        <div class="duration-col"><span class="duration">2.00ms</span></div>
       </div>
-      <h2 id="mjs.kotest.WordSpecExample"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.WordSpecExample&nbsp;<a href="#toc">⇧</a></h2>
+      <h2 id="mjs.kotest.WordSpecExample"><span class="result-Success">✓</span>&nbsp;mjs.kotest.WordSpecExample&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
-        <div class="result-col"><span class="result-ChildFailure">x</span></div>
-        <div class="name-col ChildFailure"><span class="name">Using <span class='code'>WordSpec</span></span></div>
-        <div class="duration-col"><span class="duration">11.60ms</span></div>
+        <div class="result-col"><span class="result-Success">✓</span></div>
+        <div class="name-col Success"><span class="name">Using <span class='code'>WordSpec</span></span></div>
+        <div class="duration-col"><span class="duration">9.82ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
-        <div class="result-col"><span class="result-Failure">x</span></div>
-        <div class="name-col Failure">
-          <details><summary class="name">pass or not (will randomly pass, fail or error)
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;beard&quot; should not equal &quot;beard&quot;</pre>
-            </summary>
-            <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
-	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
-	at mjs.kotest.SpecStylesKt$randomTestResult$2.invoke(SpecStyles.kt:32)
-	at mjs.kotest.SpecStylesKt.randomTestResult(SpecStyles.kt:34)
-	at mjs.kotest.WordSpecExample$1$1$1.invokeSuspend(SpecStyles.kt:92)
-	at mjs.kotest.WordSpecExample$1$1$1.invoke(SpecStyles.kt)
-	at mjs.kotest.WordSpecExample$1$1$1.invoke(SpecStyles.kt)
-	at io.kotest.core.spec.style.scopes.WordSpecShouldContainerScope$invoke$2.invokeSuspend(WordSpecShouldContainerScope.kt:62)
-	at io.kotest.core.spec.style.scopes.WordSpecShouldContainerScope$invoke$2.invoke(WordSpecShouldContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.WordSpecShouldContainerScope$invoke$2.invoke(WordSpecShouldContainerScope.kt)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invokeSuspend(InvocationTimeoutInterceptor.kt:37)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invoke(InvocationTimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor$intercept$3.invoke(InvocationTimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeoutOrNull(Timeout.kt:105)
-	at kotlinx.coroutines.TimeoutKt.withTimeoutOrNull-KLykuaI(Timeout.kt:137)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:36)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$wrappedTest$1$1.invoke(TestInvocationInterceptor.kt:100)
-	at io.kotest.engine.test.TestInvocationInterceptor.runBeforeTestAfter(TestInvocationInterceptor.kt:103)
-	at io.kotest.engine.test.TestInvocationInterceptor.access$runBeforeTestAfter(TestInvocationInterceptor.kt:18)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:286)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeout(Timeout.kt:44)
-	at kotlinx.coroutines.TimeoutKt.withTimeout-KLykuaI(Timeout.kt:72)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:79)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.access$withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:1)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:29)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor$intercept$2.invoke(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestExtensions.intercept(TestExtensions.kt:137)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor.intercept(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:51)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:38)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryTestInterceptor.intercept(CoroutineDispatcherFactoryTestInterceptor.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.SupervisorKt.supervisorScope(Supervisor.kt:56)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor.intercept(SupervisorScopeInterceptor.kt:22)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.InvocationCountCheckInterceptor.intercept(InvocationCountCheckInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor.intercept(TestNameContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor.intercept(DescriptorPathContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestCaseExecutor.execute(TestCaseExecutor.kt:114)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.access$executeTest(SingleInstanceSpecExecutor.kt:25)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invokeSuspend(SingleInstanceSpecExecutor.kt:81)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$executeTest$result$1.invoke(SingleInstanceSpecExecutor.kt)
-	at io.kotest.core.test.DefaultTestScope.registerTestCase(TestScope.kt:44)
-	at io.kotest.engine.test.scopes.TestScopeWithCoroutineContext.registerTestCase(scopes.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase$suspendImpl(ContainerScope.kt:247)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTestCase(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest$suspendImpl(ContainerScope.kt:53)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTest(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest$suspendImpl(ContainerScope.kt:80)
-	at io.kotest.core.spec.style.scopes.ContainerScope.registerTest(ContainerScope.kt)
-	at io.kotest.core.spec.style.scopes.AbstractContainerScope.registerTest(ContainerScope.kt:234)
-	at io.kotest.core.spec.style.scopes.WordSpecShouldContainerScope.invoke(WordSpecShouldContainerScope.kt:62)
-	at mjs.kotest.WordSpecExample$1$1.invokeSuspend(SpecStyles.kt:91)
-	at mjs.kotest.WordSpecExample$1$1.invoke(SpecStyles.kt)
-	at mjs.kotest.WordSpecExample$1$1.invoke(SpecStyles.kt)
-	at io.kotest.core.spec.style.scopes.WordSpecRootScope$should$1.invokeSuspend(WordSpecRootScope.kt:20)
-	at io.kotest.core.spec.style.scopes.WordSpecRootScope$should$1.invoke(WordSpecRootScope.kt)
-	at io.kotest.core.spec.style.scopes.WordSpecRootScope$should$1.invoke(WordSpecRootScope.kt)
-	at io.kotest.engine.test.TestCaseExecutor$execute$innerExecute$1.invoke(TestCaseExecutor.kt:108)
-	at io.kotest.engine.test.interceptors.CoroutineDebugProbeInterceptor.intercept(CoroutineDebugProbeInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$executeWithBeforeAfter$1.invoke(TestInvocationInterceptor.kt:92)
-	at io.kotest.engine.test.interceptors.InvocationTimeoutInterceptor.intercept(InvocationTimeoutInterceptor.kt:27)
-	at io.kotest.engine.test.TestInvocationInterceptor$runBeforeTestAfter$wrappedTest$1$1.invoke(TestInvocationInterceptor.kt:100)
-	at io.kotest.engine.test.TestInvocationInterceptor.runBeforeTestAfter(TestInvocationInterceptor.kt:103)
-	at io.kotest.engine.test.TestInvocationInterceptor.access$runBeforeTestAfter(TestInvocationInterceptor.kt:18)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invokeSuspend(TestInvocationInterceptor.kt:53)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at io.kotest.engine.test.TestInvocationInterceptor$invokeWithRetry$2.invoke(TestInvocationInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:286)
-	at io.kotest.engine.test.TestInvocationInterceptor.invokeWithRetry(TestInvocationInterceptor.kt:51)
-	at io.kotest.engine.test.TestInvocationInterceptor.intercept(TestInvocationInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.interceptors.MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.intercept(MarkPlatformAbortedExceptionsAsSkippedTestInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.HandleSkippedExceptionsTestInterceptor.intercept(HandleSkippedExceptionsTestInterceptor.kt:15)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invokeSuspend(TimeoutInterceptor.kt:54)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor$intercept$3.invoke(TimeoutInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturnIgnoreTimeout(Undispatched.kt:50)
-	at kotlinx.coroutines.TimeoutKt.setupTimeout(Timeout.kt:149)
-	at kotlinx.coroutines.TimeoutKt.withTimeout(Timeout.kt:44)
-	at kotlinx.coroutines.TimeoutKt.withTimeout-KLykuaI(Timeout.kt:72)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:79)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptorKt.access$withAppropriateTimeout-KLykuaI(TimeoutInterceptor.kt:1)
-	at io.kotest.engine.test.interceptors.TimeoutInterceptor.intercept(TimeoutInterceptor.kt:53)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BlockedThreadTimeoutInterceptor.intercept(BlockedThreadTimeoutInterceptor.kt:87)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineLoggingInterceptor.intercept(CoroutineLoggingInterceptor.kt:36)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SoftAssertInterceptor.intercept(SoftAssertInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.AssertionModeInterceptor.intercept(AssertionModeInterceptor.kt:26)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.LifecycleInterceptor.intercept(LifecycleInterceptor.kt:48)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor$intercept$2.invoke(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestExtensions.intercept(TestExtensions.kt:137)
-	at io.kotest.engine.test.interceptors.TestCaseExtensionInterceptor.intercept(TestCaseExtensionInterceptor.kt:21)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.BeforeSpecListenerInterceptor.intercept(BeforeSpecListenerInterceptor.kt:42)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestEnabledCheckInterceptor.intercept(TestEnabledCheckInterceptor.kt:39)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invokeSuspend(CoroutineErrorCollectorInterceptor.kt:39)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor$intercept$3.invoke(CoroutineErrorCollectorInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:38)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryTestInterceptor.intercept(CoroutineDispatcherFactoryTestInterceptor.kt:41)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invokeSuspend(SupervisorScopeInterceptor.kt:23)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor$intercept$2.invoke(SupervisorScopeInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.SupervisorKt.supervisorScope(Supervisor.kt:56)
-	at io.kotest.engine.test.interceptors.SupervisorScopeInterceptor.intercept(SupervisorScopeInterceptor.kt:22)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.InvocationCountCheckInterceptor.intercept(InvocationCountCheckInterceptor.kt:33)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:23)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.FailFastInterceptor.intercept(FailFastInterceptor.kt:32)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invokeSuspend(TestNameContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor$intercept$2.invoke(TestNameContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.TestNameContextInterceptor.intercept(TestNameContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invokeSuspend(DescriptorPathContextInterceptor.kt:19)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor$intercept$2.invoke(DescriptorPathContextInterceptor.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndspatched(Undispatched.kt:66)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:165)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at io.kotest.engine.test.interceptors.DescriptorPathContextInterceptor.intercept(DescriptorPathContextInterceptor.kt:18)
-	at io.kotest.engine.test.TestCaseExecutor$execute$3$1.invoke(TestCaseExecutor.kt:113)
-	at io.kotest.engine.test.TestCaseExecutor.execute(TestCaseExecutor.kt:114)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.executeTest(SingleInstanceSpecExecutor.kt:75)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor.access$executeTest(SingleInstanceSpecExecutor.kt:25)
-	at io.kotest.engine.spec.execution.SingleInstanceSpecExecutor$launchRootTests$2$1$1.invokeSuspend(SingleInstanceSpecExecutor.kt:56)
-	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
-	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
-	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
-	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
-	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
-	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
-	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
-	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
-	at io.kotest.engine.RunBlocking_jvmKt.runBlocking(runBlocking.jvm.kt:3)
-	at io.kotest.engine.TestEngineLauncher.launch(TestEngineLauncher.kt:207)
-	at io.kotest.runner.junit.platform.KotestJunitPlatformTestEngine.execute(KotestJunitPlatformTestEngine.kt:74)
-	at io.kotest.runner.junit.platform.KotestJunitPlatformTestEngine.execute(KotestJunitPlatformTestEngine.kt:47)
-</pre>
-          </details>
-        </div>
-        <div class="duration-col"><span class="duration">4.36ms</span></div>
+        <div class="result-col"><span class="result-Success">✓</span></div>
+        <div class="name-col Success"><span class="name">pass or not (will randomly pass, fail or error)</span></div>
+        <div class="duration-col"><span class="duration">2.06ms</span></div>
       </div>
       <h2 id="mjs.kotest.fixtures.BehaviorSpecTest"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.fixtures.BehaviorSpecTest&nbsp;<a href="#toc">⇧</a></h2>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
-        <div class="name-col ChildFailure"><span class="name">Given: Electronics</span></div>
-        <div class="duration-col"><span class="duration">31.72ms</span></div>
+        <div class="name-col ChildFailure"><span class="name">Given: Quiet hell tongue blue hotel medicine fifty dark</span></div>
+        <div class="duration-col"><span class="duration">49.81ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Success">✓</span></div>
-        <div class="name-col Success"><span class="name">When: Say jump technology Sunday bedroom red wear melt</span></div>
-        <div class="duration-col"><span class="duration">4.74ms</span></div>
+        <div class="name-col Success"><span class="name">When: Side wall coat buy baby pound street hair</span></div>
+        <div class="duration-col"><span class="duration">8.14ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Success">✓</span></div>
-        <div class="name-col Success"><span class="name">Then: Secretary heavy cheap six swim wet bicycle sister</span></div>
-        <div class="duration-col"><span class="duration">1.78ms</span></div>
+        <div class="name-col Success"><span class="name">Then: Juice stand lawyer direction face direction</span></div>
+        <div class="duration-col"><span class="duration">1.67ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
-        <div class="name-col ChildFailure"><span class="name">When: Radio drink hear mother evening laugh (will fail)</span></div>
-        <div class="duration-col"><span class="duration">7.37ms</span></div>
+        <div class="name-col ChildFailure"><span class="name">When: Rich loose voice instrument bridge (will fail)</span></div>
+        <div class="duration-col"><span class="duration">11.86ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
-          <details><summary class="name">Then: No she five diamond drink hole house dot fifty female
-              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;grandfather&quot; should not equal &quot;grandfather&quot;</pre>
+          <details><summary class="name">Then: Side oil turn winter wedding ugly explode electronics prison animal
+              <pre class="error-message">org.opentest4j.AssertionFailedError: &quot;young&quot; should not equal &quot;young&quot;</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.failingTest(Helpers.kt:35)
 	at mjs.kotest.fixtures.BehaviorSpecTest$1$1$2$1.invokeSuspend(BehaviorSpecTest.kt:41)
@@ -4067,20 +3385,20 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">1.61ms</span></div>
+        <div class="duration-col"><span class="duration">3.20ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
-        <div class="name-col ChildFailure"><span class="name">When: Head injury camera dog bicycle (will fail because exception thrown)</span></div>
-        <div class="duration-col"><span class="duration">15.30ms</span></div>
+        <div class="name-col ChildFailure"><span class="name">When: Circle (will fail because exception thrown)</span></div>
+        <div class="duration-col"><span class="duration">25.16ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Failure">x</span></div>
         <div class="name-col Failure">
-          <details><summary class="name">Then: Mouse
+          <details><summary class="name">Then: Bend banana consonant head knee
               <pre class="error-message">java.lang.RuntimeException: Oh noes</pre>
             </summary>
             <pre class="error-message">	at mjs.kotest.HelpersKt.errorTest(Helpers.kt:38)
@@ -4872,7 +4190,7 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">5.04ms</span></div>
+        <div class="duration-col"><span class="duration">7.72ms</span></div>
       </div>
       <h2 id="mjs.kotest.fixtures.ThingTest"><span class="result-ChildFailure">x</span>&nbsp;mjs.kotest.fixtures.ThingTest&nbsp;<a href="#toc">⇧</a></h2>
       <div class="line">
@@ -4883,20 +4201,20 @@ Caused by: java.lang.RuntimeException: Oh noes
       <div class="line">
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">0  Describe the thing</span></div>
-        <div class="duration-col"><span class="duration">43.23ms</span></div>
+        <div class="duration-col"><span class="duration">91.77ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-ChildFailure">x</span></div>
         <div class="name-col ChildFailure"><span class="name">2  the inner thing</span></div>
-        <div class="duration-col"><span class="duration">22.48ms</span></div>
+        <div class="duration-col"><span class="duration">60.34ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">2a  is thing</span></div>
-        <div class="duration-col"><span class="duration">4.46ms</span></div>
+        <div class="duration-col"><span class="duration">2.75ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
@@ -5268,19 +4586,19 @@ Caused by: java.lang.RuntimeException: Oh noes
 </pre>
           </details>
         </div>
-        <div class="duration-col"><span class="duration">9.26ms</span></div>
+        <div class="duration-col"><span class="duration">40.58ms</span></div>
       </div>
       <div class="pre-test"></div>
       <div class="line">
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">4  Another root</span></div>
-        <div class="duration-col"><span class="duration">5.40ms</span></div>
+        <div class="duration-col"><span class="duration">6.63ms</span></div>
       </div>
       <div class="line">
         <div class="block-col"></div>
         <div class="result-col"><span class="result-Success">✓</span></div>
         <div class="name-col Success"><span class="name">is really fun</span></div>
-        <div class="duration-col"><span class="duration">1.08ms</span></div>
+        <div class="duration-col"><span class="duration">1.27ms</span></div>
       </div>
     </div>
     <div class="shadow-box tagline">Report generated by <a href="https://github.com/mjstrasser/kotest-html-reporter#kotest-html-reporter" target="_blank" class="tagline">Kotest HTML Reporter</a></div>
