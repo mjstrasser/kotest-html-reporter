@@ -38,11 +38,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
-      - name: Gradle build
-        run: ./gradlew build
-
-      - name: Gradle test
-        run: ./gradlew test
+      - name: Gradle assemble and run tests
+        run: ./gradlew assemble kotest
 
       - name: Check test output existence
         id: check_test_output

@@ -1,6 +1,6 @@
 [versions]
 dokka = "2.0.0"
-kotest = "6.0.1"
+kotest = "6.0.2"
 kotlin = "2.2.10"
 kotlin-html = "0.12.0"
 ktlint = "0.48.2"
@@ -9,7 +9,8 @@ vanniktech = "0.34.0"
 versions = "0.52.0"
 
 [libraries]
-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotlin-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "kotlin-html" }
 
 [plugins]

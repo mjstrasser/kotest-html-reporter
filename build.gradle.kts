@@ -55,11 +55,11 @@ tasks.withType<JavaCompile>().configureEach {
 
 dependencies {
     implementation(libs.kotlin.html)
-    implementation(libs.kotest.runner)
+    implementation(libs.kotest.engine)
+    testImplementation(libs.kotest.assertions)
 }
 
 tasks.test {
-    useJUnitPlatform()
     // Because we have failing tests so they can be reported.
     ignoreFailures = true
 }
